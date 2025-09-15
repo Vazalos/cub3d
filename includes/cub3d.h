@@ -27,50 +27,73 @@
 
 typedef struct s_img
 {
-    void    *img_ptr;
-    char    *pix_addr;
-    int     bpp;
-    int     line_len;
-    int     endian;
+	void    *img_ptr;
+	char    *pix_addr;
+	int     bpp;
+	int     line_len;
+	int     endian;
 } t_img;
 
 typedef struct s_mlx
 {
-    void    *mlx_ptr;
-    void    *window;
+	void    *mlx_ptr;
+	void    *window;
 } t_mlx;
 
 typedef struct s_view
 {
-    double   mouse_x;
-    double   mouse_y;
+	double   mouse_x;
+	double   mouse_y;
 
-    double   pov_x; //pov coordinates
-    double   pov_y;
-    double   dir_x; //direction from pov
-    double   dir_y;
-    double   dir_len;
-    double   plane_x; //perpendicular to direction
-    double   plane_y;
+	double   pov_x; //pov coordinates
+	double   pov_y;
+	double   dir_x; //direction from pov
+	double   dir_y;
+	double   dir_len;
+	double   plane_x; //perpendicular to direction
+	double   plane_y;
 
 }   t_view;
 
 typedef struct s_data
 {
-    t_img       img;
-    t_mlx       mlx;
-    t_view      view;
-    char        **map;
-    double      start_time;
-    double      time;
-    double      old_time;
+	t_img       img;
+	t_mlx       mlx;
+	t_view      view;
+	int         draw_map;
+	char        **map;
+	double      start_time;
+	double      time;
+	double      old_time;
+
+	double  camera_x;
+	double  ray_dir_x;
+	double  ray_dir_y;
+	int     map_x;
+	int     map_y;
+	double  side_dist_x;
+	double  side_dist_y;
+	double  delta_dist_x;
+	double  delta_dist_y;
+	double  perpend_wall_dist;
+	int     step_x;
+	int     step_y;
+	int     wall_hit;
+	int     side;
+	int     line_height;
+	int     draw_start;
+	int     draw_end;
+	int     color;
 }   t_data;
 
-size_t	ft_get_time(void);
+double	ft_get_time(void);
 
 // INITS
 int     ft_init_mlx(t_data *data);
 void    ft_init_values(t_data *data);
+
+// CALCS
+void ft_raycast(t_data *data);
 
 // FREES
 int     ft_free_mlx(t_data *data);

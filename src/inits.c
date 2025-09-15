@@ -6,28 +6,42 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/11 11:48:13 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/15 15:54:51 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int ft_init_mlx(t_data *data)
+int	ft_init_mlx(t_data *data)
 {
-    data->mlx.mlx_ptr = NULL;
-    data->img.img_ptr = NULL;
-    data->mlx.window = NULL;    
-    data->mlx.mlx_ptr = mlx_init();
-    if(!data->mlx.mlx_ptr)
-        return(1);
-    data->mlx.window = mlx_new_window(data->mlx.mlx_ptr, WIDTH, HEIGHT, TITLE);
-    data->img.img_ptr = mlx_new_image(data->mlx.mlx_ptr, WIDTH, HEIGHT);
-    if(!data->mlx.window || !data->img.img_ptr)
-    {
-        ft_free_mlx(data);
-        return(1);
-    }
-    data->img.pix_addr = mlx_get_data_addr(data->img.img_ptr, &data->img.bpp,
-            &data->img.line_len, &data->img.endian);
-    return(0);
+	data->mlx.mlx_ptr = NULL;
+	data->img.img_ptr = NULL;
+	data->mlx.window = NULL;
+	data->mlx.mlx_ptr = mlx_init();
+	if (!data->mlx.mlx_ptr)
+		return (1);
+	data->mlx.window = mlx_new_window(data->mlx.mlx_ptr, WIDTH, HEIGHT, TITLE);
+	data->img.img_ptr = mlx_new_image(data->mlx.mlx_ptr, WIDTH, HEIGHT);
+	if (!data->mlx.window || !data->img.img_ptr)
+	{
+		ft_free_mlx(data);
+		return (1);
+	}
+	data->img.pix_addr = mlx_get_data_addr(data->img.img_ptr, &data->img.bpp,
+			&data->img.line_len, &data->img.endian);
+	return (0);
+}
+
+void	ft_init_values(t_data *data)
+{
+	data->view.pov_x = 3.5;
+	data->view.pov_y = 3.5;
+	data->view.dir_x = -1;
+	data->view.dir_y = 0;
+	data->view.plane_x = 0;
+	data->view.plane_y = 0.66;
+	data->start_time = ft_get_time();
+	data->time = data->start_time;
+	data->old_time = data->start_time;
+	data->draw_map = 1;
 }

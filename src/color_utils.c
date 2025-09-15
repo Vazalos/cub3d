@@ -6,11 +6,12 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:33:01 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/10 16:38:50 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/15 16:31:49 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_argb_to_hex(unsigned int a, unsigned int r, unsigned int g, unsigned int b)
+unsigned int	ft_argb_to_hex(unsigned int a, unsigned int r,
+	unsigned int g, unsigned int b)
 {
 	return (a << 24 | r << 16 | g << 8 | b);
 }
