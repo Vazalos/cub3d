@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/16 10:52:53 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/16 15:35:39 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	ft_event_handler(t_data *data)
 {
 	mlx_hook(data->mlx.window, DestroyNotify, 0, ft_free_mlx, data);
-	mlx_hook(data->mlx.window, KeyPress, KeyPressMask, ft_keypress, data);
+	mlx_hook(data->mlx.window, KeyPress, KeyPressMask, ft_key_press, data);
+	mlx_hook(data->mlx.window, KeyRelease, KeyReleaseMask, ft_key_release, data);
 	mlx_hook(data->mlx.window, 6, 1L << 6, ft_mouse_move, data);
 }
 
@@ -26,17 +27,30 @@ int	ft_mouse_move(int x, int y, t_data *data)
 	return (0);
 }
 
-int	ft_keypress(int keysym, t_data *data)
+int	ft_key_press(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 		ft_free_mlx(data);
-	if (keysym == XK_Left || keysym == XK_Right)
-	{
-		//look to sides
-	}
-	if (keysym == XK_w || keysym == XK_a || keysym == XK_s || keysym == XK_d)
-	{
-		//move
-	}
+	if (keysym == XK_w || keysym == XK_Up)
+		data->move.front = 1;
+	if (keysym == XK_s || keysym == XK_Down)
+		data->move.back = 1;
+	if (keysym == XK_a || keysym == XK_Left)
+		data->move.left = 1;
+	if (keysym == XK_d || keysym == XK_Right)
+		data->move.right = 1;
 	return (0);
+}
+
+int	ft_key_release(int keysym, t_data *data)
+{
+	if (keysym == XK_w || keysym == XK_Up)
+		data->move.front = 0;
+	if (keysym == XK_s || keysym == XK_Down)
+		data->move.back = 0;
+	if (keysym == XK_a || keysym == XK_Left)
+		data->move.left = 0;
+	if (keysym == XK_d || keysym == XK_Right)
+		data->move.right = 0;
+	return(1);
 }

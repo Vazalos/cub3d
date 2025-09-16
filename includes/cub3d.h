@@ -16,14 +16,16 @@
 #define HEIGHT 720
 #define TITLE "David and Gustavo's Marvelous World of 3D"
 
-#define SKY 0xFF000000
-#define FLOOR 0xFFFFFFFF
+#define SPEED_MOD 4
+#define ROT_MOD 3
+
+#define SKY 0xFF87CEEB
+#define FLOOR 0xFF014421
 #define RED 0xFFFF0000
 #define GREEN 0xFF00FF00
 #define BLUE 0xFF0000FF
 #define YELLOW 0xFFFFFF00
 #define PURPLE 0xFFFF00FF
-
 
 typedef struct s_img
 {
@@ -48,7 +50,6 @@ typedef struct s_calc
 	double	pov_y;
 	double	dir_x; //direction from pov
 	double	dir_y;
-	double	dir_len;
 	double	plane_x; //perpendicular to direction
 	double	plane_y;
 	double	camera_x;
@@ -71,15 +72,28 @@ typedef struct s_calc
 	int		wall_color;
 }   t_view;
 
+typedef struct s_move
+{
+	double	speed;
+	double	rotation;	
+	int		front;
+	int		back;
+	int		left;
+	int		right;
+}	t_move;
+
 typedef struct s_data
 {
-	t_img       img;
-	t_mlx       mlx;
-	t_view      calc;
-	char        **map;
-	double      start_time;
-	double      time;
-	double      old_time;
+	t_img	img;
+	t_mlx	mlx;
+	t_view	calc;
+	t_move	move;
+	char	**map;
+	double	start_time;
+	double	time;
+	double	old_time;
+	double	frame_time;
+	double	fps;
 }   t_data;
 
 // INITS
@@ -87,6 +101,7 @@ int     ft_init_mlx(t_data *data);
 void    ft_init_values(t_data *data);
 
 //RENDER
+int		render_frame(t_data *data);
 double	ft_get_time(void);
 
 // CALCS
@@ -97,7 +112,8 @@ int     ft_free_mlx(t_data *data);
 
 // EVENTS
 void    ft_event_handler(t_data *data);
-int     ft_keypress(int keysym, t_data *data);
+int     ft_key_press(int keysym, t_data *data);
+int		ft_key_release(int keysym, t_data *data);
 int     ft_mouse_move(int x, int y, t_data *mlx);
 
 // DRAW
