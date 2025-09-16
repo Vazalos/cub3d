@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+         #
+#    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/09/15 15:24:06 by david-fe         ###   ########.fr        #
+#    Updated: 2025/09/16 10:49:23 by gumendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ $(MLX):
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CC_FLAGS) -O3 -c $< -o $@
-	
+
 $(NAME): $(LIBFT) $(MLX) $(OBJ)
 	@$(CC) $(CC_FLAGS) $(LINK_FLAGS) -I/usr/include -Imlx_linux -o $(NAME) $(OBJ) $(LIBFT) $(MLX)
 

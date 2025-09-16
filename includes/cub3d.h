@@ -6,6 +6,7 @@
 #include <X11/X.h>
 #include <X11/keysym.h>
 
+#include "../src/parsing/parsing.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
