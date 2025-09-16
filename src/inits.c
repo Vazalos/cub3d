@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/15 15:54:51 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/16 10:52:55 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,13 @@ int	ft_init_mlx(t_data *data)
 
 void	ft_init_values(t_data *data)
 {
-	data->view.pov_x = 3.5;
-	data->view.pov_y = 3.5;
-	data->view.dir_x = -1;
-	data->view.dir_y = 0;
-	data->view.plane_x = 0;
-	data->view.plane_y = 0.66;
+	data->calc.pov_x = 3.5;
+	data->calc.pov_y = 3.5;
+	data->calc.dir_x = -1;
+	data->calc.dir_y = 0;
+	data->calc.plane_x = 0;
+	data->calc.plane_y = 0.66;
 	data->start_time = ft_get_time();
 	data->time = data->start_time;
 	data->old_time = data->start_time;
-	data->draw_map = 1;
 }

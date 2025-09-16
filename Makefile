@@ -6,7 +6,7 @@
 #    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/09/16 10:49:23 by gumendes         ###   ########.fr        #
+#    Updated: 2025/09/16 11:27:15 by gumendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC_FLAGS = -Wall -Werror -Wextra -g
 LINK_FLAGS = -lXext -lX11 -lm
 
 SRC_PATH = src
-SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c color_utils.c calcs.c)
+SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c color_utils.c calcs.c render.c)
 OBJ_PATH = .build
 OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
