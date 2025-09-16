@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_errors.c                                   :+:      :+:    :+:   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 11:12:19 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/16 14:52:29 by gumendes         ###   ########.fr       */
+/*   Created: 2025/09/16 15:15:23 by gumendes          #+#    #+#             */
+/*   Updated: 2025/09/16 15:32:38 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	init_error(char *str)
+int	ft_strcmp(char *s1, char *s2)
 {
-	printf("Error initializing the %s variable\n");
-}
+	int	i;
 
-void	nonexistant_file(void)
-{
-	printf("Specified file is nonexistant or the privided path is incorrect\n");
-}
-
-void	invalid_file_type(char *str)
-{
-	printf("Unsupported file extension: %s expected: .cub\n");
-}
-
-void	invalid_arg_count(void)
-{
-	printf("Invalid prompt, try \"./cub3d ./maps/map.cub\"\n");
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+	{
+		i++;
+	}
+	return (s1[i] - s2[i]);
 }

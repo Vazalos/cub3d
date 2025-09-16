@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/16 13:53:24 by gumendes          #+#    #+#             */
+/*   Updated: 2025/09/16 15:26:05 by gumendes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -12,6 +24,7 @@
 #include <math.h>
 #include <sys/time.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 #define WIDTH 1280
 #define HEIGHT 720
@@ -25,6 +38,18 @@
 #define YELLOW 0xFFFFFF00
 #define PURPLE 0xFFFF00FF
 
+#define BUFFER_SIZE 100
+
+typedef struct s_map
+{
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	unsigned int	floor;
+	unsigned int	ceiling;
+	char			**map;
+} t_map;
 
 typedef struct s_img
 {
@@ -111,5 +136,8 @@ unsigned int	ft_hex_to_alpha(unsigned int hex);
 unsigned int	ft_hex_to_red(unsigned int hex);
 unsigned int	ft_hex_to_green(unsigned int hex);
 unsigned int	ft_hex_to_blue(unsigned int hex);
+
+// CLEANUP
+void	ft_free_split(char **str);
 
 #endif
