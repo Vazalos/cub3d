@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/16 15:35:39 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/17 16:53:50 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,17 @@ int	ft_key_press(int keysym, t_data *data)
 		data->move.front = 1;
 	if (keysym == XK_s || keysym == XK_Down)
 		data->move.back = 1;
-	if (keysym == XK_a || keysym == XK_Left)
+	if (keysym == XK_a)
 		data->move.left = 1;
-	if (keysym == XK_d || keysym == XK_Right)
+	if (keysym == XK_d)
 		data->move.right = 1;
+	if (keysym == XK_Left)
+		data->move.rot_l = 1;
+	if (keysym == XK_Right)
+		data->move.rot_r = 1;
+
+	if (keysym == XK_p)
+		print_coords(data);
 	return (0);
 }
 
@@ -48,9 +55,13 @@ int	ft_key_release(int keysym, t_data *data)
 		data->move.front = 0;
 	if (keysym == XK_s || keysym == XK_Down)
 		data->move.back = 0;
-	if (keysym == XK_a || keysym == XK_Left)
+	if (keysym == XK_a)
 		data->move.left = 0;
-	if (keysym == XK_d || keysym == XK_Right)
+	if (keysym == XK_d)
 		data->move.right = 0;
+	if (keysym == XK_Left)
+		data->move.rot_l = 0;
+	if (keysym == XK_Right)
+		data->move.rot_r = 0;
 	return(1);
 }

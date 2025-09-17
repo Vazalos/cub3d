@@ -21,6 +21,8 @@
 
 #define SKY 0xFF87CEEB
 #define FLOOR 0xFF014421
+#define WHITE 0xFFFFFFFF
+#define BLACK 0xFF000000
 #define RED 0xFFFF0000
 #define GREEN 0xFF00FF00
 #define BLUE 0xFF0000FF
@@ -80,6 +82,8 @@ typedef struct s_move
 	int		back;
 	int		left;
 	int		right;
+	int		rot_l;
+	int		rot_r;
 }	t_move;
 
 typedef struct s_data
@@ -107,8 +111,22 @@ double	ft_get_time(void);
 // CALCS
 void ft_raycast(t_data *data);
 
+// RAYCAST_DIST
+void	dist_per_square_x(t_data *data);
+void	dist_per_square_y(t_data *data);
+void	wall_hit_dist(t_data *data, int map[][10]);
+void	wall_height_and_color(t_data *data, int map[][10]);
+
 // FREES
 int     ft_free_mlx(t_data *data);
+
+// PRINT
+void	print_fps(double frame_duration);
+void	print_coords(t_data *data);
+
+// MOVE
+void	walk(t_data *data, int map[][10]);
+void	rotate(t_data *data);
 
 // EVENTS
 void    ft_event_handler(t_data *data);
