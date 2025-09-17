@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "cub3d.h": "c"
-    }
+		"cub3d.h": "c",
+		"compare": "c",
+		"type_traits": "c",
+		"utility": "c"
+	}
 }

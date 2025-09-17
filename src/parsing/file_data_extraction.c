@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:41:26 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/16 15:47:36 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/17 10:43:14 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,13 @@ int	is_texture(char *line, t_map *map)
 
 	tmp = ft_split(line, ' ');
 	if (!ft_strcmp(tmp[0], "NO"))
-		if (!map->no)
-			map->no = ft_strdup(tmp[1]);
-		else
-			return (init_error("NO"), 1);
+		return (texture_setter("NO", tmp[1], map));
 	if (!ft_strcmp(tmp[0], "SO"))
-		if (!map->so)
-			map->so = ft_strdup(tmp[1]);
-		else
-			return (init_error("SO"), 1);
+		return (texture_setter("SO", tmp[1], map));
 	if (!ft_strcmp(tmp[0], "EA"))
-		if (!map->ea)
-			map->ea = ft_strdup(tmp[1]);
-		else
-			return (init_error("EA"), 1);
+		return (texture_setter("EA", tmp[1], map));
 	if (!ft_strcmp(tmp[0], "WE"))
-		if (!map->we)
-			map->we = ft_strdup(tmp[1]);
-		else
-			return (init_error("WE"), 1);
+		return (texture_setter("WE", tmp[1], map));
 	ft_free_split(tmp);
 	return (0);
 }
@@ -49,7 +37,7 @@ int	is_f_c(char *line, t_map *map)
 	if (ft_strcmp(tmp[0], "F") == 0)
 }
 
-int	extract_information(int fd, t_map *map)
+char	*extract_information(int fd, t_map *map)
 {
 	char	*line;
 	char	*file;
@@ -69,4 +57,6 @@ int	extract_information(int fd, t_map *map)
 		free(line);
 		line = gnl(fd);
 	}
+	free(line);
+	return (file);
 }

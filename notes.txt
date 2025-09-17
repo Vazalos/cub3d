@@ -1,4 +1,4 @@
 The map must be composed of only 6 possible characters:
 	- 0 for an empty space,
 	- 1 for a wall
-	- N,S,E or W for the player’s start position and spawning orientation
+	- N,S,E or W for the player’s start position and spawning orientation (where the player is facing upon spawning)

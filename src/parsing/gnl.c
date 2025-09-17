@@ -6,39 +6,11 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:37:55 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/16 15:38:38 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/17 10:58:04 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-char    **read_file_into_array(const char *path)
-{
-    int     fd;
-    char    *line;
-    char    **lines = NULL;
-    size_t  count = 0;
-
-    fd = open(path, O_RDONLY);
-    if (fd < 0)
-        return (NULL);
-
-    while ((line = gnl(fd)))
-    {
-        char **tmp = malloc((count + 2) * sizeof(char *));
-        if (!tmp)
-            return (free_str_array(lines), close(fd), NULL);
-        for (size_t i = 0; i < count; i++)
-            tmp[i] = lines[i];
-        tmp[count] = line;
-        tmp[count + 1] = NULL;
-        free(lines);
-        lines = tmp;
-        count++;
-    }
-    close(fd);
-    return (lines);
-}
 
 static void	ft_gnl_free(char **ptr);
 static char	*set_line(char *str);

@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*   info_setters_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 15:15:23 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/17 10:33:28 by gumendes         ###   ########.fr       */
+/*   Created: 2025/09/17 10:51:44 by gumendes          #+#    #+#             */
+/*   Updated: 2025/09/17 10:53:50 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	ft_init_map(t_map *map)
+int	is_texture(char *to_check)
 {
-	map->ceiling = 0;
-	map->floor = 0;
-	map->ea = NULL;
-	map->no = NULL;
-	map->so = NULL;
-	map->we = NULL;
-	map->map = NULL;
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
-	{
-		i++;
-	}
-	return (s1[i] - s2[i]);
+	if (!ft_strncmp(to_check, "NO", 2))
+		return (0);
+	if (!ft_strncmp(to_check, "SO", 2))
+		return (0);
+	if (!ft_strncmp(to_check, "EA", 2))
+		return (0);
+	if (!ft_strncmp(to_check, "WE", 2))
+		return (0);
+	return (1);
 }

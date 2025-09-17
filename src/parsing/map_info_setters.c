@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*   map_info_setters.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 15:15:23 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/17 10:33:28 by gumendes         ###   ########.fr       */
+/*   Created: 2025/09/17 10:46:36 by gumendes          #+#    #+#             */
+/*   Updated: 2025/09/17 10:58:04 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	ft_init_map(t_map *map)
+int	info_setter(char *info, t_map map)
 {
-	map->ceiling = 0;
-	map->floor = 0;
-	map->ea = NULL;
-	map->no = NULL;
-	map->so = NULL;
-	map->we = NULL;
-	map->map = NULL;
-}
+	char	**tmp;
+	size_t	i;
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+	tmp = ft_split(info, '\n');
+	while (tmp[i])
 	{
-		i++;
+		if (!is_texture(tmp[i]))
+			
 	}
-	return (s1[i] - s2[i]);
+	
 }
