@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:53:24 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/16 15:26:05 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/18 08:51:46 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 #include <X11/X.h>
 #include <X11/keysym.h>
 
-#include "../src/parsing/parsing.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include <sys/time.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include "../src/parsing/parsing.h"
 
 #define WIDTH 1280
 #define HEIGHT 720
@@ -39,17 +39,6 @@
 #define PURPLE 0xFFFF00FF
 
 #define BUFFER_SIZE 100
-
-typedef struct s_map
-{
-	char			*no;
-	char			*so;
-	char			*we;
-	char			*ea;
-	unsigned int	floor;
-	unsigned int	ceiling;
-	char			**map;
-} t_map;
 
 typedef struct s_img
 {

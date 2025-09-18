@@ -6,11 +6,22 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:41:26 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/17 10:43:14 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/18 09:46:46 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	is_scene(char *line, t_map *map)
+{
+	char	**tmp;
+
+	tmp = ft_split(line, ' ');
+	if (!ft_strcmp(tmp[0], "F"))
+		return (scene_setter("F", tmp[1], map));
+	if (!ft_strcmp(tmp[0], "C"))
+		return (scene_setter("C", tmp[1], map));
+}
 
 int	is_texture(char *line, t_map *map)
 {
@@ -27,14 +38,6 @@ int	is_texture(char *line, t_map *map)
 		return (texture_setter("WE", tmp[1], map));
 	ft_free_split(tmp);
 	return (0);
-}
-
-int	is_f_c(char *line, t_map *map)
-{
-	char	**tmp;
-
-	tmp = ft_split(line, ' ');
-	if (ft_strcmp(tmp[0], "F") == 0)
 }
 
 char	*extract_information(int fd, t_map *map)

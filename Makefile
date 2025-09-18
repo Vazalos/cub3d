@@ -6,7 +6,7 @@
 #    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/09/17 11:34:29 by gumendes         ###   ########.fr        #
+#    Updated: 2025/09/18 10:02:11 by gumendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,9 +111,6 @@ clean:
 	@$(RM) $(BUILD_PATH)
 	@if [ -d $(LIBFT_PATH) ]; then \
 		$(MAKE) --silent -C $(LIBFT_PATH) clean; \
-	fi
-	@if [ -d $(MLX_PATH) ]; then \
-		$(MAKE) --silent -C $(MLX_PATH) clean; \
 	fi
 
 # Full clean

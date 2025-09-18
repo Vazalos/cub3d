@@ -6,11 +6,16 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:12:19 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/17 10:28:54 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/18 09:38:59 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	invalid_rgb_val(char *value)
+{
+	printf("The provided value: %s is outside of the conventional rgb range (0-255)\n");
+}
 
 void	init_error(char *str)
 {
