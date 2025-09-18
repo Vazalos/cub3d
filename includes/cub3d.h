@@ -108,8 +108,9 @@ void    ft_init_values(t_data *data);
 int		render_frame(t_data *data);
 double	ft_get_time(void);
 
-// CALCS
-void ft_raycast(t_data *data);
+// RAYCAST
+void	ft_raycast(t_data *data);
+void	get_base_coords(t_data *data, int x);
 
 // RAYCAST_DIST
 void	dist_per_square_x(t_data *data);
@@ -125,7 +126,9 @@ void	print_fps(double frame_duration);
 void	print_coords(t_data *data);
 
 // MOVE
-void	walk(t_data *data, int map[][10]);
+void	frame_time_and_speed(t_data *data);
+void	walk_front_and_back(t_data *data, int map[][10]);
+void	walk_left_and_right(t_data *data, int map[][10]);
 void	rotate(t_data *data);
 
 // EVENTS
@@ -135,8 +138,11 @@ int		ft_key_release(int keysym, t_data *data);
 int     ft_mouse_move(int x, int y, t_data *mlx);
 
 // DRAW
+void	ft_draw_pixel(t_data *data, int x, int y, int color);
+void	ft_draw_vertical(t_data *data, int x);
+void	ft_draw_crosshair(t_data *data, int x, int y);
 void    ft_draw_background(t_data *data);
-void    ft_draw_pixel(t_data *data, int x, int y, int color);
+
 
 // COLOR
 unsigned int	ft_argb_to_hex(unsigned int a, unsigned int r, unsigned int g, unsigned int b);

@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:08:01 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/17 17:08:15 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/18 12:07:35 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,5 @@ void	wall_height_and_color(t_data *data, int map[][10]) // change map later
 	else
 		data->calc.wall_color = YELLOW;
 	if (data->calc.side == 1)
-		data->calc.wall_color = data->calc.wall_color / 2;
+		data->calc.wall_color = data->calc.wall_color / 3;
 }
