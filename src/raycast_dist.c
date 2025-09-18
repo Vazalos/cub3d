@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:08:01 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/18 12:07:35 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/18 16:10:05 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	wall_hit_dist(t_data *data, int map[][10]) // change map later
 				- data->calc.delta_dist_y);
 }
 
-void	wall_height_and_color(t_data *data, int map[][10]) // change map later
+void	wall_height(t_data *data)
 {
 	data->calc.line_height = (int)(HEIGHT / data->calc.perpend_wall_dist);
 	data->calc.draw_start = (-data->calc.line_height / 2) + (HEIGHT / 2);
@@ -89,9 +89,27 @@ void	wall_height_and_color(t_data *data, int map[][10]) // change map later
 	data->calc.draw_end = (data->calc.line_height / 2) + (HEIGHT / 2);
 	if (data->calc.draw_end >= HEIGHT)
 		data->calc.draw_end = HEIGHT - 1;
-	if (map[data->calc.map_x][data->calc.map_y] == 0)
-		data->calc.wall_color = PURPLE;
-	else if (map[data->calc.map_x][data->calc.map_y] == 1)
+}
+
+void	wall_texture(t_data *data)
+{
+	if (data->calc.side == 1)
+	{
+		if (data->calc.ray_dir_y < 0) //N
+			data->calc.wall_color = RED;
+		else //S
+			data->calc.wall_color = GREEN;
+	}
+	else if (data->calc.side == 0)
+	{
+		if (data->calc.ray_dir_x < 0) //W
+			data->calc.wall_color = BLUE;
+		else //E
+			data->calc.wall_color = YELLOW;
+	}
+}
+	/*
+	if (map[data->calc.map_x][data->calc.map_y] == 1)
 		data->calc.wall_color = RED;
 	else if (map[data->calc.map_x][data->calc.map_y] == 2)
 		data->calc.wall_color = GREEN;
@@ -100,5 +118,5 @@ void	wall_height_and_color(t_data *data, int map[][10]) // change map later
 	else
 		data->calc.wall_color = YELLOW;
 	if (data->calc.side == 1)
-		data->calc.wall_color = data->calc.wall_color / 3;
-}
+		data->calc.wall_color = data->calc.wall_color / 2;
+	*/

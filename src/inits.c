@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/17 17:10:35 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:23:41 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,6 @@ void	ft_init_values(t_data *data)
 	data->move.right = 0;
 	data->move.rot_l = 0;
 	data->move.rot_r = 0;
+	data->calc.mouse_x = 5;
+	data->calc.mouse_y = 5;
 }

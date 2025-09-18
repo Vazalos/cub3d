@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/18 12:06:19 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:18:45 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_draw_pixel(t_data *data, int x, int y, int color)
 	*(unsigned int *)pixel_dest = color;
 }
 
-void	ft_draw_vertical(t_data *data, int x)
+void	ft_draw_vertical_line(t_data *data, int x)
 {
 	int	y;
 	int	horizon;

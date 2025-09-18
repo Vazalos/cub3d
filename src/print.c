@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:42:51 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/18 12:11:19 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:23:23 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,20 @@ void	print_coords(t_data *data)
 		"pov_x %.2f\npov_y %.2f\n"
 		"dir_x %.2f\ndir_y %.2f\n"
 		"plane_x %.2f\nplane_y %.2f\n\n"
+		//"mouse_x %.2f\nmouse_y %.2f\n"
 		"camera_x %.2f\n"
-		"raydist_x %.2f\nraydist_y %.2f\n"
+		"ray_dir_x %.2f\nray_dir_y %.2f\n"
 		"map_x %i\nmap_y %i\n"
 		"sidedist_x %.2f\nsidedist_y %.2f\n"
 		"deltadist_x %.2f\ndeltadist_y %.2f\n"
 		"perpend_wall_dist %.2f\nstep_x %i\nstep_y %i\n"
 		"hit %i\nside %i\n"
-		"line_h %i\ndraw_start %i\ndraw_end%i\n"
+		"line_h %i\ndraw_start %i\ndraw_end %i\n"
 		"color %X OR %u\n\n",
 		data->calc.pov_x, data->calc.pov_y,
 		data->calc.dir_x, data->calc.dir_y,
 		data->calc.plane_x, data->calc.plane_y,
+		//data->calc.mouse_x, data->calc.mouse_y,
 		data->calc.camera_x,
 		data->calc.ray_dir_x, data->calc.ray_dir_y,
 		data->calc.map_x, data->calc.map_y,

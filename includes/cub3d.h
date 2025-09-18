@@ -77,7 +77,7 @@ typedef struct s_calc
 typedef struct s_move
 {
 	double	speed;
-	double	rotation;	
+	double	rotation;
 	int		front;
 	int		back;
 	int		left;
@@ -116,7 +116,8 @@ void	get_base_coords(t_data *data, int x);
 void	dist_per_square_x(t_data *data);
 void	dist_per_square_y(t_data *data);
 void	wall_hit_dist(t_data *data, int map[][10]);
-void	wall_height_and_color(t_data *data, int map[][10]);
+void	wall_height(t_data *data);
+void	wall_texture(t_data *data);
 
 // FREES
 int     ft_free_mlx(t_data *data);
@@ -129,7 +130,8 @@ void	print_coords(t_data *data);
 void	frame_time_and_speed(t_data *data);
 void	walk_front_and_back(t_data *data, int map[][10]);
 void	walk_left_and_right(t_data *data, int map[][10]);
-void	rotate(t_data *data);
+void	rotate_left(t_data *data);
+void	rotate_right(t_data *data);
 
 // EVENTS
 void    ft_event_handler(t_data *data);
@@ -139,7 +141,7 @@ int     ft_mouse_move(int x, int y, t_data *mlx);
 
 // DRAW
 void	ft_draw_pixel(t_data *data, int x, int y, int color);
-void	ft_draw_vertical(t_data *data, int x);
+void	ft_draw_vertical_line(t_data *data, int x);
 void	ft_draw_crosshair(t_data *data, int x, int y);
 void    ft_draw_background(t_data *data);
 
