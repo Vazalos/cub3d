@@ -6,11 +6,25 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:41:26 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/18 09:46:46 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/22 11:55:33 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	is_map(char **info, int idx, t_map *map)
+{
+	int	i;
+
+	i = idx;
+	while (info[i])
+	{
+		if (is_map_char(info[i]))
+			return (fill_map(info, idx, map));
+		i++;
+	}
+	return (0);
+}
 
 int	is_scene(char *line, t_map *map)
 {
@@ -21,6 +35,7 @@ int	is_scene(char *line, t_map *map)
 		return (scene_setter("F", tmp[1], map));
 	if (!ft_strcmp(tmp[0], "C"))
 		return (scene_setter("C", tmp[1], map));
+	return (0);
 }
 
 int	is_texture(char *line, t_map *map)

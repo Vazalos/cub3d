@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 09:24:41 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/18 09:54:26 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/22 11:48:54 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static int	set_f(char *values, t_map *map)
 	b = (unsigned int)ft_atoi(rgb[2]);
 	ft_free_split(rgb);
 	map->floor = ft_argb_to_hex(0xFF, r, g, b);
+	return (0);
 }
 
 static int	set_c(char *values, t_map *map)
@@ -61,6 +62,7 @@ static int	set_c(char *values, t_map *map)
 	b = (unsigned int)ft_atoi(rgb[2]);
 	ft_free_split(rgb);
 	map->ceiling = ft_argb_to_hex(0xFF, r, g, b);
+	return (0);
 }
 
 int	scene_setter(char *type, char *values, t_map *map)

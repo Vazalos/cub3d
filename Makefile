@@ -6,7 +6,7 @@
 #    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/09/18 10:02:11 by gumendes         ###   ########.fr        #
+#    Updated: 2025/09/22 10:41:45 by gumendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,3 +133,27 @@ fclean: clean
 
 re: fclean all
 
+#==============================================================================#
+#                                  UTILS                                       #
+#==============================================================================#
+
+# Colors
+#
+# Run the following command to get list of available colors
+# bash -c 'for c in {0..255}; do tput setaf $c; tput setaf $c | cat -v; echo =$c; done'
+#
+B		= $(shell tput bold)
+BLA		= $(shell tput setaf 16)
+RED		= $(shell tput setaf 1)
+GRN		= $(shell tput setaf 46)
+BRW		= $(shell tput setaf 3)
+BLU		= $(shell tput setaf 27)
+PRP		= $(shell tput setaf 57)
+CYA		= $(shell tput setaf 51)
+WHI		= $(shell tput setaf 15)
+GREY	= $(shell tput setaf 8)
+ORAN	= $(shell tput setaf 202)
+YEL		= $(shell tput setaf 226)
+D		= $(shell tput sgr0)
+BEL		= $(shell tput bel)
+CLR		= $(shell tput el 1)

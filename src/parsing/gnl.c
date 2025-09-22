@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:37:55 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/17 10:58:04 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/22 10:40:00 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*gnl(int fd)
 	char		*buf;
 	static char	*nxt;
 
-	buf = malloc((100 + 1) * sizeof(char));
+	buf = malloc((101) * sizeof(char));
 	if (!buf)
 		return (NULL);
 	line = fill_line(fd, nxt, buf);
