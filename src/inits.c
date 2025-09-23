@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/18 17:23:41 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/22 13:49:04 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,17 @@ void	ft_init_values(t_data *data)
 	data->move.rot_r = 0;
 	data->calc.mouse_x = 5;
 	data->calc.mouse_y = 5;
+}
+
+void	ft_init_textures(t_data *data)
+{
+	data->img.texture_size = 1;
+	data->img.no_texture = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
+		"no.xmp", &data->img.texture_size, &data->img.texture_size);
+	data->img.so_texture = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
+		"so.xmp", &data->img.texture_size, &data->img.texture_size);
+	data->img.we_texture = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
+		"we.xmp", &data->img.texture_size, &data->img.texture_size);
+	data->img.ea_texture = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
+		"ea.xmp", &data->img.texture_size, &data->img.texture_size);
 }

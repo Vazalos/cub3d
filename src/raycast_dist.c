@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:08:01 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/18 16:10:05 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/22 14:06:57 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,33 +90,3 @@ void	wall_height(t_data *data)
 	if (data->calc.draw_end >= HEIGHT)
 		data->calc.draw_end = HEIGHT - 1;
 }
-
-void	wall_texture(t_data *data)
-{
-	if (data->calc.side == 1)
-	{
-		if (data->calc.ray_dir_y < 0) //N
-			data->calc.wall_color = RED;
-		else //S
-			data->calc.wall_color = GREEN;
-	}
-	else if (data->calc.side == 0)
-	{
-		if (data->calc.ray_dir_x < 0) //W
-			data->calc.wall_color = BLUE;
-		else //E
-			data->calc.wall_color = YELLOW;
-	}
-}
-	/*
-	if (map[data->calc.map_x][data->calc.map_y] == 1)
-		data->calc.wall_color = RED;
-	else if (map[data->calc.map_x][data->calc.map_y] == 2)
-		data->calc.wall_color = GREEN;
-	else if (map[data->calc.map_x][data->calc.map_y] == 3)
-		data->calc.wall_color = BLUE;
-	else
-		data->calc.wall_color = YELLOW;
-	if (data->calc.side == 1)
-		data->calc.wall_color = data->calc.wall_color / 2;
-	*/

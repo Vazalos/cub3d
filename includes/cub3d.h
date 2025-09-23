@@ -14,6 +14,7 @@
 
 #define WIDTH 1280
 #define HEIGHT 720
+#define TEX_SIZE 64
 #define TITLE "David and Gustavo's Marvelous World of 3D"
 
 #define SPEED_MOD 4
@@ -36,6 +37,13 @@ typedef struct s_img
 	int     bpp;
 	int     line_len;
 	int     endian;
+	
+	int		texture_size;
+	void	*no_texture;
+	void	*so_texture;
+	void	*ea_texture;
+	void	*we_texture;
+
 } t_img;
 
 typedef struct s_mlx
@@ -103,6 +111,7 @@ typedef struct s_data
 // INITS
 int     ft_init_mlx(t_data *data);
 void    ft_init_values(t_data *data);
+void	ft_init_textures(t_data *data);
 
 //RENDER
 int		render_frame(t_data *data);
@@ -117,10 +126,13 @@ void	dist_per_square_x(t_data *data);
 void	dist_per_square_y(t_data *data);
 void	wall_hit_dist(t_data *data, int map[][10]);
 void	wall_height(t_data *data);
+
+//RAYCAST_TEXTURES
 void	wall_texture(t_data *data);
 
 // FREES
 int     ft_free_mlx(t_data *data);
+int		ft_free_textures(t_data *data);
 
 // PRINT
 void	print_fps(double frame_duration);

@@ -6,7 +6,7 @@
 #    By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/09/17 17:10:37 by david-fe         ###   ########.fr        #
+#    Updated: 2025/09/23 11:10:58 by david-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LINK_FLAGS = -lXext -lX11 -lm
 
 SRC_PATH = src
 SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c \
-color_utils.c raycast.c render.c print.c move.c raycast_dist.c)
+color_utils.c raycast.c render.c print.c move.c raycast_dist.c raycast_textures.c)
 OBJ_PATH = .build
 OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
