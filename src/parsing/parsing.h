@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:14:54 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/22 12:03:36 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/23 14:55:53 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ typedef struct s_map
 	unsigned int	floor;
 	unsigned int	ceiling;
 	char			**map;
+	float			playersx;
+	float			playersy;
+	char			playero;
 } t_map;
 
 // file_data_extraction //
@@ -38,11 +41,12 @@ int		content_validation(char *file, t_map *map);
 // gnl //
 char	*gnl(int fd);
 
-// info_setters_utils //
-
 // map_extraction_utils //
 int		is_map_char(int to_check);
 int		fill_map(char **info, int idx, t_map *map);
+
+// map_validation.c//
+int		check_map(t_map *map);
 
 // map_info_setters //
 int		info_setter(char *info, t_map *map);
@@ -50,14 +54,17 @@ int		info_setter(char *info, t_map *map);
 // parsing_cleanup //
 void	ft_free_map(t_map *map);
 
-// parsing_errors //
+// parsing_errors\2 //
 void	invalid_rgb_val(char *value);
 void	init_error(char *str);
 void	nonexistant_file(void);
 void	invalid_file_type(char *str);
 void	invalid_arg_count(void);
+void	missing_info(void);
+void	map_error(void);
 
 // parsing_utils //
+int		is_spawn_point(char to_check);
 void	ft_init_map(t_map *map);
 int		ft_strcmp(char *s1, char *s2);
 

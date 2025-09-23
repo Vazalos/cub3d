@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_map_info_setters.c                               :+:      :+:    :+:   */
+/*   parsing_errors2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 10:46:36 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/23 14:48:49 by gumendes         ###   ########.fr       */
+/*   Created: 2025/09/23 14:33:58 by gumendes          #+#    #+#             */
+/*   Updated: 2025/09/23 14:52:16 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	info_setter(char *info, t_map *map)
+/**
+ * @brief Prints a error message to the STDERR when
+ *  the '.ber' file was missing necessary data.
+ */
+void	missing_info(void)
 {
-	char	**tmp;
-	int		i;
+	write(2, "Error: missing required startup information\n", 44);
+}
 
-	tmp = ft_split(info, '\n');
-	i = -1;
-	while (tmp[++i])
-	{
-		if (!is_texture(tmp[i], map))
-			continue ;
-		if (!is_scene(tmp[i], map))
-			continue ;
-		if (!is_map(tmp, i, map))
-		{
-			if (!check_map(map))
-				return (ft_free_split(tmp), 0);
-			return (ft_free_split(tmp), 1);
-		}
-	}
-	return (ft_free_split(tmp), 0);
+/**
+ * @brief Prints a error message to the STDERR when map is invalid.
+ */
+void	map_error(void)
+{
+	write(2, "Error: Invalid map\n", 19);
 }

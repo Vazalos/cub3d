@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:53:24 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/18 08:51:46 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/23 12:45:18 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #include <sys/time.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <limits.h>
 #include "../src/parsing/parsing.h"
 
 #define WIDTH 1280

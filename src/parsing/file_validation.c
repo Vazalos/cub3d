@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:08:09 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/17 10:49:04 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/23 15:01:12 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,48 @@ int	validate_input(char *file)
 	return (0);
 }
 
+static void	set_spawn_point(t_map *map)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (map->map[++y])
+	{
+		x = -1;
+		while (map->map[y][++x])
+		{
+			if (is_spawn_point(map->map[y][x]))
+			{
+				map->playero = map->map[y][x];
+				map->playersx = x + 0.5;
+				map->playersy = y + 0.5;
+				return ;
+			}
+		}
+	}
+}
+
+static int	is_info_all_set(t_map *map)
+{
+	if (!map->map)
+		return (missing_info(), 1);
+	if (!map->no)
+		return (missing_info(), 1);
+	if (!map->so)
+		return (missing_info(), 1);
+	if (!map->ea)
+		return (missing_info(), 1);
+	if (!map->we)
+		return (missing_info(), 1);
+	if (map->floor == UINT_MAX)
+		return (missing_info(), 1);
+	if (map->ceiling == UINT_MAX)
+		return (missing_info(), 1);
+	if (map->playersx == -1 || map->playersy == -1)
+		return (missing_info(), 1);
+}
+
 int	content_validation(char *file, t_map *map)
 {
 	int		fd;
@@ -45,6 +87,10 @@ int	content_validation(char *file, t_map *map)
 	if (!info)
 		return (1);
 	if (info_setter(info, map))
+		return (1);
+	free(info);
+	set_spawn_point(map);
+	if (is_info_all_set(map))
 		return (1);
 	return (0);
 }
