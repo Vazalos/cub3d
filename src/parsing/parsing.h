@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:14:54 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/23 14:55:53 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/25 13:03:46 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ typedef struct s_map
 } t_map;
 
 // file_data_extraction //
-int		is_map(char **info, int idx,t_map *map);
+int		is_map(char **info, t_map *map);
 int		is_scene(char *line, t_map *map);
 int		is_texture(char *line, t_map *map);
-char	*extract_information(int fd, t_map *map);
+char	*extract_information(int fd);
 
 // file_validation //
 int		parse(int ac, char **av, t_map *map);
@@ -43,7 +43,7 @@ char	*gnl(int fd);
 
 // map_extraction_utils //
 int		is_map_char(int to_check);
-int		fill_map(char **info, int idx, t_map *map);
+int		fill_map(char **info, t_map *map);
 
 // map_validation.c//
 int		check_map(t_map *map);

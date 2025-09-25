@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 10:05:31 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/18 09:46:02 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/25 12:13:27 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,22 @@ static int	set_ea(char *path, t_map *map)
 
 int	texture_setter(char *type, char *path, t_map *map)
 {
-	if (texture_checker(path, type))
+	if (!path || texture_checker(path, type))
 		return (1);
 	if (!ft_strcmp(type, "NO"))
 		return (set_no(path, map));
-	if (!ft_strcmp(type, "SO"))
+	else if (!ft_strcmp(type, "SO"))
 		return (set_so(path, map));
-	if (!ft_strcmp(type, "EA"))
+	else if (!ft_strcmp(type, "EA"))
 		return (set_ea(path, map));
-	if (!ft_strcmp(type, "WE"))
+	else if (!ft_strcmp(type, "WE"))
 	{
-		if (!map->ea)
+		if (!map->we)
 		{
-			map->ea = ft_strdup(path);
+			map->we = ft_strdup(path);
 			return (0);
 		}
-		init_error("EA");
+		init_error("WE");
 		return (1);
 	}
 	return (1);

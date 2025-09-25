@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:12:19 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/23 14:42:36 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/25 11:05:15 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
  */
 void	invalid_rgb_val(char *value)
 {
-	write(2, "Error: The provided value: ", 27);
-	write(2, value, ft_strlen(value));
-	write(2, " is outside of the conventional rgb range (0-255)\n", 50);
+	ft_putstr_fd("Error: The provided value: ", 2);
+	ft_putstr_fd(value, 2);
+	ft_putstr_fd(" is outside of the conventional rgb range (0-255)\n", 2);
 }
 
 /**
@@ -29,9 +29,9 @@ void	invalid_rgb_val(char *value)
  */
 void	init_error(char *str)
 {
-	write(2, "Error: the ", 11);
-	write(2, str, ft_strlen(str));
-	write(2, " variable is already set\n", 25);
+	ft_putstr_fd("Error: the ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd(" variable is already set\n", 2);
 }
 
 /**
@@ -40,9 +40,9 @@ void	init_error(char *str)
  */
 void	nonexistant_file(void)
 {
-	write(2, "Specified file is non-existant or", 33);
-	write(2, " the provided path is incorrect", 31);
-	write(2, " or insufficient permissions\n", 29);
+	ft_putstr_fd("Specified file is non-existant or", 2);
+	ft_putstr_fd(" the provided path is incorrect", 2);
+	ft_putstr_fd(" or insufficient permissions\n", 2);
 }
 
 /**
@@ -51,9 +51,9 @@ void	nonexistant_file(void)
  */
 void	invalid_file_type(char *str)
 {
-	write(2, "Error: Unsupported file extension: ", 35);
-	write(2, str, ft_strlen(str));
-	write(2, " expected: .cub\n", 16);
+	ft_putstr_fd("Error: Unsupported file extension: ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd(" expected: .cub\n", 2);
 }
 
 /**
@@ -61,5 +61,5 @@ void	invalid_file_type(char *str)
  */
 void	invalid_arg_count(void)
 {
-	write(2, "Invalid prompt, try \"./cub3d ./maps/map.cub\"\n", 44);
+	ft_putstr_fd("Invalid prompt, try \"./cub3d ./maps/map.cub\"\n", 2);
 }

@@ -6,7 +6,7 @@
 #    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/09/22 10:41:45 by gumendes         ###   ########.fr        #
+#    Updated: 2025/09/25 12:31:26 by gumendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,9 +59,11 @@ NAME		=	cub3d
 #                                  SOURCE AND OBJECT FILES                     #
 #==============================================================================#
 
-SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl.c info_setters_utils.c map_info_setters.c parsing_cleanup.c parsing_errors.c parsing_utils.c texture_extraction_utils.c)
+SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl.c map_extraction_utils.c \
+							map_validation.c parsing_cleanup.c parsing_errors.c parsing_errors2.c parsing_utils.c \
+							scene_extraction_utils.c t_map_info_setters.c texture_extraction_utils.c)
 
-SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c color_utils.c calcs.c render.c $(SRC_PARSING))
+SRC = $(addprefix $(SRC_PATH)/, color_utils.c main.c cleanup.c $(SRC_PARSING))
 
 OBJ         =   $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
@@ -93,6 +95,7 @@ get_mlx:
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir -p $(dir $@)
+	@echo "$(CYA)Compiling $<$(D)"
 	@$(CC) $(CFLAGS) -O3 -c $< -o $@
 
 # Build the cub3d program

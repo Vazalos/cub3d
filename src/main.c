@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 12:53:20 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/18 08:47:12 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/25 11:57:08 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,20 @@ int	main(int ac, char **av)
 	t_map	*map;
 
 	map = malloc(sizeof(t_map));
-	(void)map;
-
+	parse(ac, av, map);
+	printf("---Testing---\n");
+	printf("\n---Wall Textures---\n");
+	printf("NO: %s\nSO: %s\nWE: %s\nEA: %s\n", map->no, map->so, map->we, map->ea);
+	printf("\n---Ceiling and Floor---\n");
+	printf("Ceilinlg: %x\nFloor: %x\n", map->floor, map->ceiling);
+	printf("\n---Map---\n");
+	int i = 0;
+	while (map->map[i]) {
+		printf("%s\n", map->map[i]);
+		i++;
+	}
+	printf("\n\nPlayer Spawn\nX: %f\nY: %f\nO: %c\n", map->playersx, map->playersy, map->playero);
+	printf("---------------------------------------------\n");
 }
 
 /* int	main(int ac, char **av)

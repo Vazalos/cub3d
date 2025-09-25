@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:08:09 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/23 15:01:12 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/25 11:29:35 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@ int	parse(int ac, char **av, t_map *map)
 		return (1);
 	if (content_validation(av[1], map) != 0)
 		return (1);
+	return (0);
 }
 
 int	validate_input(char *file)
 {
 	size_t	i;
 
+	if (ft_strlen(file) < 4 || ft_strncmp(file + ft_strlen(file) - 4, ".cub", 4))
+   		return (invalid_file_type(file), 1);
 	i = ft_strlen(file) - 4;
 	if (ft_strncmp(file + i, ".cub", 4))
 		return (invalid_file_type(file + i), 1);
@@ -57,22 +60,14 @@ static void	set_spawn_point(t_map *map)
 
 static int	is_info_all_set(t_map *map)
 {
-	if (!map->map)
-		return (missing_info(), 1);
-	if (!map->no)
-		return (missing_info(), 1);
-	if (!map->so)
-		return (missing_info(), 1);
-	if (!map->ea)
-		return (missing_info(), 1);
-	if (!map->we)
-		return (missing_info(), 1);
-	if (map->floor == UINT_MAX)
-		return (missing_info(), 1);
-	if (map->ceiling == UINT_MAX)
-		return (missing_info(), 1);
-	if (map->playersx == -1 || map->playersy == -1)
-		return (missing_info(), 1);
+	if (!map->map || !map->no || !map->so || !map->ea || !map->we
+		|| map->floor == UINT_MAX || map->ceiling == UINT_MAX
+		|| map->playersx == -1 || map->playersy == -1)
+	{
+		missing_info();
+		return (1);
+	}
+	return (0);
 }
 
 int	content_validation(char *file, t_map *map)
@@ -83,11 +78,12 @@ int	content_validation(char *file, t_map *map)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (nonexistant_file(), 1);
-	info = extract_information(fd, map);
+	info = extract_information(fd);
+	close(fd);
 	if (!info)
 		return (1);
 	if (info_setter(info, map))
-		return (1);
+		return (free(info), 1);
 	free(info);
 	set_spawn_point(map);
 	if (is_info_all_set(map))
