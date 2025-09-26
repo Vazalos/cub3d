@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 12:53:20 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/25 11:57:08 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/26 10:55:43 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int ac, char **av)
 	}
 	printf("\n\nPlayer Spawn\nX: %f\nY: %f\nO: %c\n", map->playersx, map->playersy, map->playero);
 	printf("---------------------------------------------\n");
+	ft_free_map(map);
 }
 
 /* int	main(int ac, char **av)

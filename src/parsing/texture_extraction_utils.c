@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 10:05:31 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/25 12:13:27 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/26 11:56:23 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,5 @@ int	texture_setter(char *type, char *path, t_map *map)
 		init_error("WE");
 		return (1);
 	}
-	return (1);
+	return (2);
 }

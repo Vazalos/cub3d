@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:41:26 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/25 13:06:32 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/26 12:19:00 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int is_map_char_only(char *line)
 		return 0;
 	while (line[i])
 	{
+		printf("\n\npls: %s\n", line);
 		if (line[i] == '0' || line[i] == '1' ||
 			line[i] == 'N' || line[i] == 'S' ||
 			line[i] == 'E' || line[i] == 'W' ||
@@ -29,6 +30,7 @@ int is_map_char_only(char *line)
 			return 0; // If any character is not a map char, reject the line
 		i++;
 	}
+	printf("if this returns 1 i will kick a child into the stratosphere: %d\n", found);
 	return found;
 }
 
@@ -37,6 +39,7 @@ int	is_map(char **info, t_map *map)
 	int	i;
 
 	i = 0;
+	printf("God please help me i have arrived at my limit if i must proceed further i will commit unspeakable acts\n");
 	if (!info || !info[i])
 		return (0);
 	while (info[i])
@@ -45,7 +48,7 @@ int	is_map(char **info, t_map *map)
 			return (fill_map(info, map));
 		i++;
 	}
-	return (0);
+	return (2);
 }
 
 int	is_scene(char *line, t_map *map)
@@ -59,11 +62,12 @@ int	is_scene(char *line, t_map *map)
 	if (!tmp || !tmp[0])
 		return (ft_free_split(tmp), 0);
 	ret = 0;
-	if (!ft_strcmp(tmp[0], "F"))
+	if (!ft_strncmp(tmp[0], "F", 1))
 		ret = scene_setter("F", tmp[1], map);
-	else if (!ft_strcmp(tmp[0], "C"))
+	else if (!ft_strncmp(tmp[0], "C", 1))
 		ret = scene_setter("C", tmp[1], map);
 	ft_free_split(tmp);
+	printf("line: %s\n return: %d\n", line, ret);
 	return (ret);
 }
 

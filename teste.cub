@@ -1,10 +1,14 @@
 NO ./src/render.c
-SO ./src/render.c
-WE ./src/render.c
-EA ./src/render.c
 
-F 220,100,0
-C 225,30,0
+SO ./src/calcs.c
+
+WE ./src/cleanup.c
+
+EA ./src/draw.c
+
+F 0,100,175
+
+C 0,100,150
 
 111111111111111
 100000000000001
