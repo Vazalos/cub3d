@@ -37,13 +37,6 @@ typedef struct s_img
 	int     bpp;
 	int     line_len;
 	int     endian;
-	
-	int		texture_size;
-	void	*no_texture;
-	void	*so_texture;
-	void	*ea_texture;
-	void	*we_texture;
-
 } t_img;
 
 typedef struct s_mlx
@@ -97,9 +90,14 @@ typedef struct s_move
 typedef struct s_data
 {
 	t_img	img;
+	t_img	n_textr;
+	t_img	s_textr;
+	t_img	e_textr;
+	t_img	w_textr;
 	t_mlx	mlx;
 	t_view	calc;
 	t_move	move;
+	int		texture_size;
 	char	**map;
 	double	start_time;
 	double	time;
@@ -128,7 +126,8 @@ void	wall_hit_dist(t_data *data, int map[][10]);
 void	wall_height(t_data *data);
 
 //RAYCAST_TEXTURES
-void	wall_texture(t_data *data);
+void	wall_color(t_data *data);
+void	wall_texture(t_data *data, int x);
 
 // FREES
 int     ft_free_mlx(t_data *data);

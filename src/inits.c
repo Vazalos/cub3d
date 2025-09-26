@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/22 13:49:04 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/26 10:54:19 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,22 @@ void	ft_init_values(t_data *data)
 
 void	ft_init_textures(t_data *data)
 {
-	data->img.texture_size = 1;
-	data->img.no_texture = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-		"no.xmp", &data->img.texture_size, &data->img.texture_size);
-	data->img.so_texture = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-		"so.xmp", &data->img.texture_size, &data->img.texture_size);
-	data->img.we_texture = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-		"we.xmp", &data->img.texture_size, &data->img.texture_size);
-	data->img.ea_texture = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-		"ea.xmp", &data->img.texture_size, &data->img.texture_size);
+	data->texture_size = TEX_SIZE;
+	
+	data->n_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
+		"no.xpm", &data->texture_size, &data->texture_size);
+	data->n_textr.pix_addr = mlx_get_data_addr(data->n_textr.img_ptr, 
+		&data->n_textr.bpp, &data->n_textr.line_len, &data->n_textr.endian);
+	data->s_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
+		"so.xpm", &data->texture_size, &data->texture_size);
+	data->s_textr.pix_addr = mlx_get_data_addr(data->s_textr.img_ptr, 
+		&data->s_textr.bpp, &data->s_textr.line_len, &data->s_textr.endian);
+	data->w_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
+		"we.xpm", &data->texture_size, &data->texture_size);
+	data->w_textr.pix_addr = mlx_get_data_addr(data->w_textr.img_ptr, 
+		&data->w_textr.bpp, &data->w_textr.line_len, &data->w_textr.endian);
+	data->e_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
+		"ea.xpm", &data->texture_size, &data->texture_size);
+	data->e_textr.pix_addr = mlx_get_data_addr(data->e_textr.img_ptr, 
+		&data->e_textr.bpp, &data->e_textr.line_len, &data->e_textr.endian);
 }

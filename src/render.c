@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 10:59:07 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/18 17:22:43 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/26 11:00:31 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	render_frame(t_data *data)
 {
+	ft_draw_background(data);
 	ft_raycast(data);
 	mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.window,
 		data->img.img_ptr, 0, 0);

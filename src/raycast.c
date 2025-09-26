@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 10:39:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/18 17:07:10 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/26 11:01:41 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ void	ft_raycast(t_data *data)
 		dist_per_square_y(data);
 		wall_hit_dist(data, map);
 		wall_height(data);
-		wall_texture(data);
-		ft_draw_vertical_line(data, x);
+		wall_texture(data, x);
+		//wall_color(data);
+		//ft_draw_vertical_line(data, x);
 		if (x == data->calc.mouse_x)
 			print_coords(data);
 	}
