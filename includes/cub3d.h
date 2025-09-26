@@ -14,7 +14,7 @@
 
 #define WIDTH 1280
 #define HEIGHT 720
-#define TEX_SIZE 64
+#define TEX_SIZE 255
 #define TITLE "David and Gustavo's Marvelous World of 3D"
 
 #define SPEED_MOD 4

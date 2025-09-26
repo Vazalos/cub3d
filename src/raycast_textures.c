@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 14:06:15 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/26 11:00:53 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/26 11:56:20 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,20 +95,27 @@ void	wall_texture(t_data *data, int x)
 		texture_pos += texture_step;
 
 		if (data->calc.side == 1 && data->calc.ray_dir_y < 0) //N
-			data->calc.wall_color = *(unsigned int *)(data->n_textr.pix_addr + ((y * data->n_textr.line_len)
-			+ (x * (data->n_textr.bpp / 8))));
+			data->calc.wall_color = *(unsigned int *)(data->n_textr.pix_addr + texture_y * data->n_textr.line_len
+			+ texture_x * (data->n_textr.bpp / 8));
 		else if (data->calc.side == 1 && data->calc.ray_dir_y >= 0) //S
-			data->calc.wall_color = *(unsigned int *)(data->s_textr.pix_addr + ((y * data->s_textr.line_len)
-			+ (x * (data->s_textr.bpp / 8))));
+			data->calc.wall_color = *(unsigned int *)(data->s_textr.pix_addr + texture_y * data->s_textr.line_len
+			+ texture_x * (data->s_textr.bpp / 8));
 		else if (data->calc.side == 0 && data->calc.ray_dir_x < 0) //W
-			data->calc.wall_color = *(unsigned int *)(data->w_textr.pix_addr + ((y * data->w_textr.line_len)
-			+ (x * (data->w_textr.bpp / 8))));
+			data->calc.wall_color = *(unsigned int *)(data->w_textr.pix_addr + texture_y * data->w_textr.line_len
+			+ texture_x * (data->w_textr.bpp / 8));
 		else if (data->calc.side == 0 && data->calc.ray_dir_x >= 0) //E
-			data->calc.wall_color = *(unsigned int *)(data->e_textr.pix_addr + ((y * data->e_textr.line_len)
-			+ (x * (data->e_textr.bpp / 8))));
+			data->calc.wall_color = *(unsigned int *)(data->e_textr.pix_addr + texture_y * data->e_textr.line_len
+			+ texture_x * (data->e_textr.bpp / 8));
 		//Uint32 color = texture[texNum][texHeight * texY + texX];
 		//tex_color =  divide by viewing side;
 		ft_draw_pixel(data, x, y, data->calc.wall_color);
 		y++;
+
+/*
+		return (*(uint32_t *)(data->draw->textures[texture_idx].addr
+		+ tex_Y * data->draw->textures[texture_idx].line_len
+		+ data->vars->texture_x
+		* (data->draw->textures[texture_idx].bpp / 8)));
+		*/
 	} 
 }
