@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:05:10 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/18 14:58:37 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/30 15:46:21 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,42 +66,54 @@ void	walk_left_and_right(t_data *data, int map[][10])
 	}
 }
 
-void	rotate_left(t_data *data)
+void	rotate_player(t_data *data)
 {
 	double	old_dir_x;
 	double	old_plane_x;
+	int		l;
 
-	if (data->move.rot_l == 1)
+	l = 0;
+	if (data->move.rot_l == 1 && data->move.rot_r == 1)
+		l = 0;
+	else if (data->move.rot_l == 1)
+		l = 1;
+	else if (data->move.rot_r == 1)
+		l = -1;
+	if (l != 0)
 	{
 		old_dir_x = data->calc.dir_x;
 		old_plane_x = data->calc.plane_x;
-		data->calc.dir_x = (data->calc.dir_x * cos(data->move.rotation))
-			- (data->calc.dir_y * sin(data->move.rotation));
-		data->calc.dir_y = (old_dir_x * sin(data->move.rotation))
-			+ (data->calc.dir_y * cos(data->move.rotation));
-		data->calc.plane_x = (data->calc.plane_x * cos(data->move.rotation))
-			- (data->calc.plane_y * sin(data->move.rotation));
-		data->calc.plane_y = (old_plane_x * sin(data->move.rotation))
-			+ (data->calc.plane_y * cos(data->move.rotation));
+		data->calc.dir_x = (data->calc.dir_x * cos(l * data->move.rotation))
+			- (data->calc.dir_y * sin(l * data->move.rotation));
+		data->calc.dir_y = (old_dir_x * sin(l * data->move.rotation))
+			+ (data->calc.dir_y * cos(l * data->move.rotation));
+		data->calc.plane_x = (data->calc.plane_x * cos(l * data->move.rotation))
+			- (data->calc.plane_y * sin(l * data->move.rotation));
+		data->calc.plane_y = (old_plane_x * sin(l * data->move.rotation))
+			+ (data->calc.plane_y * cos(l * data->move.rotation));
 	}
 }
 
-void	rotate_right(t_data *data)
+void	rotate_with_mouse(t_data *data)
 {
 	double	old_dir_x;
 	double	old_plane_x;
+	double 	mouse_ratio; //dummy var
+	double	mouse_delta;
 
-	if (data->move.rot_r == 1)
-	{
-		old_dir_x = data->calc.dir_x;
-		old_plane_x = data->calc.plane_x;
-		data->calc.dir_x = (data->calc.dir_x * cos(-data->move.rotation))
-			- (data->calc.dir_y * sin(-data->move.rotation));
-		data->calc.dir_y = (old_dir_x * sin(-data->move.rotation))
-			+ (data->calc.dir_y * cos(-data->move.rotation));
-		data->calc.plane_x = (data->calc.plane_x * cos(-data->move.rotation))
-			- (data->calc.plane_y * sin(-data->move.rotation));
-		data->calc.plane_y = (old_plane_x * sin(-data->move.rotation))
-			+ (data->calc.plane_y * cos(-data->move.rotation));
-	}
+	mouse_delta = data->calc.mouse_x - data->calc.old_mouse_x;
+	if (mouse_delta < 0)
+		mouse_delta = -mouse_delta;
+	mouse_ratio = (-data->calc.offset_mouse_x / (WIDTH / 2)) * (mouse_delta * DELTA_MULT);
+
+	old_dir_x = data->calc.dir_x;
+	old_plane_x = data->calc.plane_x;
+	data->calc.dir_x = (data->calc.dir_x * cos(mouse_ratio * data->move.rotation))
+		- (data->calc.dir_y * sin(mouse_ratio * data->move.rotation));
+	data->calc.dir_y = (old_dir_x * sin(mouse_ratio * data->move.rotation))
+		+ (data->calc.dir_y * cos(mouse_ratio * data->move.rotation));
+	data->calc.plane_x = (data->calc.plane_x * cos(mouse_ratio * data->move.rotation))
+		- (data->calc.plane_y * sin(mouse_ratio * data->move.rotation));
+	data->calc.plane_y = (old_plane_x * sin(mouse_ratio * data->move.rotation))
+		+ (data->calc.plane_y * cos(mouse_ratio * data->move.rotation));
 }

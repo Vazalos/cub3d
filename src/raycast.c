@@ -6,18 +6,11 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 10:39:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/26 11:01:41 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/30 13:54:20 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-/*
-TO-DO
-
-Make textures work
-
-*/
 
 void	ft_raycast(t_data *data)
 {
@@ -36,6 +29,7 @@ void	ft_raycast(t_data *data)
 	};
 
 	x = -1;
+	//data->calc.old_mouse_x = data->calc.mouse_x;
 	while (++x < WIDTH)
 	{
 		get_base_coords(data, x);
@@ -44,16 +38,14 @@ void	ft_raycast(t_data *data)
 		wall_hit_dist(data, map);
 		wall_height(data);
 		wall_texture(data, x);
-		//wall_color(data);
-		//ft_draw_vertical_line(data, x);
 		if (x == data->calc.mouse_x)
 			print_coords(data);
 	}
 	frame_time_and_speed(data);
 	walk_front_and_back(data, map);
 	walk_left_and_right(data, map);
-	rotate_left(data);
-	rotate_right(data);
+	rotate_player(data);
+	rotate_with_mouse(data);
 }
 
 void	get_base_coords(t_data *data, int x)

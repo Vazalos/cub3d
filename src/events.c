@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/22 12:28:18 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:21:25 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ void	ft_event_handler(t_data *data)
 
 int	ft_mouse_move(int x, int y, t_data *data)
 {
-	data->calc.mouse_x = x;
+	mlx_mouse_move(data->mlx.mlx_ptr, data->mlx.window, WIDTH / 2, HEIGHT / 2);
+	data->calc.old_mouse_x = data->calc.mouse_x;
 	data->calc.mouse_y = y;
+	data->calc.mouse_x = x;
+	data->calc.offset_mouse_x = (data->calc.mouse_x - (WIDTH / 2));
 	return (0);
 }
 
