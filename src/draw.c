@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/26 11:24:48 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/01 11:19:02 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	ft_draw_vertical_line(t_data *data, int x)
 	y = 0;
 	while (y < HEIGHT)
 	{
-		if (y < data->calc.draw_start && y <= horizon)
+		if (y < data->cast.draw_start && y <= horizon)
 			ft_draw_pixel(data, x, y, SKY);
-		else if (y >= data->calc.draw_start && y <= data->calc.draw_end)
-			ft_draw_pixel(data, x, y, data->calc.wall_color);
-		else if (y > data->calc.draw_end && y > horizon)
+		else if (y >= data->cast.draw_start && y <= data->cast.draw_end)
+			ft_draw_pixel(data, x, y, data->cast.wall_color);
+		else if (y > data->cast.draw_end && y > horizon)
 			ft_draw_pixel(data, x, y, FLOOR);
 		ft_draw_crosshair(data, x, y);
 		y++;

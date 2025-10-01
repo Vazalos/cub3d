@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/30 17:00:46 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/01 14:43:18 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 
 typedef struct s_img
 {
-	void	*img_ptr;
+	void	*img_ptr;  
 	char	*pix_addr;
 	int		bpp;
 	int		line_len;
@@ -60,16 +60,16 @@ typedef struct s_mlx
 	void	*window;
 }	t_mlx;
 
-typedef struct s_calc
+typedef struct s_mouse
 {
-	double	mouse_x;
-	double	mouse_y;
-	double	offset_mouse_x;
-	double	old_mouse_x;
-	//
-	double	mouse_ratio;
-	double	mouse_delta;
-	//
+	double	x;
+	double	y;
+	double	offset_x;
+	double	old_x;	
+}	t_mouse;
+
+typedef struct s_cast
+{
 	double	pov_x; //pov coordinates
 	double	pov_y;
 	double	dir_x; //direction from pov
@@ -94,12 +94,12 @@ typedef struct s_calc
 	int		draw_start;
 	int		draw_end;
 	int		wall_color;
-}	t_view;
+}	t_cast;
 
 typedef struct s_move
 {
 	double	speed;
-	double	rotation;
+	double	rot;
 	int		front;
 	int		back;
 	int		left;
@@ -116,18 +116,20 @@ typedef struct s_data
 	t_img	e_textr;
 	t_img	w_textr;
 	t_mlx	mlx;
-	t_view	calc;
+	t_cast	cast;
 	t_move	move;
+	t_mouse	mouse;
 	int		texture_size;
 	char	**map;
 	double	start_time;
 	double	time;
 	double	old_time;
 	double	frame_time;
-	double	fps;
+	int		fps;
 }	t_data;
 
 // INITS
+void	ft_init_all(t_data *data);
 int		ft_init_mlx(t_data *data);
 void	ft_init_values(t_data *data);
 void	ft_init_textures(t_data *data);
@@ -137,10 +139,11 @@ int		render_frame(t_data *data);
 double	ft_get_time(void);
 
 // RAYCAST
+void	frame_time_and_speed(t_data *data);
 void	ft_raycast(t_data *data);
-void	get_base_coords(t_data *data, int x);
 
 // RAYCAST_DIST
+void	get_base_coords(t_data *data, int x);
 void	dist_per_square_x(t_data *data);
 void	dist_per_square_y(t_data *data);
 void	wall_hit_dist(t_data *data, int map[][10]);
@@ -157,11 +160,10 @@ int		ft_free_mlx(t_data *data);
 int		ft_free_textures(t_data *data);
 
 // PRINT
-void	print_fps(double frame_duration);
+void	print_fps(int fps);
 void	print_coords(t_data *data);
 
 // MOVE
-void	frame_time_and_speed(t_data *data);
 void	walk_front_and_back(t_data *data, int map[][10]);
 void	walk_left_and_right(t_data *data, int map[][10]);
 void	rotate_player(t_data *data);

@@ -6,15 +6,15 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:42:51 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/30 13:47:31 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/01 14:45:55 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	print_fps(double frame_duration)
+void	print_fps(int fps)
 {
-	printf("FPS %.0f\n", 1.0 / frame_duration);
+	printf("FPS: %i\n", fps);
 }
 
 void	print_coords(t_data *data)
@@ -26,8 +26,7 @@ void	print_coords(t_data *data)
 		
 		"mouse_y %.2f\nmouse_x %.2f\n"
 		"old_mouse_x %.2f\n"
-		"mouse_ratio %.2f\n"
-		"mousex - oldmousex = %.2f\nmouse_delta %.2f\n"
+		"mousex - oldmousex = %.2f\n"
 		
 		"camera_x %.2f\n"
 		"ray_dir_x %.2f\nray_dir_y %.2f\n"
@@ -38,22 +37,21 @@ void	print_coords(t_data *data)
 		"hit %i\nside %i\n"
 		"line_h %i\ndraw_start %i\ndraw_end %i\n"
 		"color %X OR %u\n\n",
-		data->calc.pov_x, data->calc.pov_y,
-		data->calc.dir_x, data->calc.dir_y,
-		data->calc.plane_x, data->calc.plane_y,
+		data->cast.pov_x, data->cast.pov_y,
+		data->cast.dir_x, data->cast.dir_y,
+		data->cast.plane_x, data->cast.plane_y,
 		
-		data->calc.mouse_y, data->calc.mouse_x,
-		data->calc.old_mouse_x,
-		data->calc.mouse_ratio,
-		data->calc.old_mouse_x - data->calc.mouse_x, data->calc.mouse_delta,
+		data->mouse.y, data->mouse.x,
+		data->mouse.old_x,
+		data->mouse.old_x - data->mouse.x,
 		
-		data->calc.camera_x,
-		data->calc.ray_dir_x, data->calc.ray_dir_y,
-		data->calc.map_x, data->calc.map_y,
-		data->calc.side_dist_x, data->calc.side_dist_y,
-		data->calc.delta_dist_x, data->calc.delta_dist_y,
-		data->calc.perpend_wall_dist, data->calc.step_x, data->calc.step_y,
-		data->calc.wall_hit, data->calc.side,
-		data->calc.line_height, data->calc.draw_start, data->calc.draw_end,
-		data->calc.wall_color, data->calc.wall_color);
+		data->cast.camera_x,
+		data->cast.ray_dir_x, data->cast.ray_dir_y,
+		data->cast.map_x, data->cast.map_y,
+		data->cast.side_dist_x, data->cast.side_dist_y,
+		data->cast.delta_dist_x, data->cast.delta_dist_y,
+		data->cast.perpend_wall_dist, data->cast.step_x, data->cast.step_y,
+		data->cast.wall_hit, data->cast.side,
+		data->cast.line_height, data->cast.draw_start, data->cast.draw_end,
+		data->cast.wall_color, data->cast.wall_color);
 }

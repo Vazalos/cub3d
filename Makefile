@@ -6,7 +6,7 @@
 #    By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/09/23 11:10:58 by david-fe         ###   ########.fr        #
+#    Updated: 2025/10/01 14:17:59 by david-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CC = cc
 RM = rm -rf
 CC_FLAGS = -Wall -Werror -Wextra -g
 LINK_FLAGS = -lXext -lX11 -lm
+O_FLAG = 0
 
 SRC_PATH = src
 SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c \
@@ -43,7 +44,7 @@ $(MLX):
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CC_FLAGS) -O3 -c $< -o $@
+	@$(CC) $(CC_FLAGS) -O$(O_FLAG) -c $< -o $@
 	
 $(NAME): $(LIBFT) $(MLX) $(OBJ)
 	@$(CC) $(CC_FLAGS) $(LINK_FLAGS) -I/usr/include -Imlx_linux -o $(NAME) $(OBJ) $(LIBFT) $(MLX)

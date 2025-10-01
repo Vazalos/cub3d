@@ -6,11 +6,19 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/29 12:31:24 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/01 15:25:55 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void ft_init_all(t_data *data)
+{
+	ft_bzero(data, sizeof(t_data));
+	ft_init_mlx(data);
+	ft_init_values(data);
+	ft_init_textures(data);
+}
 
 int	ft_init_mlx(t_data *data)
 {
@@ -34,23 +42,15 @@ int	ft_init_mlx(t_data *data)
 
 void	ft_init_values(t_data *data)
 {
-	data->calc.pov_x = 3.5;
-	data->calc.pov_y = 3.5;
-	data->calc.dir_x = -1;
-	data->calc.dir_y = 0;
-	data->calc.plane_x = 0;
-	data->calc.plane_y = 0.66;
+	data->cast.pov_x = 4.5;
+	data->cast.pov_y = 4.5;
+	data->cast.dir_x = -1;
+	data->cast.dir_y = 0;
+	data->cast.plane_x = 0;
+	data->cast.plane_y = 0.66;
 	data->start_time = ft_get_time();
 	data->time = data->start_time;
 	data->old_time = data->start_time;
-	data->move.front = 0;
-	data->move.back = 0;
-	data->move.left = 0;
-	data->move.right = 0;
-	data->move.rot_l = 0;
-	data->move.rot_r = 0;
-	data->calc.mouse_x = 5;
-	data->calc.mouse_y = 5;
 }
 
 void	ft_init_textures(t_data *data)
