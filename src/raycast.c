@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 10:39:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/01 16:39:49 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/01 17:19:07 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	frame_time_and_speed(t_data *data)
 	data->time = ft_get_time();
 	frame_duration = (data->time - data->old_time) / 1000.0;
 	data->fps = 1 / frame_duration;
-	print_fps(data->fps);
 	data->move.speed = frame_duration * 5.0;
 	data->move.rot = frame_duration * 3.0;
+	//print_fps(data->fps);
 }
 
 void	ft_raycast(t_data *data)
@@ -60,4 +60,6 @@ void	ft_raycast(t_data *data)
 	rotate_player(data);
 	rotate_with_mouse(data);
 	mlx_mouse_move(data->mlx.mlx_ptr, data->mlx.window, WIDTH / 2, HEIGHT / 2);
+
+	ft_draw_minimap(data, map); //change to render afterwards
 }

@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/01 14:43:18 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/01 17:09:01 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,11 @@ int		ft_init_mlx(t_data *data);
 void	ft_init_values(t_data *data);
 void	ft_init_textures(t_data *data);
 
-//RENDER
+// MINIMAP
+void	ft_draw_minimap(t_data *data);
+void	draw_player_pos(t_data *data, int x0, int y0, int height);
+
+// RENDER
 int		render_frame(t_data *data);
 double	ft_get_time(void);
 
@@ -160,6 +164,7 @@ int		ft_free_mlx(t_data *data);
 int		ft_free_textures(t_data *data);
 
 // PRINT
+void	ft_fps_in_window(t_data *data);
 void	print_fps(int fps);
 void	print_coords(t_data *data);
 

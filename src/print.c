@@ -6,11 +6,17 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:42:51 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/01 14:45:55 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:48:05 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	ft_fps_in_window(t_data *data)
+{
+	mlx_string_put(data->mlx.mlx_ptr, data->mlx.window, 10, HEIGHT - 10,
+		WHITE, ft_itoa(data->fps));
+}
 
 void	print_fps(int fps)
 {

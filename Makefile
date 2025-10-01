@@ -6,7 +6,7 @@
 #    By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/10/01 14:17:59 by david-fe         ###   ########.fr        #
+#    Updated: 2025/10/01 16:52:06 by david-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ O_FLAG = 0
 
 SRC_PATH = src
 SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c \
-color_utils.c raycast.c render.c print.c move.c raycast_dist.c raycast_textures.c)
+color_utils.c raycast.c render.c print.c move.c raycast_dist.c raycast_textures.c \
+minimap.c)
 OBJ_PATH = .build
 OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
