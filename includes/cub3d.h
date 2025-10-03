@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/01 17:09:01 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/03 12:59:32 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,9 @@ void	ft_init_values(t_data *data);
 void	ft_init_textures(t_data *data);
 
 // MINIMAP
-void	ft_draw_minimap(t_data *data);
+void	ft_draw_minimap(t_data *data, int map[][10]);
 void	draw_player_pos(t_data *data, int x0, int y0, int height);
+void	draw_map(t_data *data, int map[][10], int mmap_x, int mmap_y, int mmap_size);
 
 // RENDER
 int		render_frame(t_data *data);
