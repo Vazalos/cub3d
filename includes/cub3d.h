@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/03 12:59:32 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:15:01 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,17 @@ typedef struct s_mouse
 	double	old_x;	
 }	t_mouse;
 
+typedef struct s_minimap
+{
+	int		x0;
+	int		y0;
+	int		scale;
+	int		facing_x;
+	int		facing_y;
+	int		height;
+	int		length;
+}	t_mmap;
+
 typedef struct s_cast
 {
 	double	pov_x; //pov coordinates
@@ -119,6 +130,7 @@ typedef struct s_data
 	t_cast	cast;
 	t_move	move;
 	t_mouse	mouse;
+	t_mmap	mmap;
 	int		texture_size;
 	char	**map;
 	double	start_time;
@@ -135,9 +147,10 @@ void	ft_init_values(t_data *data);
 void	ft_init_textures(t_data *data);
 
 // MINIMAP
+void	init_minimap(t_data *data);
 void	ft_draw_minimap(t_data *data, int map[][10]);
-void	draw_player_pos(t_data *data, int x0, int y0, int height);
-void	draw_map(t_data *data, int map[][10], int mmap_x, int mmap_y, int mmap_size);
+void	draw_player_dir(t_data *data, int x0, int y0);
+void	draw_map(t_data *data, int map[][10], int x, int y);
 
 // RENDER
 int		render_frame(t_data *data);
