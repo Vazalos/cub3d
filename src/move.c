@@ -6,53 +6,53 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:05:10 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/01 14:51:00 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/07 12:37:16 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	walk_front_and_back(t_data *data, int map[][10])
+void	walk_front_and_back(t_data *data, int map[][19])
 {
 	if (data->move.front == 1)
 	{
-		if (map[(int)(data->cast.pov_x + (data->cast.dir_x
-					* data->move.speed))][(int)data->cast.pov_y] == 0)
-			data->cast.pov_x += data->cast.dir_x * data->move.speed;
-		if (map[(int)data->cast.pov_x][(int)(data->cast.pov_y
-			+ (data->cast.dir_y * data->move.speed))] == 0)
+		if (map[(int)(data->cast.pov_y + (data->cast.dir_y
+					* data->move.speed))][(int)data->cast.pov_x] == 0)
 			data->cast.pov_y += data->cast.dir_y * data->move.speed;
+		if (map[(int)data->cast.pov_y][(int)(data->cast.pov_x
+			+ (data->cast.dir_x * data->move.speed))] == 0)
+			data->cast.pov_x += data->cast.dir_x * data->move.speed;
 	}
 	if (data->move.back == 1)
 	{
-		if (map[(int)(data->cast.pov_x - (data->cast.dir_x
-					* data->move.speed))][(int)data->cast.pov_y] == 0)
-			data->cast.pov_x -= data->cast.dir_x * data->move.speed;
-		if (map[(int)data->cast.pov_x][(int)(data->cast.pov_y
-			- (data->cast.dir_y * data->move.speed))] == 0)
+		if (map[(int)(data->cast.pov_y - (data->cast.dir_y
+					* data->move.speed))][(int)data->cast.pov_x] == 0)
 			data->cast.pov_y -= data->cast.dir_y * data->move.speed;
+		if (map[(int)data->cast.pov_y][(int)(data->cast.pov_x
+			- (data->cast.dir_x * data->move.speed))] == 0)
+			data->cast.pov_x -= data->cast.dir_x * data->move.speed;
 	}
 }
 
-void	walk_left_and_right(t_data *data, int map[][10])
+void	walk_left_and_right(t_data *data, int map[][19])
 {
-	if (data->move.left == 1)
-	{
-		if (map[(int)(data->cast.pov_x - (data->cast.dir_y
-					* data->move.speed))][(int)data->cast.pov_y] == 0)
-			data->cast.pov_x -= data->cast.dir_y * data->move.speed;
-		if (map[(int)data->cast.pov_x][(int)(data->cast.pov_y
-			+ (data->cast.dir_x * data->move.speed))] == 0)
-			data->cast.pov_y += data->cast.dir_x * data->move.speed;
-	}
 	if (data->move.right == 1)
 	{
-		if (map[(int)(data->cast.pov_x + (data->cast.dir_y
-					* data->move.speed))][(int)data->cast.pov_y] == 0)
-			data->cast.pov_x += data->cast.dir_y * data->move.speed;
-		if (map[(int)data->cast.pov_x][(int)(data->cast.pov_y
-			- (data->cast.dir_x * data->move.speed))] == 0)
+		if (map[(int)(data->cast.pov_y - (data->cast.dir_x
+					* data->move.speed))][(int)data->cast.pov_x] == 0)
 			data->cast.pov_y -= data->cast.dir_x * data->move.speed;
+		if (map[(int)data->cast.pov_y][(int)(data->cast.pov_x
+			+ (data->cast.dir_y * data->move.speed))] == 0)
+			data->cast.pov_x += data->cast.dir_y * data->move.speed;
+	}
+	if (data->move.left == 1)
+	{
+		if (map[(int)(data->cast.pov_y + (data->cast.dir_x
+					* data->move.speed))][(int)data->cast.pov_x] == 0)
+			data->cast.pov_y += data->cast.dir_x * data->move.speed;
+		if (map[(int)data->cast.pov_y][(int)(data->cast.pov_x
+			- (data->cast.dir_y * data->move.speed))] == 0)
+			data->cast.pov_x -= data->cast.dir_y * data->move.speed;
 	}
 }
 
