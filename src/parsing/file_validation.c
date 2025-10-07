@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:08:09 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/26 10:38:41 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/07 17:54:20 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	validate_input(char *file)
 	return (0);
 }
 
-/* static void	set_spawn_point(t_map *map)
+void	set_spawn_point(t_map *map)
 {
 	int	x;
 	int	y;
@@ -56,7 +56,7 @@ int	validate_input(char *file)
 			}
 		}
 	}
-} */
+}
 
 static int	is_info_all_set(t_map *map)
 {
@@ -85,7 +85,7 @@ int	content_validation(char *file, t_map *map)
 	if (info_setter(info, map))
 		return (free(info), 1);
 	free(info);
-	// set_spawn_point(map);
+	set_spawn_point(map);
 	if (is_info_all_set(map))
 		return (1);
 	return (0);

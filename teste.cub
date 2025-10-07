@@ -1,13 +1,9 @@
 NO ./src/render.c
-
 SO ./src/calcs.c
-
 WE ./src/cleanup.c
-
 EA ./src/draw.c
 
 F 0,100,175
-
 C 0,100,150
 
 111111111111111
