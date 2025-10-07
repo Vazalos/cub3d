@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/07 14:13:14 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/07 17:22:21 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,51 @@ void init_minimap(t_data *data)
 	data->mmap.scale = 10;
 	data->mmap.x0 = data->mmap.scale;
 	data->mmap.y0 = data->mmap.scale;
+	data->mmap.center_x = 50;
+	data->mmap.center_y = 50;
+	data->mmap.view_radius = 5;
+	data->mmap.view_size = (2 * data->mmap.view_radius) + 1;
+	data->mmap.start_x = (int)data->cast.pov_x - data->mmap.view_radius;
+	data->mmap.start_y = (int)data->cast.pov_y - data->mmap.view_radius;
+	data->mmap.end_x = (int)data->cast.pov_x + data->mmap.view_radius;
+	data->mmap.end_y = (int)data->cast.pov_y + data->mmap.view_radius;
 	data->mmap.height = 10; // needs to be dynamic
 	data->mmap.length = 10;
 	data->mmap.facing_x = 0;
 	data->mmap.facing_y = 0;
-	data->mmap.view_rad = 5;
-	data->mmap.view_size = (2 * data->mmap.view_rad) + 1;
 }
 
-void	draw_minimap(t_data *data, int map[][19])
+void	draw_minimap(t_data *data, char map[][19])
 {
 	int x;
 	int y;
 
-	y = 0;
-	while(y < data->mmap.height)
+	data->mmap.start_x = (int)data->cast.pov_x - data->mmap.view_radius;
+	data->mmap.start_y = (int)data->cast.pov_y - data->mmap.view_radius;
+	data->mmap.end_x = (int)data->cast.pov_x + data->mmap.view_radius;
+	data->mmap.end_y = (int)data->cast.pov_y + data->mmap.view_radius;
+
+	y = data->mmap.start_y;
+	while(y < data->mmap.end_y)
 	{
-		x = 0;
-		while(x < 19)//map[y][x])
+		x = data->mmap.start_x;
+		while(x < data->mmap.end_x) 
 		{
-			if (map[y][x] == 0)
+			if (x > 0 && x < 19 // change to a check for each map line length
+				&& y > 0 && y < data->mmap.height && map[y][x] == 0)
 				draw_square(data, x, y, WHITE, 1);
-			else if (map[y][x] == 1)
+			else if (x > 0 && x < 19 // change to a check for each map line length
+				&& y > 0 && y < data->mmap.height && map[y][x] == 1)
 				draw_square(data, x, y, BLACK, 1);
 			else 
 				draw_square(data, x, y, GRAY, 1);
+			/*
 			if (x == (int)data->cast.pov_x && y == (int)data->cast.pov_y)
 			{
 				draw_square(data, x, y, GREEN, 0);
 				if ((x % data->mmap.scale == data->mmap.scale / 2) && (y % data->mmap.scale == data->mmap.scale / 2))
 					draw_player_dir(data, x, y);
-			}
+			}*/
 			x++;
 		}	
 		y++;
@@ -58,7 +72,11 @@ void	draw_square(t_data *data, int x, int y, unsigned int color, int alpha)
 {
 	int i;
 	int j;
-	
+	int offset_x;
+	int offset_y;
+
+	offset_x = x - data->cast.pov_x;
+	offset_y = y - data->cast.pov_y;
 	i = 0;
 	while (i < data->mmap.scale)
 	{

@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 10:39:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/07 14:13:31 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/07 17:21:50 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ void	frame_time_and_speed(t_data *data)
 	data->time = ft_get_time();
 	frame_duration = (data->time - data->old_time) / 1000.0;
 	data->fps = 1 / frame_duration;
-	data->move.speed = frame_duration * 5.0;
-	data->move.rot = frame_duration * 3.0;
+	data->move.speed = frame_duration * SPEED_MOD;
+	data->move.rot = frame_duration * ROTATION_MOD;
 	//print_fps(data->fps);
 }
 
 void	ft_raycast(t_data *data)
 {
 	int	x;
-	int	map[10][19] = {
-	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	char	map[10][19] = {
+	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
 	{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
 	{1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1},

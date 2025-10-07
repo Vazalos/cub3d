@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:08:01 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/07 12:21:50 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:28:25 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	dist_per_square_y(t_data *data)
 	}
 }
 
-void	wall_hit_dist(t_data *data, int map[][19])
+void	wall_hit_dist(t_data *data, char map[][19])
 {
 	data->cast.wall_hit = 0;
 	while (data->cast.wall_hit == 0)

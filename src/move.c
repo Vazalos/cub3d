@@ -6,13 +6,13 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:05:10 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/07 12:37:16 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/07 17:21:31 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	walk_front_and_back(t_data *data, int map[][19])
+void	walk_front_and_back(t_data *data, char map[][19])
 {
 	if (data->move.front == 1)
 	{
@@ -34,7 +34,7 @@ void	walk_front_and_back(t_data *data, int map[][19])
 	}
 }
 
-void	walk_left_and_right(t_data *data, int map[][19])
+void	walk_left_and_right(t_data *data, char map[][19])
 {
 	if (data->move.right == 1)
 	{

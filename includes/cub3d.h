@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/07 14:11:25 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/07 16:27:59 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 
 # define DELTA_MULT 10
 
-# define SPEED_MOD 2
-# define ROT_MOD 1.5
+# define SPEED_MOD 4 //originally 5
+# define ROTATION_MOD 2.4 //originally 3
 
 # define SKY 0xFF87CEEB
 # define FLOOR 0xFF014421
@@ -73,12 +73,18 @@ typedef struct s_minimap
 {
 	int		x0;
 	int		y0;
+	int		center_x;
+	int		center_y;
 	int		scale;
+	int 	start_x;
+	int 	start_y;
+	int		end_x;
+	int		end_y;
 	int		facing_x;
 	int		facing_y;
 	int		height;
 	int		length;
-	int		view_rad;
+	int		view_radius;
 	int		view_size;
 }	t_mmap;
 
@@ -151,7 +157,7 @@ void	ft_init_textures(t_data *data);
 
 // MINIMAP
 void	init_minimap(t_data *data);
-void	draw_minimap(t_data *data, int map[][19]);
+void	draw_minimap(t_data *data, char map[][19]);
 void	draw_square(t_data *data, int x, int y, unsigned int color, int alpha);
 void	draw_player_dir(t_data *data, int x0, int y0);
 unsigned int get_alpha_color(t_data *data, int target_x, int target_y,
@@ -169,7 +175,7 @@ void	ft_raycast(t_data *data);
 void	get_base_coords(t_data *data, int x);
 void	dist_per_square_x(t_data *data);
 void	dist_per_square_y(t_data *data);
-void	wall_hit_dist(t_data *data, int map[][19]);
+void	wall_hit_dist(t_data *data, char map[][19]);
 void	wall_height(t_data *data);
 
 //RAYCAST_TEXTURES
@@ -188,8 +194,8 @@ void	print_fps(int fps);
 void	print_coords(t_data *data);
 
 // MOVE
-void	walk_front_and_back(t_data *data, int map[][19]);
-void	walk_left_and_right(t_data *data, int map[][19]);
+void	walk_front_and_back(t_data *data, char map[][19]);
+void	walk_left_and_right(t_data *data, char map[][19]);
 void	rotate_player(t_data *data);
 void	rotate_with_mouse(t_data *data);
 
