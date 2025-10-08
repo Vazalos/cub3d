@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 12:27:29 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/25 12:08:03 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:52:21 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,7 @@ static int	check_invalid_char(char **map)
 		{
 			if (map[i][j] != ' ' && map[i][j] != '0' && map[i][j] != '1'
 				&& !is_spawn_point(map[i][j]))
-			{
-				printf("Invalid character '%c' at row %zu, col %zu\n",
-					map[i][j], i, j);
 				return (1);
-			}
 			if (is_spawn_point(map[i][j]))
 				spawn_count++;
 			j++;

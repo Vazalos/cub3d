@@ -6,7 +6,7 @@
 #    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/10/07 17:40:47 by gumendes         ###   ########.fr        #
+#    Updated: 2025/10/08 10:50:41 by gumendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ MAKEFLAGS += --no-print-directory
 CC			=	cc
 RM			=	rm -rf
 CFLAGS		=	-Wall -Wextra -Werror -g
-LINK_FLAGS	=	-lXext -lX11 -lm -no-pie
+LINK_FLAGS	=	-lXext -lX11 -lm
 
 #==============================================================================#
 #                                  PATHS       					               #

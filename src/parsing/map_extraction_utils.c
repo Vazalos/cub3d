@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 09:57:12 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/07 18:02:31 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:52:21 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	get_map_end(char **info)
         while (info[i][j])
         {
             if (!is_map_char(info[i][j]))
-                return (printf("stoping at: %s\n" ,info [i]), i);
+                return (i);
             if (info[i][j] != ' ')
                 has_map_char = 1;
             j++;
