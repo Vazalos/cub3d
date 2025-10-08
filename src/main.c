@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 12:53:20 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/07 18:08:04 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/08 11:26:50 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 	printf("\n---Wall Textures---\n");
 	printf("NO: %s\nSO: %s\nWE: %s\nEA: %s\n", map->no, map->so, map->we, map->ea);
 	printf("\n---Ceiling and Floor---\n");
-	printf("Ceilinlg: %x\nFloor: %x\n", map->floor, map->ceiling);
+	printf("Ceiling: %x\nFloor: %x\n", map->ceiling, map->floor);
 	printf("\n---Map---\n");
 	int i = 0;
 	while (map->map[i]) {

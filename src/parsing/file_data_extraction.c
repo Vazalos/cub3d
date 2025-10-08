@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:41:26 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/07 18:01:48 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/08 11:29:35 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,15 @@ int is_map_char_only(char *line)
 		return (0);
 	while (line[i])
 	{
-		printf("%c", line[i]);
 		if (line[i] == '0' || line[i] == '1' ||
 			line[i] == 'N' || line[i] == 'S' ||
 			line[i] == 'E' || line[i] == 'W' ||
 			line[i] == ' ')
 			found = 1;
 		else
-			return (printf("\nrejected line\n"), 0); // If any character is not a map char, reject the line
+			return (0);
 		i++;
 	}
-	printf("\n");
-	printf("line accepted\n");
 	return found;
 }
 
@@ -45,10 +42,13 @@ int	is_map(char **info, t_map *map)
 	while (info[i])
 	{
 		if (is_map_char_only(info[i]))
-			return (fill_map(info + i, map));
+		{
+			int j = fill_map(info + i, map);
+			return (j);
+		}
 		i++;
 	}
-	return (2);
+	return (1);
 }
 
 int	is_scene(char *line, t_map *map)
@@ -61,13 +61,12 @@ int	is_scene(char *line, t_map *map)
 	tmp = ft_split(line, ' ');
 	if (!tmp || !tmp[0])
 		return (ft_free_split(tmp), 0);
-	ret = 0;
+	ret = 1;
 	if (!ft_strncmp(tmp[0], "F", 1))
 		ret = scene_setter("F", tmp[1], map);
 	else if (!ft_strncmp(tmp[0], "C", 1))
 		ret = scene_setter("C", tmp[1], map);
 	ft_free_split(tmp);
-	printf("line: %s\n return: %d\n", line, ret);
 	return (ret);
 }
 
@@ -81,7 +80,7 @@ int	is_texture(char *line, t_map *map)
 	tmp = ft_split(line, ' ');
 	if (!tmp || !tmp[0])
 		return (ft_free_split(tmp), 0);
-	ret = 0;
+	ret = 1;
 	if (!ft_strcmp(tmp[0], "NO"))
 		ret = texture_setter("NO", tmp[1], map);
 	else if (!ft_strcmp(tmp[0], "SO"))

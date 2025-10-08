@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 10:46:36 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/07 18:09:18 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/08 11:25:21 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	info_setter(char *info, t_map *map)
 	i = -1;
 	while (tmp[++i])
 	{
+		if (!ft_strcmp(tmp[i], "\n"))
+			continue ;
 		if (!is_texture(tmp[i], map))
 			continue ;
 		else if (!is_scene(tmp[i], map))

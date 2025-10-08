@@ -6,7 +6,7 @@
 #    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/10/08 10:50:41 by gumendes         ###   ########.fr        #
+#    Updated: 2025/10/08 10:54:12 by gumendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,11 +107,11 @@ l: all
 
 # Clean object files
 clean:
-	@if [ -d "$(BUILD_PATH)" ]; \
+	@if [ -d "$(OBJ_PATH)" ]; \
 		then echo "$(RED)[REMOVED OBJECT FILES]$(END)"; \
 		else echo "$(YEL)[NO OBJECTS TO CLEAN]$(END)"; \
 	fi
-	@$(RM) $(BUILD_PATH)
+	@$(RM) $(OBJ_PATH)
 	@if [ -d $(LIBFT_PATH) ]; then \
 		$(MAKE) --silent -C $(LIBFT_PATH) clean; \
 	fi
