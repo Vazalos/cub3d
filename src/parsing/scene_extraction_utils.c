@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 09:24:41 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/08 11:28:53 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/08 11:34:55 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static int	scene_checker(char *values)
 	{
 		if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 255)
 		{
-			ft_free_split(tmp);
 			invalid_rgb_val(tmp[i]);
+			ft_free_split(tmp);
 			return (1);
 		}
 		i++;

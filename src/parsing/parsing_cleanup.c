@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:56:10 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/23 14:46:06 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/08 11:40:16 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ void	ft_free_map(t_map *map)
 		}
 		free(map->map);
 	}
+	free(map);
 }

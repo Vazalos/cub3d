@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:41:26 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/08 11:29:35 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/08 11:39:03 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 int is_map_char_only(char *line)
 {
-	int i = 0;
-	int found = 0;
+	int i;
+	int found;
+
+	i = 0;
+	found = 0;
 	if (!line || !*line)
 		return (0);
 	while (line[i])
@@ -29,7 +32,7 @@ int is_map_char_only(char *line)
 			return (0);
 		i++;
 	}
-	return found;
+	return (found);
 }
 
 int	is_map(char **info, t_map *map)
@@ -42,10 +45,7 @@ int	is_map(char **info, t_map *map)
 	while (info[i])
 	{
 		if (is_map_char_only(info[i]))
-		{
-			int j = fill_map(info + i, map);
-			return (j);
-		}
+			return (fill_map(info + i, map));
 		i++;
 	}
 	return (1);
