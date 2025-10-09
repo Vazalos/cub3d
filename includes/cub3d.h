@@ -5,12 +5,15 @@
 #include "../mlx-linux/mlx.h"
 #include <X11/X.h>
 #include <X11/keysym.h>
+#include "../src/parsing/parsing.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include <sys/time.h>
 #include <unistd.h>
+#include <limits.h>
+#include <fcntl.h>
 
 #define WIDTH 1280
 #define HEIGHT 720
@@ -144,5 +147,8 @@ unsigned int	ft_hex_to_alpha(unsigned int hex);
 unsigned int	ft_hex_to_red(unsigned int hex);
 unsigned int	ft_hex_to_green(unsigned int hex);
 unsigned int	ft_hex_to_blue(unsigned int hex);
+
+// CLEANUP
+void	ft_free_split(char **str);
 
 #endif
