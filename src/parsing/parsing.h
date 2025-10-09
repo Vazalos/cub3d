@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:14:54 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/25 13:03:46 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/09 14:09:22 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_map
 	float			playersx;
 	float			playersy;
 	char			playero;
+	int				*max_x;
 } t_map;
 
 // file_data_extraction //

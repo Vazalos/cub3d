@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/09 14:06:11 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/09 14:40:07 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void init_minimap(t_data *data)
 	data->mmap.facing_y = 0;
 }
 
-void	draw_minimap(t_data *data, char map[][19])
+void	draw_minimap(t_data *data)
 {
 	double x;
 	double y;
@@ -45,15 +45,15 @@ void	draw_minimap(t_data *data, char map[][19])
 	while(y < data->mmap.end_y)
 	{
 		x = data->mmap.start_x;
-		while(x < data->mmap.end_x) 
+		while(x < data->mmap.end_x)
 		{
 			if (x > 0 && x < 19 // change to a check for each map line length
-				&& y > 0 && y < data->mmap.height && map[(int)y][(int)x] == 0)
+				&& y > 0 && y < data->mmap.height && data->map->map[(int)y][(int)x] == 0)
 				draw_square(data, x, y, WHITE, 1);
 			else if (x > 0 && x < 19 // change to a check for each map line length
-				&& y > 0 && y < data->mmap.height && map[(int)y][(int)x] == 1)
+				&& y > 0 && y < data->mmap.height && data->map->map[(int)y][(int)x] == 1)
 				draw_square(data, x, y, BLACK, 1);
-			else 
+			else
 				draw_square(data, x, y, GRAY, 1);
 			if ((int)x == (int)data->cast.pov_x && (int)y == (int)data->cast.pov_y)
 			{
@@ -62,7 +62,7 @@ void	draw_minimap(t_data *data, char map[][19])
 				//	draw_player_dir(data, x, y);
 			}
 			x++;
-		}	
+		}
 		y++;
 	}
 }
