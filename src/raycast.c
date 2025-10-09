@@ -6,11 +6,27 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 10:39:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/07 17:21:50 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:41:38 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	calc_acceleration(t_data *data)
+{
+	double	max_accel = 0.1;
+	double	accel_step = 0.0001;
+	
+	if (data->move.front == 0 && data->move.accel_f > 0)
+		data->move.accel_f -= data->move.accel_f + accel_step;
+	else if (data->move.front == 1 && data->move.accel_f < max_accel)
+		data->move.accel_f += data->move.accel_f + accel_step;
+	if (data->move.accel_f > max_accel)
+		data->move.accel_f = max_accel;
+	else if (data->move.accel_f < 0)
+		data->move.accel_f = 0;
+	
+}
 
 void	frame_time_and_speed(t_data *data)
 {
@@ -20,6 +36,7 @@ void	frame_time_and_speed(t_data *data)
 	data->time = ft_get_time();
 	frame_duration = (data->time - data->old_time) / 1000.0;
 	data->fps = 1 / frame_duration;
+	calc_acceleration(data);
 	data->move.speed = frame_duration * SPEED_MOD;
 	data->move.rot = frame_duration * ROTATION_MOD;
 	//print_fps(data->fps);

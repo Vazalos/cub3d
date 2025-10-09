@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:05:10 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/07 17:21:31 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:43:00 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ void	walk_front_and_back(t_data *data, char map[][19])
 			+ (data->cast.dir_x * data->move.speed))] == 0)
 			data->cast.pov_x += data->cast.dir_x * data->move.speed;
 	}
+	/*if (data->move.accel_f > 0)
+	{
+		if (map[(int)(data->cast.pov_y + (data->cast.dir_y
+					* data->move.speed) + (data->cast.dir_y * data->move.accel_f))][(int)data->cast.pov_x] == 0)
+			data->cast.pov_y += (data->cast.dir_y * data->move.speed) + (data->cast.dir_y * data->move.accel_f);
+		if (map[(int)data->cast.pov_y][(int)(data->cast.pov_x
+			+ (data->cast.dir_x * data->move.speed) + (data->cast.dir_x * data->move.accel_f))] == 0)
+			data->cast.pov_x += (data->cast.dir_x * data->move.speed) + (data->cast.dir_x * data->move.accel_f);
+	}*/
 	if (data->move.back == 1)
 	{
 		if (map[(int)(data->cast.pov_y - (data->cast.dir_y

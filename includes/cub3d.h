@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/07 16:27:59 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/09 13:11:46 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 # define TEX_SIZE 255
 # define TITLE "David and Gustavo's Marvelous World of 3D"
 
-# define DELTA_MULT 10
+# define DELTA_MULT 5
 
-# define SPEED_MOD 4 //originally 5
+# define SPEED_MOD 5 //originally 5
 # define ROTATION_MOD 2.4 //originally 3
 
 # define SKY 0xFF87CEEB
@@ -76,16 +76,16 @@ typedef struct s_minimap
 	int		center_x;
 	int		center_y;
 	int		scale;
-	int 	start_x;
-	int 	start_y;
-	int		end_x;
-	int		end_y;
+	double 	start_x;
+	double 	start_y;
+	double		end_x;
+	double		end_y;
 	int		facing_x;
 	int		facing_y;
-	int		height;
+	double		height;
 	int		length;
-	int		view_radius;
-	int		view_size;
+	double		view_radius;
+	double		view_size;
 }	t_mmap;
 
 typedef struct s_cast
@@ -118,6 +118,10 @@ typedef struct s_cast
 
 typedef struct s_move
 {
+	double	accel_f;
+	double	accel_b;
+	double	accel_l;
+	double	accel_r;
 	double	speed;
 	double	rot;
 	int		front;
@@ -158,7 +162,7 @@ void	ft_init_textures(t_data *data);
 // MINIMAP
 void	init_minimap(t_data *data);
 void	draw_minimap(t_data *data, char map[][19]);
-void	draw_square(t_data *data, int x, int y, unsigned int color, int alpha);
+void	draw_square(t_data *data, double x, double y, unsigned int color, int alpha);
 void	draw_player_dir(t_data *data, int x0, int y0);
 unsigned int get_alpha_color(t_data *data, int target_x, int target_y,
 	unsigned int new_color);

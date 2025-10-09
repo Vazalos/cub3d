@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/07 17:22:21 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/09 13:11:29 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void init_minimap(t_data *data)
 	data->mmap.scale = 10;
 	data->mmap.x0 = data->mmap.scale;
 	data->mmap.y0 = data->mmap.scale;
-	data->mmap.center_x = 50;
-	data->mmap.center_y = 50;
-	data->mmap.view_radius = 5;
+	data->mmap.center_x = 70;
+	data->mmap.center_y = 70;
+	data->mmap.view_radius = 7;
 	data->mmap.view_size = (2 * data->mmap.view_radius) + 1;
-	data->mmap.start_x = (int)data->cast.pov_x - data->mmap.view_radius;
-	data->mmap.start_y = (int)data->cast.pov_y - data->mmap.view_radius;
-	data->mmap.end_x = (int)data->cast.pov_x + data->mmap.view_radius;
-	data->mmap.end_y = (int)data->cast.pov_y + data->mmap.view_radius;
+	data->mmap.start_x = data->cast.pov_x - data->mmap.view_radius;
+	data->mmap.start_y = data->cast.pov_y - data->mmap.view_radius;
+	data->mmap.end_x = data->cast.pov_x + data->mmap.view_radius;
+	data->mmap.end_y = data->cast.pov_y + data->mmap.view_radius;
 	data->mmap.height = 10; // needs to be dynamic
 	data->mmap.length = 10;
 	data->mmap.facing_x = 0;
@@ -33,13 +33,13 @@ void init_minimap(t_data *data)
 
 void	draw_minimap(t_data *data, char map[][19])
 {
-	int x;
-	int y;
+	double x;
+	double y;
 
-	data->mmap.start_x = (int)data->cast.pov_x - data->mmap.view_radius;
-	data->mmap.start_y = (int)data->cast.pov_y - data->mmap.view_radius;
-	data->mmap.end_x = (int)data->cast.pov_x + data->mmap.view_radius;
-	data->mmap.end_y = (int)data->cast.pov_y + data->mmap.view_radius;
+	data->mmap.start_x = data->cast.pov_x - data->mmap.view_radius;
+	data->mmap.start_y = data->cast.pov_y - data->mmap.view_radius;
+	data->mmap.end_x = data->cast.pov_x + data->mmap.view_radius;
+	data->mmap.end_y = data->cast.pov_y + data->mmap.view_radius;
 
 	y = data->mmap.start_y;
 	while(y < data->mmap.end_y)
@@ -48,35 +48,40 @@ void	draw_minimap(t_data *data, char map[][19])
 		while(x < data->mmap.end_x) 
 		{
 			if (x > 0 && x < 19 // change to a check for each map line length
-				&& y > 0 && y < data->mmap.height && map[y][x] == 0)
+				&& y > 0 && y < data->mmap.height && map[(int)y][(int)x] == 0)
 				draw_square(data, x, y, WHITE, 1);
 			else if (x > 0 && x < 19 // change to a check for each map line length
-				&& y > 0 && y < data->mmap.height && map[y][x] == 1)
+				&& y > 0 && y < data->mmap.height && map[(int)y][(int)x] == 1)
 				draw_square(data, x, y, BLACK, 1);
 			else 
 				draw_square(data, x, y, GRAY, 1);
-			/*
-			if (x == (int)data->cast.pov_x && y == (int)data->cast.pov_y)
+			
+			if ((int)x == (int)data->cast.pov_x && (int)y == (int)data->cast.pov_y)
 			{
 				draw_square(data, x, y, GREEN, 0);
-				if ((x % data->mmap.scale == data->mmap.scale / 2) && (y % data->mmap.scale == data->mmap.scale / 2))
-					draw_player_dir(data, x, y);
-			}*/
+				//if ((x % data->mmap.scale == data->mmap.scale / 2) && (y % data->mmap.scale == data->mmap.scale / 2))
+				//	draw_player_dir(data, x, y);
+			}
 			x++;
 		}	
 		y++;
 	}
 }
 
-void	draw_square(t_data *data, int x, int y, unsigned int color, int alpha)
+void	draw_square(t_data *data, double x, double y, unsigned int color, int alpha)
 {
 	int i;
 	int j;
-	int offset_x;
-	int offset_y;
+	double offset_x;
+	double offset_y;
+	double	win_x;
+	double 	win_y;
 
 	offset_x = x - data->cast.pov_x;
 	offset_y = y - data->cast.pov_y;
+	win_x = data->mmap.center_x + (offset_x * data->mmap.scale);
+	win_y = data->mmap.center_y + (offset_y * data->mmap.scale);
+	
 	i = 0;
 	while (i < data->mmap.scale)
 	{
@@ -84,13 +89,13 @@ void	draw_square(t_data *data, int x, int y, unsigned int color, int alpha)
 		while (j < data->mmap.scale)
 		{
 			if (alpha == 0)
-				ft_draw_pixel(data, j + ((x * data->mmap.scale) + data->mmap.x0),
-					i + ((y * data->mmap.scale) + data->mmap.y0), color);
+				ft_draw_pixel(data, j + (int)win_x,
+					i + (int)win_y, color);
 			else
-				ft_draw_pixel(data, j + ((x * data->mmap.scale) + data->mmap.x0),
-					i + ((y * data->mmap.scale) + data->mmap.y0), get_alpha_color
-					(data, j + ((x * data->mmap.scale) + data->mmap.x0), 
-					i + ((y * data->mmap.scale) + data->mmap.y0), color));
+				ft_draw_pixel(data, j + (int)win_x,
+					i + (int)win_y, get_alpha_color
+					(data, j + win_x, 
+					i + win_y, color));
 			j++;
 		}
 		i++;
