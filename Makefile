@@ -6,7 +6,7 @@
 #    By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/10/09 13:51:11 by david-fe         ###   ########.fr        #
+#    Updated: 2025/10/09 14:00:50 by david-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,8 +63,8 @@ SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl
 							map_validation.c parsing_cleanup.c parsing_errors.c parsing_errors2.c parsing_utils.c \
 							scene_extraction_utils.c t_map_info_setters.c texture_extraction_utils.c)
 
-SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c color_utils.c calcs.c render.c print.c \
-							move.c raycast_dist.c cleanup.c $(SRC_PARSING))
+SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c color_utils.c render.c print.c \
+							move.c raycast_dist.c cleanup.c minimap.c raycast.c raycast_textures.c $(SRC_PARSING))
 
 OBJ         =   $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 

@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/09 13:11:29 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/09 14:06:11 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	draw_minimap(t_data *data, char map[][19])
 				draw_square(data, x, y, BLACK, 1);
 			else 
 				draw_square(data, x, y, GRAY, 1);
-			
 			if ((int)x == (int)data->cast.pov_x && (int)y == (int)data->cast.pov_y)
 			{
 				draw_square(data, x, y, GREEN, 0);
