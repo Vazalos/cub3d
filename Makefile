@@ -6,64 +6,23 @@
 #    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/09/17 11:34:29 by gumendes         ###   ########.fr        #
+#    Updated: 2025/10/09 13:20:06 by gumendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAKEFLAGS += --no-print-directory
+NAME = cub3d
+CC = cc
+RM = rm -rf
+CC_FLAGS = -Wall -Werror -Wextra -g
+LINK_FLAGS = -lXext -lX11 -lm
+O_FLAG = 0
 
-#==============================================================================#
-#                                  COMPILER AND FLAGS                          #
-#==============================================================================#
-
-CC			=	cc
-RM			=	rm -rf
-CFLAGS		=	-Wall -Wextra -Werror -g
-LINK_FLAGS	=	-lXext -lX11 -lm
-
-#==============================================================================#
-#                                  PATHS       					               #
-#==============================================================================#
-
-SRC_PATH		=	src
-OBJ_PATH		=	.build
-INCLUDE_PATH	=	includes
-
-#==============================================================================#
-#                                  LIBFT       					               #
-#==============================================================================#
-
-LIBFT_PATH		=	libft
-LIBFT			=	$(LIBFT_PATH)/libft.a
-
-#==============================================================================#
-#                                  MLX       					               #
-#==============================================================================#
-
-MLX_PATH		=	mlx-linux
-MLX				=	$(MLX_PATH)/libmlx_Linux.a
-
-#==============================================================================#
-#                                  INCLUDES			                           #
-#==============================================================================#
-
-INCLUDES    =   -I$(INCLUDE_PATH) -I$(LIBFT_PATH) -I/usr/include -I$(MLX_PATH)
-
-#==============================================================================#
-#                                  PROJECT NAME                                #
-#==============================================================================#
-
-NAME		=	cub3d
-
-#==============================================================================#
-#                                  SOURCE AND OBJECT FILES                     #
-#==============================================================================#
-
-SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl.c info_setters_utils.c map_info_setters.c parsing_cleanup.c parsing_errors.c parsing_utils.c texture_extraction_utils.c)
-
-SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c color_utils.c calcs.c render.c $(SRC_PARSING))
-
-OBJ         =   $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
+SRC_PATH = src
+SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c \
+color_utils.c raycast.c render.c print.c move.c raycast_dist.c raycast_textures.c \
+minimap.c)
+OBJ_PATH = .build
+OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
 #==============================================================================#
 #                                  RULES                                       #
@@ -93,9 +52,8 @@ get_mlx:
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -O3 -c $< -o $@
-
-# Build the cub3d program
+	@$(CC) $(CC_FLAGS) -O3 -c $< -o $@
+	
 $(NAME): $(LIBFT) $(MLX) $(OBJ)
 	@$(CC) $(CFLAGS) $(LINK_FLAGS) $(INCLUDES) -o $(NAME) $(OBJ) $(LIBFT) $(MLX)
 
