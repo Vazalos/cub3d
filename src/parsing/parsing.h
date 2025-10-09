@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:14:54 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/09 14:09:22 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:04:40 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	missing_info(void);
 void	map_error(void);
 
 // parsing_utils //
+void	max_x_setter(t_map *map);
 int		is_spawn_point(char to_check);
 void	ft_init_map(t_map *map);
 int		ft_strcmp(char *s1, char *s2);
