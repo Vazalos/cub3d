@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:05:10 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/09 14:38:27 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:31:53 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ void	walk_left_and_right(t_data *data)
 	}
 	if (data->move.left == 1)
 	{
-		if (data->map->map[(int)(data->cast.pov_y + (data->cast.dir_x
-					* data->move.speed))][(int)data->cast.pov_x] == 0)
+		//if (data->map->map[(int)(data->cast.pov_y + (data->cast.dir_x
+		//			* data->move.speed))][(int)data->cast.pov_x] == 0)
 			data->cast.pov_y += data->cast.dir_x * data->move.speed;
-		if (data->map->map[(int)data->cast.pov_y][(int)(data->cast.pov_x
-			- (data->cast.dir_y * data->move.speed))] == 0)
+		//if (data->map->map[(int)data->cast.pov_y][(int)(data->cast.pov_x
+		//	- (data->cast.dir_y * data->move.speed))] == 0)
 			data->cast.pov_x -= data->cast.dir_y * data->move.speed;
 	}
 }
