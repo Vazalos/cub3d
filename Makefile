@@ -6,7 +6,7 @@
 #    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/09/17 11:34:29 by gumendes         ###   ########.fr        #
+#    Updated: 2025/10/08 10:54:12 by gumendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,9 +59,11 @@ NAME		=	cub3d
 #                                  SOURCE AND OBJECT FILES                     #
 #==============================================================================#
 
-SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl.c info_setters_utils.c map_info_setters.c parsing_cleanup.c parsing_errors.c parsing_utils.c texture_extraction_utils.c)
+SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl.c map_extraction_utils.c \
+							map_validation.c parsing_cleanup.c parsing_errors.c parsing_errors2.c parsing_utils.c \
+							scene_extraction_utils.c t_map_info_setters.c texture_extraction_utils.c)
 
-SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c color_utils.c calcs.c render.c $(SRC_PARSING))
+SRC = $(addprefix $(SRC_PATH)/, color_utils.c main.c cleanup.c $(SRC_PARSING))
 
 OBJ         =   $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
@@ -93,6 +95,7 @@ get_mlx:
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir -p $(dir $@)
+	@echo "$(CYA)Compiling $<$(D)"
 	@$(CC) $(CFLAGS) -O3 -c $< -o $@
 
 # Build the cub3d program
@@ -104,16 +107,13 @@ l: all
 
 # Clean object files
 clean:
-	@if [ -d "$(BUILD_PATH)" ]; \
+	@if [ -d "$(OBJ_PATH)" ]; \
 		then echo "$(RED)[REMOVED OBJECT FILES]$(END)"; \
 		else echo "$(YEL)[NO OBJECTS TO CLEAN]$(END)"; \
 	fi
-	@$(RM) $(BUILD_PATH)
+	@$(RM) $(OBJ_PATH)
 	@if [ -d $(LIBFT_PATH) ]; then \
 		$(MAKE) --silent -C $(LIBFT_PATH) clean; \
-	fi
-	@if [ -d $(MLX_PATH) ]; then \
-		$(MAKE) --silent -C $(MLX_PATH) clean; \
 	fi
 
 # Full clean
@@ -136,3 +136,27 @@ fclean: clean
 
 re: fclean all
 
+#==============================================================================#
+#                                  UTILS                                       #
+#==============================================================================#
+
+# Colors
+#
+# Run the following command to get list of available colors
+# bash -c 'for c in {0..255}; do tput setaf $c; tput setaf $c | cat -v; echo =$c; done'
+#
+B		= $(shell tput bold)
+BLA		= $(shell tput setaf 16)
+RED		= $(shell tput setaf 1)
+GRN		= $(shell tput setaf 46)
+BRW		= $(shell tput setaf 3)
+BLU		= $(shell tput setaf 27)
+PRP		= $(shell tput setaf 57)
+CYA		= $(shell tput setaf 51)
+WHI		= $(shell tput setaf 15)
+GREY	= $(shell tput setaf 8)
+ORAN	= $(shell tput setaf 202)
+YEL		= $(shell tput setaf 226)
+D		= $(shell tput sgr0)
+BEL		= $(shell tput bel)
+CLR		= $(shell tput el 1)
