@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:15:23 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/09 16:04:03 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:16:59 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	max_x_setter(t_map *map)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (map->map[i])
@@ -24,13 +23,9 @@ void	max_x_setter(t_map *map)
 	if (!map->max_x)
 		return ;
 	i = 0;
-	j = 0;
 	while (map->map[i])
 	{
-		j = 0;
-		while (map->map[i][j])
-			j++;
-		map->max_x[i] = j;
+		map->max_x[i] = (int)ft_strlen(map->max_x[i]);
 		i++;
 	}
 	map->max_x[i] = 0;
