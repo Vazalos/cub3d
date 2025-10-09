@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 10:39:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/09/16 16:56:05 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/09 13:16:35 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_draw_vertical(t_data *data, int x)
 	{
 		if (y < data->calc.draw_start && y <= horizon)
 			ft_draw_pixel(data, x, y, SKY);
-		else if (y >= data->calc.draw_start && y <= data->calc.draw_end) 
+		else if (y >= data->calc.draw_start && y <= data->calc.draw_end)
 			ft_draw_pixel(data, x, y, data->calc.wall_color);
 		else if (y > data->calc.draw_end && y > horizon)
 			ft_draw_pixel(data, x, y, FLOOR);
