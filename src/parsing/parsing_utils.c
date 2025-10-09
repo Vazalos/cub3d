@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:15:23 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/08 10:55:41 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:00:04 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * @brief Checks wether or not a given character is a player spawn point('N', 'S', 'E', 'W').
- * @param tp_check The tile to verify.
+ * @param to_check The tile to verify.
  * @return 1 if specified tile is a player spwan point.
  *
  * 0 if specified tile is not a player spwan point.
