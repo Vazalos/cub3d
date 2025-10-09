@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/09 14:40:07 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:12:13 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	draw_minimap(t_data *data)
 		x = data->mmap.start_x;
 		while(x < data->mmap.end_x)
 		{
-			if (x > 0 && x < 19 // change to a check for each map line length
-				&& y > 0 && y < data->mmap.height && data->map->map[(int)y][(int)x] == 0)
+			if (x > 0 && y > 0 && y < 14 && x < data->map->max_x[(int)y] // change to a check for each map line length
+				&& data->map->map[(int)y][(int)x] == 0) //NEED MAP HEIGHT
 				draw_square(data, x, y, WHITE, 1);
-			else if (x > 0 && x < 19 // change to a check for each map line length
-				&& y > 0 && y < data->mmap.height && data->map->map[(int)y][(int)x] == 1)
+			else if (x > 0 &&  y > 0 && y < 14 && x < data->map->max_x[(int)y] // change to a check for each map line length
+				&& data->map->map[(int)y][(int)x] == 1)
 				draw_square(data, x, y, BLACK, 1);
 			else
 				draw_square(data, x, y, GRAY, 1);
