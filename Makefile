@@ -6,7 +6,7 @@
 #    By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/10/09 13:40:09 by david-fe         ###   ########.fr        #
+#    Updated: 2025/10/09 13:44:17 by david-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,9 @@ NAME		=	cub3d
 #                                  SOURCE AND OBJECT FILES                     #
 #==============================================================================#
 
+SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl.c map_extraction_utils.c \
+							map_validation.c parsing_cleanup.c parsing_errors.c parsing_errors2.c parsing_utils.c \
+							scene_extraction_utils.c t_map_info_setters.c texture_extraction_utils.c)
 SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl.c map_extraction_utils.c \
 							map_validation.c parsing_cleanup.c parsing_errors.c parsing_errors2.c parsing_utils.c \
 							scene_extraction_utils.c t_map_info_setters.c texture_extraction_utils.c)
