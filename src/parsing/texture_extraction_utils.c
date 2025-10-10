@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 10:05:31 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/09 14:44:04 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/09/26 11:56:23 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,12 @@
 
 static int	texture_checker(char *path, char *type)
 {
-	int		fd;
-	size_t	len;
+	int	fd;
 
-	len = ft_strlen(path);
-	if (len < 4 || ft_strncmp(path + len - 4, ".xpm", 4))
-	{
-		printf("Invalid %s texture: %s (expected .xpm)\n", type, path);
-		return (1);
-	}
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Missing or unreadable %s texture: %s\n", type, path);
+		printf("File path: %s for %s texture missing or permissions denied\n", path, type);
 		return (1);
 	}
 	close(fd);

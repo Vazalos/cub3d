@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_dist.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:08:01 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/09 14:39:18 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:28:25 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	dist_per_square_y(t_data *data)
 	}
 }
 
-void	wall_hit_dist(t_data *data)
+void	wall_hit_dist(t_data *data, char map[][19])
 {
 	data->cast.wall_hit = 0;
 	while (data->cast.wall_hit == 0)
@@ -81,7 +81,7 @@ void	wall_hit_dist(t_data *data)
 			data->cast.side = 1;
 		}
 
-		if (data->map->map[data->cast.map_y][data->cast.map_x] > 0)
+		if (map[data->cast.map_y][data->cast.map_x] > 0)
 			data->cast.wall_hit = 1;
 	}
 	if (data->cast.side == 0)
