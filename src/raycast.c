@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 10:39:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/09 14:31:56 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:17:37 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	calc_acceleration(t_data *data)
 {
 	double	max_accel = 0.1;
 	double	accel_step = 0.0001;
-
+	
 	if (data->move.front == 0 && data->move.accel_f > 0)
 		data->move.accel_f -= data->move.accel_f + accel_step;
 	else if (data->move.front == 1 && data->move.accel_f < max_accel)
@@ -25,12 +25,13 @@ void	calc_acceleration(t_data *data)
 		data->move.accel_f = max_accel;
 	else if (data->move.accel_f < 0)
 		data->move.accel_f = 0;
+	
 }
 
 void	frame_time_and_speed(t_data *data)
 {
 	double frame_duration;
-
+	
 	data->old_time = data->time;
 	data->time = ft_get_time();
 	frame_duration = (data->time - data->old_time) / 1000.0;
@@ -58,11 +59,11 @@ void	ft_raycast(t_data *data)
 		//	print_coords(data);
 	}
 	frame_time_and_speed(data);
-	walk_front_and_back(data);
-	walk_left_and_right(data);
+	walk_front_and_back(data, map);
+	walk_left_and_right(data, map);
 	rotate_player(data);
 	rotate_with_mouse(data);
 	mlx_mouse_move(data->mlx.mlx_ptr, data->mlx.window, WIDTH / 2, HEIGHT / 2);
 
-	draw_minimap(data); //change to render afterwards
+	draw_minimap(data, map); //change to render afterwards
 }
