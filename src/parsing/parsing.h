@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:14:54 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/25 13:03:46 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:18:17 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ typedef struct s_map
 	unsigned int	floor;
 	unsigned int	ceiling;
 	char			**map;
-	float			playersx;
-	float			playersy;
+	double			playersx;
+	double			playersy;
 	char			playero;
+	int				*max_x;
 } t_map;
 
 // file_data_extraction //
@@ -64,6 +65,7 @@ void	missing_info(void);
 void	map_error(void);
 
 // parsing_utils //
+void	max_x_setter(t_map *map);
 int		is_spawn_point(char to_check);
 void	ft_init_map(t_map *map);
 int		ft_strcmp(char *s1, char *s2);
