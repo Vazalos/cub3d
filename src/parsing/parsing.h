@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:14:54 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/25 13:03:46 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/10 13:28:18 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ typedef struct s_map
 	unsigned int	floor;
 	unsigned int	ceiling;
 	char			**map;
-	float			playersx;
-	float			playersy;
+	double			playersx;
+	double			playersy;
 	char			playero;
+	int				*max_x;
+	int				*max_y;
 } t_map;
 
 // file_data_extraction //
@@ -45,8 +47,12 @@ char	*gnl(int fd);
 int		is_map_char(int to_check);
 int		fill_map(char **info, t_map *map);
 
-// map_validation.c//
+// map_validation.c //
 int		check_map(t_map *map);
+
+// max_setters.c //
+void	max_y_setter(t_map *map);
+void	max_x_setter(t_map *map);
 
 // map_info_setters //
 int		info_setter(char *info, t_map *map);
