@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/09 14:30:45 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:11:30 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 
 # define SPEED_MOD 5 //originally 5
 # define ROTATION_MOD 2.4 //originally 3
+# define FOV 60
 
 # define SKY 0xFF87CEEB
 # define FLOOR 0xFF014421

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:15:23 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/09 16:16:59 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:20:23 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	max_x_setter(t_map *map)
 	i = 0;
 	while (map->map[i])
 	{
-		map->max_x[i] = (int)ft_strlen(map->max_x[i]);
+		map->max_x[i] = (int)ft_strlen(map->map[i]);
 		i++;
 	}
 	map->max_x[i] = 0;
