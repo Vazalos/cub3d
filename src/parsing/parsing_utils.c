@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:15:23 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/09 17:20:23 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/10 13:28:18 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-void	max_x_setter(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (map->map[i])
-		i++;
-	map->max_x = malloc(sizeof(int) * i + 1);
-	if (!map->max_x)
-		return ;
-	i = 0;
-	while (map->map[i])
-	{
-		map->max_x[i] = (int)ft_strlen(map->map[i]);
-		i++;
-	}
-	map->max_x[i] = 0;
-}
 
 /**
  * @brief Checks wether or not a given character is a player spawn point('N', 'S', 'E', 'W').

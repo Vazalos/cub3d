@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:08:09 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/09 16:04:58 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/10 13:42:06 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int	content_validation(char *file, t_map *map)
 	if (is_info_all_set(map))
 		return (1);
 	max_x_setter(map);
+	max_y_setter(map);
 	return (0);
 }
