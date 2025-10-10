@@ -6,21 +6,11 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/07 17:07:37 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/17 17:02:45 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void ft_init_all(t_data *data)
-{
-	ft_bzero(data, sizeof(t_data));
-	ft_init_mlx(data);
-	ft_init_values(data);
-	ft_init_textures(data);
-
-	init_minimap(data);
-}
 
 int	ft_init_mlx(t_data *data)
 {
@@ -44,35 +34,19 @@ int	ft_init_mlx(t_data *data)
 
 void	ft_init_values(t_data *data)
 {
-	data->cast.pov_x = 2.5;
-	data->cast.pov_y = 7.5;
-	data->cast.dir_x = -1;
-	data->cast.dir_y = 0;
-	data->cast.plane_x = 0;
-	data->cast.plane_y = 0.66;
+	data->calc.pov_x = 3.5;
+	data->calc.pov_y = 3.5;
+	data->calc.dir_x = -1;
+	data->calc.dir_y = 0;
+	data->calc.plane_x = 0;
+	data->calc.plane_y = 0.66;
 	data->start_time = ft_get_time();
 	data->time = data->start_time;
 	data->old_time = data->start_time;
-}
-
-void	ft_init_textures(t_data *data)
-{
-	data->texture_size = TEX_SIZE;
-	
-	data->n_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-		"no.xpm", &data->texture_size, &data->texture_size);
-	data->n_textr.pix_addr = mlx_get_data_addr(data->n_textr.img_ptr, 
-		&data->n_textr.bpp, &data->n_textr.line_len, &data->n_textr.endian);
-	data->s_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-		"so.xpm", &data->texture_size, &data->texture_size);
-	data->s_textr.pix_addr = mlx_get_data_addr(data->s_textr.img_ptr, 
-		&data->s_textr.bpp, &data->s_textr.line_len, &data->s_textr.endian);
-	data->w_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-		"we.xpm", &data->texture_size, &data->texture_size);
-	data->w_textr.pix_addr = mlx_get_data_addr(data->w_textr.img_ptr, 
-		&data->w_textr.bpp, &data->w_textr.line_len, &data->w_textr.endian);
-	data->e_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-		"ea.xpm", &data->texture_size, &data->texture_size);
-	data->e_textr.pix_addr = mlx_get_data_addr(data->e_textr.img_ptr, 
-		&data->e_textr.bpp, &data->e_textr.line_len, &data->e_textr.endian);
+	data->move.front = 0;
+	data->move.back = 0;
+	data->move.left = 0;
+	data->move.right = 0;
+	data->move.rot_l = 0;
+	data->move.rot_r = 0;
 }

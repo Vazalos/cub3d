@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/01 14:49:49 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/09/17 16:53:50 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@ void	ft_event_handler(t_data *data)
 {
 	mlx_hook(data->mlx.window, DestroyNotify, 0, ft_free_mlx, data);
 	mlx_hook(data->mlx.window, KeyPress, KeyPressMask, ft_key_press, data);
-	mlx_hook(data->mlx.window, KeyRelease, KeyReleaseMask, ft_key_release,
-		data);
+	mlx_hook(data->mlx.window, KeyRelease, KeyReleaseMask, ft_key_release, data);
 	mlx_hook(data->mlx.window, 6, 1L << 6, ft_mouse_move, data);
 }
 
 int	ft_mouse_move(int x, int y, t_data *data)
 {
-	data->mouse.old_x = data->mouse.x;
-	data->mouse.y = y;
-	data->mouse.x = x;
-	data->mouse.offset_x = (data->mouse.x - (WIDTH / 2));
+	data->calc.mouse_x = x;
+	data->calc.mouse_y = y;
 	return (0);
 }
 
@@ -46,6 +43,7 @@ int	ft_key_press(int keysym, t_data *data)
 		data->move.rot_l = 1;
 	if (keysym == XK_Right)
 		data->move.rot_r = 1;
+
 	if (keysym == XK_p)
 		print_coords(data);
 	return (0);
@@ -65,5 +63,5 @@ int	ft_key_release(int keysym, t_data *data)
 		data->move.rot_l = 0;
 	if (keysym == XK_Right)
 		data->move.rot_r = 0;
-	return (1);
+	return(1);
 }
