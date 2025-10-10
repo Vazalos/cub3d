@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/07 17:07:37 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/10 14:30:03 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void ft_init_all(t_data *data)
+void ft_init_all(t_data *data, t_map *map)
 {
 	ft_bzero(data, sizeof(t_data));
+	data->map = map;
 	ft_init_mlx(data);
 	ft_init_values(data);
 	ft_init_textures(data);
-
 	init_minimap(data);
 }
 
