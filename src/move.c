@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:05:10 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/14 14:53:46 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:56:49 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	walk_front_and_back(t_data *data)
 		if (data->map->map[(int)data->cast.pov_y][(int)(data->cast.pov_x
 			+ (data->cast.dir_x * data->move.speed) + (data->cast.dir_x * data->move.accel_f))] == 0)
 			data->cast.pov_x += (data->cast.dir_x * data->move.speed) + (data->cast.dir_x * data->move.accel_f);
+			UNGA
 	}*/
 	if (data->move.back == 1)
 	{
