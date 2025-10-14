@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/10 14:30:03 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/14 13:49:18 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void ft_init_all(t_data *data, t_map *map)
 	ft_init_mlx(data);
 	ft_init_values(data);
 	ft_init_textures(data);
-	init_minimap(data);
+	//init_minimap(data);
 }
 
 int	ft_init_mlx(t_data *data)
@@ -44,8 +44,8 @@ int	ft_init_mlx(t_data *data)
 
 void	ft_init_values(t_data *data)
 {
-	data->cast.pov_x = 2.5;
-	data->cast.pov_y = 7.5;
+	data->cast.pov_x = data->map->playersx;
+	data->cast.pov_y = data->map->playersy;
 	data->cast.dir_x = -1;
 	data->cast.dir_y = 0;
 	data->cast.plane_x = 0;

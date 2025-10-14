@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/09 16:11:30 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/14 13:50:53 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ typedef struct s_minimap
 	double		end_y;
 	int		facing_x;
 	int		facing_y;
-	double		height;
-	int		length;
 	double		view_radius;
 	double		view_size;
 }	t_mmap;
@@ -155,6 +153,7 @@ typedef struct s_data
 	double	frame_time;
 	int		fps;
 	t_map	*map;
+	t_map	**parse_map;
 }	t_data;
 
 // INITS

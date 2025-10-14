@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_validation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:08:09 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/10 13:42:06 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:04:57 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,15 @@ int	content_validation(char *file, t_map *map)
 		return (1);
 	max_x_setter(map);
 	max_y_setter(map);
+	// printf("%s\n", map->map[(int)map->playersy]);
+	map->map[(int)map->playersy][(int)map->playersx] = '0';
+	// printf("%s\n", map->map[(int)map->playersy]);
+	// for (int i = 0; map->map[i] != NULL; i++) {
+	// 	printf("%s\n", map->map[i]);
+	// }
 	return (0);
 }
+
+/* for (int i = 0; map->map[i] != NULL; i++) {
+	printf("%s\n", map->map[i]);
+} */

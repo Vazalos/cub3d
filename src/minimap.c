@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/09 13:11:29 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/14 12:23:31 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ void init_minimap(t_data *data)
 	data->mmap.start_y = data->cast.pov_y - data->mmap.view_radius;
 	data->mmap.end_x = data->cast.pov_x + data->mmap.view_radius;
 	data->mmap.end_y = data->cast.pov_y + data->mmap.view_radius;
-	data->mmap.height = 10; // needs to be dynamic
-	data->mmap.length = 10;
 	data->mmap.facing_x = 0;
 	data->mmap.facing_y = 0;
 }
 
-void	draw_minimap(t_data *data, char map[][19])
+void	draw_minimap(t_data *data)
 {
 	double x;
 	double y;
@@ -47,11 +45,11 @@ void	draw_minimap(t_data *data, char map[][19])
 		x = data->mmap.start_x;
 		while(x < data->mmap.end_x) 
 		{
-			if (x > 0 && x < 19 // change to a check for each map line length
-				&& y > 0 && y < data->mmap.height && map[(int)y][(int)x] == 0)
+			if (x > 0 && y > 0 && x < (int)x <= data->map->max_x[(int)y] // change to a check for each map line length
+				&& (int)y <= data->map->max_y[(int)x] && data->map->map[(int)y][(int)x] == 0)
 				draw_square(data, x, y, WHITE, 1);
-			else if (x > 0 && x < 19 // change to a check for each map line length
-				&& y > 0 && y < data->mmap.height && map[(int)y][(int)x] == 1)
+			else if (x > 0 && y > 0 && x < (int)x <= data->map->max_x[(int)y] // change to a check for each map line length
+				&& (int)y <= data->map->max_y[(int)x] && data->map->map[(int)y][(int)x] == 1)
 				draw_square(data, x, y, BLACK, 1);
 			else 
 				draw_square(data, x, y, GRAY, 1);

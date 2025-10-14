@@ -6,7 +6,7 @@
 #    By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/10/09 17:14:18 by david-fe         ###   ########.fr        #
+#    Updated: 2025/10/14 12:22:21 by david-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ NAME		=	cub3d
 
 SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl.c map_extraction_utils.c \
 							map_validation.c parsing_cleanup.c parsing_errors.c parsing_errors2.c parsing_utils.c \
-							scene_extraction_utils.c t_map_info_setters.c texture_extraction_utils.c)
+							scene_extraction_utils.c t_map_info_setters.c texture_extraction_utils.c max_setters.c)
 
 SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c color_utils.c render.c print.c \
 							move.c raycast_dist.c cleanup.c minimap.c raycast.c raycast_textures.c $(SRC_PARSING))

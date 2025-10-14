@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/01 14:49:49 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:08:56 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,10 @@ int	ft_key_release(int keysym, t_data *data)
 		data->move.rot_l = 0;
 	if (keysym == XK_Right)
 		data->move.rot_r = 0;
+	if (keysym == XK_x)
+	{
+		data->cast.pov_x += 1;
+		data->cast.pov_y += 1;
+	}
 	return (1);
 }
