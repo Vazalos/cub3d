@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_cleanup.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:56:10 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/10 14:29:19 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:05:59 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void	ft_free_map(t_map *map)
 		free(map->map);
 	}
 	free(map->max_x);
-	free(map->max_y);
+	// free(map->max_y);
 	free(map);
 }

@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/14 12:23:31 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:37:23 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,27 @@
 void init_minimap(t_data *data)
 {
 	data->mmap.scale = 10;
-	data->mmap.x0 = data->mmap.scale;
-	data->mmap.y0 = data->mmap.scale;
-	data->mmap.center_x = 70;
-	data->mmap.center_y = 70;
 	data->mmap.view_radius = 7;
 	data->mmap.view_size = (2 * data->mmap.view_radius) + 1;
-	data->mmap.start_x = data->cast.pov_x - data->mmap.view_radius;
-	data->mmap.start_y = data->cast.pov_y - data->mmap.view_radius;
-	data->mmap.end_x = data->cast.pov_x + data->mmap.view_radius;
-	data->mmap.end_y = data->cast.pov_y + data->mmap.view_radius;
+	data->mmap.center_x = (data->mmap.scale * data->mmap.view_radius) + data->mmap.scale;
+	data->mmap.center_y = (data->mmap.scale * data->mmap.view_radius) + data->mmap.scale;
+	data->mmap.start_x = (int)data->cast.pov_x - data->mmap.view_radius;
+	data->mmap.start_y = (int)data->cast.pov_y - data->mmap.view_radius;
+	data->mmap.end_x = (int)data->cast.pov_x + data->mmap.view_radius;
+	data->mmap.end_y = (int)data->cast.pov_y + data->mmap.view_radius;
 	data->mmap.facing_x = 0;
 	data->mmap.facing_y = 0;
 }
 
 void	draw_minimap(t_data *data)
 {
-	double x;
-	double y;
+	int x;
+	int y;
 
-	data->mmap.start_x = data->cast.pov_x - data->mmap.view_radius;
-	data->mmap.start_y = data->cast.pov_y - data->mmap.view_radius;
-	data->mmap.end_x = data->cast.pov_x + data->mmap.view_radius;
-	data->mmap.end_y = data->cast.pov_y + data->mmap.view_radius;
+	data->mmap.start_x = (int)data->cast.pov_x - data->mmap.view_radius;
+	data->mmap.start_y = (int)data->cast.pov_y - data->mmap.view_radius;
+	data->mmap.end_x = (int)data->cast.pov_x + data->mmap.view_radius;
+	data->mmap.end_y = (int)data->cast.pov_y + data->mmap.view_radius;
 
 	y = data->mmap.start_y;
 	while(y < data->mmap.end_y)
@@ -45,15 +43,14 @@ void	draw_minimap(t_data *data)
 		x = data->mmap.start_x;
 		while(x < data->mmap.end_x) 
 		{
-			if (x > 0 && y > 0 && x < (int)x <= data->map->max_x[(int)y] // change to a check for each map line length
-				&& (int)y <= data->map->max_y[(int)x] && data->map->map[(int)y][(int)x] == 0)
+			if (x >= 0 && y >= 0 && (int)x <= data->map->max_x[y]
+				&& (int)y < data->map->max_y && data->map->map[(int)y][(int)x] == '0')
 				draw_square(data, x, y, WHITE, 1);
-			else if (x > 0 && y > 0 && x < (int)x <= data->map->max_x[(int)y] // change to a check for each map line length
-				&& (int)y <= data->map->max_y[(int)x] && data->map->map[(int)y][(int)x] == 1)
+			else if (x >= 0 && y >= 0 && (int)x <= data->map->max_x[(int)y]
+				&& (int)y < data->map->max_y && data->map->map[(int)y][(int)x] == '1')
 				draw_square(data, x, y, BLACK, 1);
 			else 
 				draw_square(data, x, y, GRAY, 1);
-			
 			if ((int)x == (int)data->cast.pov_x && (int)y == (int)data->cast.pov_y)
 			{
 				draw_square(data, x, y, GREEN, 0);
@@ -66,17 +63,17 @@ void	draw_minimap(t_data *data)
 	}
 }
 
-void	draw_square(t_data *data, double x, double y, unsigned int color, int alpha)
+void	draw_square(t_data *data, int x, int y, unsigned int color, int alpha)
 {
 	int i;
 	int j;
-	double offset_x;
-	double offset_y;
-	double	win_x;
-	double 	win_y;
+	int offset_x;
+	int offset_y;
+	int	win_x;
+	int win_y;
 
-	offset_x = x - data->cast.pov_x;
-	offset_y = y - data->cast.pov_y;
+	offset_x = x - (int)data->cast.pov_x;
+	offset_y = y - (int)data->cast.pov_y;
 	win_x = data->mmap.center_x + (offset_x * data->mmap.scale);
 	win_y = data->mmap.center_y + (offset_y * data->mmap.scale);
 	

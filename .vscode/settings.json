@@ -3,6 +3,9 @@
 		"cub3d.h": "c",
 		"string_view": "c",
 		"map": "c",
-		"format": "c"
+		"format": "c",
+		"chrono": "c",
+		"random": "c",
+		"limits": "c"
 	}
 }

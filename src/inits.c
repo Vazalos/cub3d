@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/14 13:49:18 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:40:27 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void ft_init_all(t_data *data, t_map *map)
 	ft_init_mlx(data);
 	ft_init_values(data);
 	ft_init_textures(data);
-	//init_minimap(data);
+	init_minimap(data);
 }
 
 int	ft_init_mlx(t_data *data)
@@ -46,10 +46,18 @@ void	ft_init_values(t_data *data)
 {
 	data->cast.pov_x = data->map->playersx;
 	data->cast.pov_y = data->map->playersy;
-	data->cast.dir_x = -1;
-	data->cast.dir_y = 0;
-	data->cast.plane_x = 0;
-	data->cast.plane_y = 0.66;
+	if (data->map->playero == 'N')
+		data->cast.dir_y = -1;
+	else if (data->map->playero == 'S')
+		data->cast.dir_y = 1;
+	else if (data->map->playero == 'E')
+		data->cast.dir_x = 1;
+	else if (data->map->playero == 'W')
+		data->cast.dir_x = -1;
+	if (data->cast.dir_y == 0)
+		data->cast.plane_y = 0.66 * (-data->cast.dir_x);
+	else if (data->cast.dir_x == 0)
+		data->cast.plane_x = -0.66 * (-data->cast.dir_y);
 	data->start_time = ft_get_time();
 	data->time = data->start_time;
 	data->old_time = data->start_time;

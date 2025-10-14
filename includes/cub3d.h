@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/14 13:50:53 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:33:58 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,17 @@ typedef struct s_mouse
 
 typedef struct s_minimap
 {
-	int		x0;
-	int		y0;
 	int		center_x;
 	int		center_y;
 	int		scale;
-	double 	start_x;
-	double 	start_y;
-	double		end_x;
-	double		end_y;
+	int 	start_x;
+	int 	start_y;
+	int		end_x;
+	int		end_y;
 	int		facing_x;
 	int		facing_y;
-	double		view_radius;
-	double		view_size;
+	int		view_radius;
+	int		view_size;
 }	t_mmap;
 
 typedef struct s_cast
@@ -165,7 +163,7 @@ void	ft_init_textures(t_data *data);
 // MINIMAP
 void	init_minimap(t_data *data);
 void	draw_minimap(t_data *data);
-void	draw_square(t_data *data, double x, double y, unsigned int color, int alpha);
+void	draw_square(t_data *data, int x, int y, unsigned int color, int alpha);
 void	draw_player_dir(t_data *data, int x0, int y0);
 unsigned int get_alpha_color(t_data *data, int target_x, int target_y,
 	unsigned int new_color);

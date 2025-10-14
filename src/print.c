@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:42:51 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/14 13:51:49 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:19:31 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	print_coords(t_data *data)
 {
 	printf(
 		"current map square %c\n"
+		"next map square %c\n"
 		"pov_x %.2f\npov_y %.2f\n"
 		"dir_x %.2f\ndir_y %.2f\n"
 		"plane_x %.2f\nplane_y %.2f\n\n"
@@ -45,6 +46,7 @@ void	print_coords(t_data *data)
 		"line_h %i\ndraw_start %i\ndraw_end %i\n"
 		"color %X OR %u\n\n",
 		data->map->map[(int)data->cast.pov_y][(int)data->cast.pov_x],
+		data->map->map[(int)data->cast.pov_y + 1][(int)data->cast.pov_x],
 		data->cast.pov_x, data->cast.pov_y,
 		data->cast.dir_x, data->cast.dir_y,
 		data->cast.plane_x, data->cast.plane_y,

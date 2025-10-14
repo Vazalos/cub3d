@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:14:54 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/10 13:28:18 by gumendes         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:04:23 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_map
 	double			playersy;
 	char			playero;
 	int				*max_x;
-	int				*max_y;
+	int				max_y;
 } t_map;
 
 // file_data_extraction //

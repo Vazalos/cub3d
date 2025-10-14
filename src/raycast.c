@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 10:39:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/14 13:50:05 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:43:00 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	ft_raycast(t_data *data)
 		wall_hit_dist(data);
 		wall_height(data);
 		wall_texture(data, x);
-		if (x == data->mouse.x)
-			print_coords(data);
+		// if (x == data->mouse.x)
+		// 	print_coords(data);
 	}
 	frame_time_and_speed(data);
 	walk_front_and_back(data);
@@ -79,5 +79,5 @@ void	ft_raycast(t_data *data)
 	rotate_with_mouse(data);
 	mlx_mouse_move(data->mlx.mlx_ptr, data->mlx.window, WIDTH / 2, HEIGHT / 2);
 
-	//draw_minimap(data); //change to render afterwards
+	draw_minimap(data); //change to render afterwards
 }
