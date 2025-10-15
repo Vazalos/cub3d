@@ -1,0 +1,11 @@
+general
+	-separate into make bonus
+	-norm
+
+textures
+	-obtain new textures
+	-put textures in an array at the time of parsing
+
+sprites
+	-obtain enemy/weapon sprites
+

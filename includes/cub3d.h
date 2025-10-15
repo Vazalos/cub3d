@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/14 16:33:58 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/15 14:25:48 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ typedef struct s_move
 	int		right;
 	int		rot_l;
 	int		rot_r;
+	int		next_x;
+	int		next_y;
 }	t_move;
 
 typedef struct s_data
@@ -168,6 +170,9 @@ void	draw_player_dir(t_data *data, int x0, int y0);
 unsigned int get_alpha_color(t_data *data, int target_x, int target_y,
 	unsigned int new_color);
 
+// MINIMAP_UTILS
+void	update_minimap_render(t_data *data);
+
 // RENDER
 int		render_frame(t_data *data);
 double	ft_get_time(void);
@@ -198,9 +203,14 @@ void	ft_fps_in_window(t_data *data);
 void	print_fps(int fps);
 void	print_coords(t_data *data);
 
-// MOVE
-void	walk_front_and_back(t_data *data);
-void	walk_left_and_right(t_data *data);
+// MOVE_WALK
+void	walk(t_data *data);
+void	walk_front(t_data *data, double player_radius);
+void	walk_back(t_data *data, double player_radius);
+void	walk_left(t_data *data, double player_radius);
+void	walk_right(t_data *data, double player_radius);
+
+// MOVE_ROTATE
 void	rotate_player(t_data *data);
 void	rotate_with_mouse(t_data *data);
 

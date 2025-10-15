@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/14 17:01:03 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:04:51 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,16 @@ void	init_minimap(t_data *data)
 		+ data->mmap.scale;
 	data->mmap.center_y = (data->mmap.scale * data->mmap.view_radius)
 		+ data->mmap.scale;
+	data->mmap.facing_x = 0;
+	data->mmap.facing_y = 0;
+}
+
+void	update_minimap_render(t_data *data)
+{
 	data->mmap.start_x = (int)data->cast.pov_x - data->mmap.view_radius;
 	data->mmap.start_y = (int)data->cast.pov_y - data->mmap.view_radius;
 	data->mmap.end_x = (int)data->cast.pov_x + data->mmap.view_radius;
 	data->mmap.end_y = (int)data->cast.pov_y + data->mmap.view_radius;
-	data->mmap.facing_x = 0;
-	data->mmap.facing_y = 0;
 }
 
 void	draw_minimap(t_data *data)
@@ -34,10 +38,7 @@ void	draw_minimap(t_data *data)
 	int	x;
 	int	y;
 
-	data->mmap.start_x = (int)data->cast.pov_x - data->mmap.view_radius;
-	data->mmap.start_y = (int)data->cast.pov_y - data->mmap.view_radius;
-	data->mmap.end_x = (int)data->cast.pov_x + data->mmap.view_radius;
-	data->mmap.end_y = (int)data->cast.pov_y + data->mmap.view_radius;
+	update_minimap_render(data);
 	y = data->mmap.start_y - 1;
 	while (++y < data->mmap.end_y)
 	{
@@ -125,7 +126,8 @@ unsigned int get_alpha_color(t_data *data, int target_x, int target_y,
 	unsigned int target_color;
 	unsigned int color_mix;
 	
-	target_color = (*(int *)((data->img.pix_addr + target_y * data->img.line_len) + (target_x * (data->img.bpp / 8))));
+	target_color = (*(unsigned int *)((data->img.pix_addr + target_y
+		* data->img.line_len) + (target_x * (data->img.bpp / 8))));
 	color_mix = (
     (((target_color >> 16 & 0xFF) + (new_color >> 16 & 0xFF)) / 2) << 16 |
     (((target_color >> 8  & 0xFF) + (new_color >> 8  & 0xFF)) / 2) << 8  |
