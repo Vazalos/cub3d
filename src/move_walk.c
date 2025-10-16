@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:05:10 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/15 17:15:56 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/16 11:15:41 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	walk(t_data *data)
 {
 	double	player_radius;
 	
-	player_radius = 0.2;
+	player_radius = 0.15;
 	if (data->move.front == 1)
 		walk_front(data, player_radius);
 	if (data->move.back == 1)
@@ -29,28 +29,34 @@ void	walk(t_data *data)
 
 int	has_collision_x(t_data *data, double x, double rad)
 {
-	if (data->map->map[(int)data->cast.pov_y][(int)(x + rad)] != '0' ||
-		data->map->map[(int)data->cast.pov_y][(int)(x - rad)] != '0' ||
-		data->map->map[(int)(data->cast.pov_y + rad)][(int)x] != '0' ||
-		data->map->map[(int)(data->cast.pov_y - rad)][(int)x] != '0' ||
-		data->map->map[(int)(data->cast.pov_y + rad)][(int)(x + rad)] != '0' ||
-		data->map->map[(int)(data->cast.pov_y + rad)][(int)(x - rad)] != '0' ||
-		data->map->map[(int)(data->cast.pov_y - rad)][(int)(x + rad)] != '0' ||
-		data->map->map[(int)(data->cast.pov_y - rad)][(int)(x - rad)] != '0')
+	double old_y;
+
+	old_y = data->cast.pov_y;
+	if (data->map->map[(int)old_y][(int)(x + rad)] != '0' ||
+		data->map->map[(int)old_y][(int)(x - rad)] != '0' ||
+		data->map->map[(int)(old_y + rad)][(int)x] != '0' ||
+		data->map->map[(int)(old_y - rad)][(int)x] != '0' ||
+		data->map->map[(int)(old_y + rad)][(int)(x + rad)] != '0' ||
+		data->map->map[(int)(old_y + rad)][(int)(x - rad)] != '0' ||
+		data->map->map[(int)(old_y - rad)][(int)(x + rad)] != '0' ||
+		data->map->map[(int)(old_y - rad)][(int)(x - rad)] != '0')
 		return (1);
 	return (0);
 }
 
 int	has_collision_y(t_data *data, double y, double rad)
 {
-	if (data->map->map[(int)y][(int)(data->cast.pov_x + rad)] != '0' ||
-		data->map->map[(int)y][(int)(data->cast.pov_x - rad)] != '0' ||
-		data->map->map[(int)(y + rad)][(int)data->cast.pov_x] != '0' ||
-		data->map->map[(int)(y - rad)][(int)data->cast.pov_x] != '0' ||
-		data->map->map[(int)(y + rad)][(int)(data->cast.pov_x + rad)] != '0' ||
-		data->map->map[(int)(y + rad)][(int)(data->cast.pov_x - rad)] != '0' ||
-		data->map->map[(int)(y - rad)][(int)(data->cast.pov_x + rad)] != '0' ||
-		data->map->map[(int)(y - rad)][(int)(data->cast.pov_x - rad)] != '0')
+	double old_x;
+
+	old_x = data->cast.pov_x;
+	if (data->map->map[(int)y][(int)(old_x + rad)] != '0' ||
+		data->map->map[(int)y][(int)(old_x - rad)] != '0' ||
+		data->map->map[(int)(y + rad)][(int)old_x] != '0' ||
+		data->map->map[(int)(y - rad)][(int)old_x] != '0' ||
+		data->map->map[(int)(y + rad)][(int)(old_x + rad)] != '0' ||
+		data->map->map[(int)(y + rad)][(int)(old_x - rad)] != '0' ||
+		data->map->map[(int)(y - rad)][(int)(old_x + rad)] != '0' ||
+		data->map->map[(int)(y - rad)][(int)(old_x - rad)] != '0')
 		return (1);
 	return (0);
 }
