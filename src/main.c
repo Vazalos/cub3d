@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 12:53:20 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/14 15:06:31 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/16 11:41:59 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 	if (parse(ac, av, map))
 		return (ft_free_map(map), 1);
 	ft_init_all(&data, map);
-	//mlx_mouse_hide(data.mlx.mlx_ptr, data.mlx.window);
+	mlx_mouse_hide(data.mlx.mlx_ptr, data.mlx.window);
 	ft_event_handler(&data);
 	mlx_loop_hook(data.mlx.mlx_ptr, render_frame, &data);
 	mlx_loop(data.mlx.mlx_ptr);

@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/15 14:25:48 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/16 16:44:49 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define GREEN 0xFF00FF00
 # define BLUE 0xFF0000FF
 # define YELLOW 0xFFFFFF00
-# define PURPLE 0xFFFF00FF
+# define INVIS 0xFF00FF
 
 typedef struct s_img
 {
@@ -86,6 +86,8 @@ typedef struct s_minimap
 	int		facing_y;
 	int		view_radius;
 	int		view_size;
+	t_img	cursor;
+	int		cursor_tex_size;
 }	t_mmap;
 
 typedef struct s_cast
