@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:08:01 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/14 13:54:35 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:03:33 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	wall_hit_dist(t_data *data)
 			data->cast.map_y += data->cast.step_y;
 			data->cast.side = 1;
 		}
-
 		if (data->map->map[data->cast.map_y][data->cast.map_x] == '1')
 			data->cast.wall_hit = 1;
 	}
@@ -100,5 +99,5 @@ void	wall_height(t_data *data)
 		data->cast.draw_start = 0;
 	data->cast.draw_end = (data->cast.line_height / 2) + (HEIGHT / 2);
 	if (data->cast.draw_end >= HEIGHT)
-		data->cast.draw_end = HEIGHT - 1;
+		data->cast.draw_end = HEIGHT;
 }

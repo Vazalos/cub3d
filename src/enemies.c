@@ -1,28 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   enemies.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 12:53:20 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/20 17:08:59 by david-fe         ###   ########.fr       */
+/*   Created: 2025/10/20 12:28:46 by david-fe          #+#    #+#             */
+/*   Updated: 2025/10/20 12:28:47 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
-
-int	main(int ac, char **av)
-{
-	t_data	data;
-	t_map	*map;
-
-	map = malloc(sizeof(t_map));
-	if (parse(ac, av, map))
-		return (ft_free_map(map), 1);
-	ft_init_all(&data, map);
-	ft_event_handler(&data);
-	mlx_loop_hook(data.mlx.mlx_ptr, render_frame, &data);
-	mlx_loop(data.mlx.mlx_ptr);
-	return (0);
-}

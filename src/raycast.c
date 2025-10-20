@@ -6,12 +6,13 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 10:39:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/15 14:05:07 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:20:45 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+/*
 void	calc_acceleration(t_data *data)
 {
 	double	max_accel = 0.1;
@@ -27,38 +28,24 @@ void	calc_acceleration(t_data *data)
 		data->move.accel_f = 0;
 	
 }
+*/
 
 void	frame_time_and_speed(t_data *data)
 {
-	double frame_duration;
-	
+	double	frame_duration;
+
 	data->old_time = data->time;
 	data->time = ft_get_time();
 	frame_duration = (data->time - data->old_time) / 1000.0;
 	data->fps = 1 / frame_duration;
-	calc_acceleration(data);
+	//calc_acceleration(data);
 	data->move.speed = frame_duration * SPEED_MOD;
 	data->move.rot = frame_duration * ROTATION_MOD;
-	//print_fps(data->fps);
 }
 
 void	ft_raycast(t_data *data)
 {
 	int	x;
-	/*
-	char	map[10][19] = {
-	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-	{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-	{1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-	{1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-	{1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-	{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	};
-	*/
 
 	x = -1;
 	while (++x < WIDTH)
@@ -69,14 +56,14 @@ void	ft_raycast(t_data *data)
 		wall_hit_dist(data);
 		wall_height(data);
 		wall_texture(data, x);
-		// if (x == data->mouse.x)
-		// 	print_coords(data);
+		if (x == data->mouse.x && data->print_debug_info == 1)
+			print_coords(data);
 	}
 	frame_time_and_speed(data);
 	walk(data);
 	rotate_player(data);
 	rotate_with_mouse(data);
 	mlx_mouse_move(data->mlx.mlx_ptr, data->mlx.window, WIDTH / 2, HEIGHT / 2);
-
-	draw_minimap(data); //change to render afterwards
+	if (data->mmap.hide_minimap == 0)
+		draw_minimap(data);
 }

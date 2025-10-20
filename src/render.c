@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 10:59:07 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/14 15:06:38 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:01:39 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,14 @@ double	ft_get_time(void)
 	return ((double)((time.tv_sec * 1000) + (time.tv_usec / 1000)));
 }
 
+int	has_elapsed_time_interval(double t1, double t2, double target)
+{
+	double	elapsed;
 
+	target = target * 1000;
+	elapsed = t2 - t1;
+	if (elapsed < target)
+		return (0);
+	else
+		return (1);
+}

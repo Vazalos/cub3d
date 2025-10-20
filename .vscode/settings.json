@@ -6,6 +6,7 @@
 		"format": "c",
 		"chrono": "c",
 		"random": "c",
-		"limits": "c"
+		"limits": "c",
+		"mlx.h": "c"
 	}
 }

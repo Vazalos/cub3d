@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:33:16 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/01 16:45:01 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/20 16:57:03 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_free_mlx(t_data *data)
 {
 	ft_free_textures(data);
+	ft_free_bonus_textures(data);
 	if (data->img.img_ptr != NULL)
 		mlx_destroy_image(data->mlx.mlx_ptr, data->img.img_ptr);
 	if (data->mlx.window != NULL)
@@ -37,5 +38,14 @@ int	ft_free_textures(t_data *data)
 		mlx_destroy_image(data->mlx.mlx_ptr, data->w_textr.img_ptr);
 	if (data->e_textr.img_ptr != NULL)
 		mlx_destroy_image(data->mlx.mlx_ptr, data->e_textr.img_ptr);
-	return(0);
+	return (0);
+}
+
+int	ft_free_bonus_textures(t_data *data)
+{
+	if (data->mmap.cursor.img_ptr != NULL)
+		mlx_destroy_image(data->mlx.mlx_ptr, data->mmap.cursor.img_ptr);
+	if (data->mmap.map_bg.img_ptr != NULL)
+		mlx_destroy_image(data->mlx.mlx_ptr, data->mmap.map_bg.img_ptr);
+	return (0);
 }

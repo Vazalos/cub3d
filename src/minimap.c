@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/16 17:19:19 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:13:00 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,32 @@
 
 void	init_minimap(t_data *data)
 {
-	data->mmap.scale = 10;
-	data->mmap.view_radius = 7;
+	data->mmap.scale = 8;
+	data->mmap.view_radius = 9;
 	data->mmap.view_size = (2 * data->mmap.view_radius) + 1;
 	data->mmap.center_x = (data->mmap.scale * data->mmap.view_radius)
-		+ data->mmap.scale;
+		+ data->mmap.scale + MAP_BG_BORDER;
 	data->mmap.center_y = (data->mmap.scale * data->mmap.view_radius)
-		+ data->mmap.scale;
+		+ data->mmap.scale + MAP_BG_BORDER;
 	data->mmap.cursor.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-		"textures/cursor_pink_16x16_flipped.xpm", &data->mmap.cursor_tex_size,
-		&data->mmap.cursor_tex_size);
-	//need null check
+			"textures/cursor_3px.xpm", &data->mmap.cursor_tex_size,
+			&data->mmap.cursor_tex_size);
+	data->mmap.map_bg.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
+			"textures/map_bg.xpm", &data->mmap.map_bg_tex_size,
+			&data->mmap.map_bg_tex_size);
+	if (!data->mmap.cursor.img_ptr || !data->mmap.map_bg.img_ptr)
+	{
+		ft_free_bonus_textures(data);
+		ft_free_mlx(data);
+	}
 	data->mmap.cursor.pix_addr = mlx_get_data_addr(data->mmap.cursor.img_ptr,
-		&data->mmap.cursor.bpp, &data->mmap.cursor.line_len,
-		&data->mmap.cursor.endian);
+			&data->mmap.cursor.bpp, &data->mmap.cursor.line_len,
+			&data->mmap.cursor.endian);
+	data->mmap.map_bg.pix_addr = mlx_get_data_addr(data->mmap.map_bg.img_ptr,
+			&data->mmap.map_bg.bpp, &data->mmap.map_bg.line_len,
+			&data->mmap.map_bg.endian);
 }
 
-void	update_minimap_render(t_data *data)
-{
-	data->mmap.start_x = (int)data->cast.pov_x - data->mmap.view_radius;
-	data->mmap.start_y = (int)data->cast.pov_y - data->mmap.view_radius;
-	data->mmap.end_x = (int)data->cast.pov_x + data->mmap.view_radius;
-	data->mmap.end_y = (int)data->cast.pov_y + data->mmap.view_radius;
-}
 /*
 void	draw_player_cursor(t_data *data, int x, int y, int size)
 {
@@ -52,7 +55,8 @@ void	draw_player_cursor(t_data *data, int x, int y, int size)
 		j = 0;
 		while (j < size) //x
 		{
-			color = (*(unsigned int *)((data->mmap.cursor.pix_addr + i * data->mmap.cursor.line_len) + (j * (data->mmap.cursor.bpp / 8))));
+			color = (*(unsigned int *)((data->mmap.cursor.pix_addr + i * 
+			data->mmap.cursor.line_len) + (j * (data->mmap.cursor.bpp / 8))));
 			if (color != INVIS)
 				ft_draw_pixel(data, x + offset + j, y + offset + i, color);
 			j++;
@@ -91,6 +95,36 @@ void	draw_player_cursor(t_data *data, int x, int y, int size)
 	}
 }
 
+void	draw_map_bg(t_data *data, int x, int y, int sq) //26 lines
+{
+	int				orig_x;
+	unsigned int	color;
+	int				i;
+	int				j;
+
+	orig_x = x;
+	while (++y < data->mmap.map_bg_tex_size)
+	{
+		x = orig_x;
+		while (++x < data->mmap.map_bg_tex_size)
+		{
+			color = (*(unsigned int *)((data->mmap.map_bg.pix_addr + y *
+				data->mmap.map_bg.line_len) + (x * (data->mmap.cursor.bpp / 8))));
+			if (color != INVIS)
+			{
+				i = -1;
+				while (++i < sq)
+				{
+					j = -1;
+					while (++j < sq)
+						ft_draw_pixel(data, (x * sq) + i + MAP_BG_BORDER,
+							(y * sq) + j + MAP_BG_BORDER, color);
+				}			
+			}
+		}
+	}
+}
+
 void	draw_minimap(t_data *data)
 {
 	int	x;
@@ -98,6 +132,7 @@ void	draw_minimap(t_data *data)
 
 	update_minimap_render(data);
 	y = data->mmap.start_y - 1;
+	draw_map_bg(data, -1, -1, 1);
 	while (++y < data->mmap.end_y)
 	{
 		x = data->mmap.start_x - 1;
@@ -109,13 +144,10 @@ void	draw_minimap(t_data *data)
 			else if (x >= 0 && y >= 0 && x < data->map->max_x[y]
 				&& y < data->map->max_y && data->map->map[y][x] == '1')
 				draw_square(data, x, y, BLACK, 1);
-			else
-				draw_square(data, x, y, GRAY, 1);
-			// if (x == (int)data->cast.pov_x && y == (int)data->cast.pov_y)
-			// 	draw_square(data, x, y, GREEN, 0);
 		}
 	}
-	draw_player_cursor(data, data->mmap.center_x, data->mmap.center_x, data->mmap.cursor_tex_size);
+	draw_player_cursor(data, data->mmap.center_x, data->mmap.center_x,
+		data->mmap.cursor_tex_size);
 }
 
 void	draw_square(t_data *data, int x, int y, unsigned int color, int alpha)
@@ -150,27 +182,4 @@ void	draw_square(t_data *data, int x, int y, unsigned int color, int alpha)
 		}
 		i++;
 	}
-}
-
-void	draw_player_dir(t_data *data, int x0, int y0)
-{
-	int height = 3;
-	int base = 6;
-    int half_base = base / 2;
-	int x_start;
-	int x_end;
-	int y;
-
-	
-	y0 -= data->mmap.scale / 2; //changes with direction
-	y = -1;
-	while (++y < 10)
-    {
-        x_start = (x0 - (half_base * (height - y)) / height) - 1;
-        x_end   = x0 + (half_base * (height - y)) / height;
-        for (int x = x_start; x <= x_end; x++)
-        {
-			ft_draw_pixel(data, x, y0 - y, GREEN);
-        }
-    }
 }

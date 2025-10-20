@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/16 16:44:49 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:20:22 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 # define TEX_SIZE 255
 # define TITLE "David and Gustavo's Marvelous World of 3D"
 
+# define MAP_BG_SCALE 2
+# define MAP_BG_BORDER 10
+
 # define DELTA_MULT 5
 
 # define SPEED_MOD 5 //originally 5
@@ -49,6 +52,7 @@
 # define BLUE 0xFF0000FF
 # define YELLOW 0xFFFFFF00
 # define INVIS 0xFF00FF
+# define SANDY 0xf7ddb0
 
 typedef struct s_img
 {
@@ -75,6 +79,7 @@ typedef struct s_mouse
 
 typedef struct s_minimap
 {
+	int		hide_minimap;
 	int		center_x;
 	int		center_y;
 	int		scale;
@@ -87,7 +92,9 @@ typedef struct s_minimap
 	int		view_radius;
 	int		view_size;
 	t_img	cursor;
+	t_img	map_bg;
 	int		cursor_tex_size;
+	int		map_bg_tex_size;
 }	t_mmap;
 
 typedef struct s_cast
@@ -156,6 +163,8 @@ typedef struct s_data
 	int		fps;
 	t_map	*map;
 	t_map	**parse_map;
+	int		print_debug_info;
+	int		mouse_hide;
 }	t_data;
 
 // INITS
@@ -169,15 +178,16 @@ void	init_minimap(t_data *data);
 void	draw_minimap(t_data *data);
 void	draw_square(t_data *data, int x, int y, unsigned int color, int alpha);
 void	draw_player_dir(t_data *data, int x0, int y0);
-unsigned int get_alpha_color(t_data *data, int target_x, int target_y,
-	unsigned int new_color);
 
 // MINIMAP_UTILS
+unsigned int get_alpha_color(t_data *data, int target_x, int target_y,
+	unsigned int new_color);
 void	update_minimap_render(t_data *data);
 
 // RENDER
 int		render_frame(t_data *data);
 double	ft_get_time(void);
+int		has_elapsed_time_interval(double t1, double t2, double target);
 
 // RAYCAST
 void	frame_time_and_speed(t_data *data);
@@ -199,6 +209,7 @@ void	get_wall_texture_pixel(t_data *data, int texture_x, int texture_y);
 // FREES
 int		ft_free_mlx(t_data *data);
 int		ft_free_textures(t_data *data);
+int		ft_free_bonus_textures(t_data *data);
 
 // PRINT
 void	ft_fps_in_window(t_data *data);
@@ -212,6 +223,10 @@ void	walk_back(t_data *data, double player_radius);
 void	walk_left(t_data *data, double player_radius);
 void	walk_right(t_data *data, double player_radius);
 
+// MOVE_COLLISION
+int	has_collision_x(t_data *data, double x, double rad);
+int	has_collision_y(t_data *data, double y, double rad);
+
 // MOVE_ROTATE
 void	rotate_player(t_data *data);
 void	rotate_with_mouse(t_data *data);
@@ -221,6 +236,11 @@ void	ft_event_handler(t_data *data);
 int		ft_key_press(int keysym, t_data *data);
 int		ft_key_release(int keysym, t_data *data);
 int		ft_mouse_move(int x, int y, t_data *mlx);
+
+// EVENT_UTILS
+void	toggle_minimap(t_data *data);
+void	toggle_debug(t_data *data);
+void	toggle_mouse_hide(t_data *data);
 
 // DRAW
 void		ft_draw_pixel(t_data *data, int x, int y, int color);
