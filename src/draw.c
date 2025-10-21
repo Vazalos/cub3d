@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/03 16:29:30 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/21 14:36:51 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_draw_pixel(t_data *data, int x, int y, int color)
 {
 	char	*pixel_dest;
 
-	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT )
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 	{
 		pixel_dest = data->img.pix_addr + ((y * data->img.line_len)
 				+ (x * (data->img.bpp / 8)));
