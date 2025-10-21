@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 10:39:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/20 17:20:45 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/21 14:35:37 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	calc_acceleration(t_data *data)
 		data->move.accel_f = 0;
 	
 }
+	//calc_acceleration(data);
 */
 
 void	frame_time_and_speed(t_data *data)
@@ -38,7 +39,6 @@ void	frame_time_and_speed(t_data *data)
 	data->time = ft_get_time();
 	frame_duration = (data->time - data->old_time) / 1000.0;
 	data->fps = 1 / frame_duration;
-	//calc_acceleration(data);
 	data->move.speed = frame_duration * SPEED_MOD;
 	data->move.rot = frame_duration * ROTATION_MOD;
 }

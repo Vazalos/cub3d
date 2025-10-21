@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:42:51 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/20 16:54:54 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/21 14:39:08 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	ft_fps_in_window(t_data *data)
 {
 	static double	prev_print_time;
 	static char		to_print[9];
-	
-	if (has_elapsed_time_interval(prev_print_time, data->time, 0.25) == 1 ||
-		prev_print_time == 0)
+
+	if (has_elapsed_time_interval(prev_print_time, data->time, 0.25) == 1
+		|| prev_print_time == 0)
 	{
 		prev_print_time = data->time;
 		ft_itoa_cpy(to_print, data->fps);
@@ -101,12 +101,10 @@ void	print_extra_coords(t_data *data)
 		"mousex - oldmousex = %.2f\n"
 		"ray_dir_x %.2f\nray_dir_y %.2f\n"
 		"camera_x %.2f\n"
-		"color %X OR %u\n\n"
-		,
+		"color %X OR %u\n\n",
 		data->cast.camera_x,
 		data->mouse.old_x,
 		data->mouse.old_x - data->mouse.x,
 		data->cast.ray_dir_x, data->cast.ray_dir_y,
-		data->cast.wall_color, data->cast.wall_color
-	);
+		data->cast.wall_color, data->cast.wall_color);
 }

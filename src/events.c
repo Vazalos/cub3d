@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/20 16:15:00 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/21 14:34:57 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ int	ft_key_release(int keysym, t_data *data)
 		toggle_minimap(data);
 	if (keysym == XK_n)
 		toggle_mouse_hide(data);
+	if (keysym == XK_e)
+		return (1);
 	return (1);
 }

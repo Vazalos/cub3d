@@ -6,26 +6,26 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/20 17:20:22 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/21 14:52:12 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "../libft/libft.h"
-#include "../mlx-linux/mlx.h"
-#include <X11/X.h>
-#include <X11/keysym.h>
-#include "../src/parsing/parsing.h"
+# include "../libft/libft.h"
+# include "../mlx-linux/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include "../src/parsing/parsing.h"
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <math.h>
-#include <sys/time.h>
-#include <unistd.h>
-#include <limits.h>
-#include <fcntl.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <math.h>
+# include <sys/time.h>
+# include <unistd.h>
+# include <limits.h>
+# include <fcntl.h>
 
 # define WIDTH 1280
 # define HEIGHT 720
@@ -83,8 +83,8 @@ typedef struct s_minimap
 	int		center_x;
 	int		center_y;
 	int		scale;
-	int 	start_x;
-	int 	start_y;
+	int		start_x;
+	int		start_y;
 	int		end_x;
 	int		end_y;
 	int		facing_x;
@@ -168,95 +168,99 @@ typedef struct s_data
 }	t_data;
 
 // INITS
-void	ft_init_all(t_data *data, t_map *map);
-int		ft_init_mlx(t_data *data);
-void	ft_init_values(t_data *data);
-void	ft_init_textures(t_data *data);
+void			ft_init_all(t_data *data, t_map *map);
+int				ft_init_mlx(t_data *data);
+void			ft_init_values(t_data *data);
+void			ft_init_textures(t_data *data);
 
 // MINIMAP
-void	init_minimap(t_data *data);
-void	draw_minimap(t_data *data);
-void	draw_square(t_data *data, int x, int y, unsigned int color, int alpha);
-void	draw_player_dir(t_data *data, int x0, int y0);
+void			init_minimap(t_data *data);
+void			init_minimap_textures(t_data *data);
+void			draw_minimap(t_data *data);
+void			draw_map_bg(t_data *data, int x, int y);
+void			draw_player_cursor(t_data *data, int x, int y, int size);
 
 // MINIMAP_UTILS
-unsigned int get_alpha_color(t_data *data, int target_x, int target_y,
-	unsigned int new_color);
-void	update_minimap_render(t_data *data);
+void			draw_square(t_data *data, int coords[2], unsigned int color,
+					int alpha);
+unsigned int	get_alpha_color(t_data *data, int target_x, int target_y,
+					unsigned int new_color);
+void			update_minimap_render(t_data *data);
 
 // RENDER
-int		render_frame(t_data *data);
-double	ft_get_time(void);
-int		has_elapsed_time_interval(double t1, double t2, double target);
+int				render_frame(t_data *data);
+double			ft_get_time(void);
+int				has_elapsed_time_interval(double t1, double t2, double target);
 
 // RAYCAST
-void	frame_time_and_speed(t_data *data);
-void	ft_raycast(t_data *data);
+void			frame_time_and_speed(t_data *data);
+void			ft_raycast(t_data *data);
 
 // RAYCAST_DIST
-void	get_base_coords(t_data *data, int x);
-void	dist_per_square_x(t_data *data);
-void	dist_per_square_y(t_data *data);
-void	wall_hit_dist(t_data *data);
-void	wall_height(t_data *data);
+void			get_base_coords(t_data *data, int x);
+void			dist_per_square_x(t_data *data);
+void			dist_per_square_y(t_data *data);
+void			wall_hit_dist(t_data *data);
+void			wall_height(t_data *data);
 
 //RAYCAST_TEXTURES
-void	wall_color(t_data *data, int x);
-void	wall_texture(t_data *data, int x);
-void	wall_texture_step(t_data *data, int x, int texture_x);
-void	get_wall_texture_pixel(t_data *data, int texture_x, int texture_y);
+void			wall_color(t_data *data, int x);
+void			wall_texture(t_data *data, int x);
+void			wall_texture_step(t_data *data, int x, int texture_x);
+void			get_wall_texture_pixel(t_data *data,
+					int texture_x, int texture_y);
 
 // FREES
-int		ft_free_mlx(t_data *data);
-int		ft_free_textures(t_data *data);
-int		ft_free_bonus_textures(t_data *data);
+int				ft_free_mlx(t_data *data);
+int				ft_free_textures(t_data *data);
+int				ft_free_bonus_textures(t_data *data);
 
 // PRINT
-void	ft_fps_in_window(t_data *data);
-void	print_fps(int fps);
-void	print_coords(t_data *data);
+void			ft_fps_in_window(t_data *data);
+void			print_fps(int fps);
+void			print_coords(t_data *data);
 
 // MOVE_WALK
-void	walk(t_data *data);
-void	walk_front(t_data *data, double player_radius);
-void	walk_back(t_data *data, double player_radius);
-void	walk_left(t_data *data, double player_radius);
-void	walk_right(t_data *data, double player_radius);
+void			walk(t_data *data);
+void			walk_front(t_data *data, double player_radius);
+void			walk_back(t_data *data, double player_radius);
+void			walk_left(t_data *data, double player_radius);
+void			walk_right(t_data *data, double player_radius);
 
 // MOVE_COLLISION
-int	has_collision_x(t_data *data, double x, double rad);
-int	has_collision_y(t_data *data, double y, double rad);
+int				has_collision_x(t_data *data, double x, double rad);
+int				has_collision_y(t_data *data, double y, double rad);
 
 // MOVE_ROTATE
-void	rotate_player(t_data *data);
-void	rotate_with_mouse(t_data *data);
+void			rotate_player(t_data *data);
+void			rotate_with_mouse(t_data *data);
 
 // EVENTS
-void	ft_event_handler(t_data *data);
-int		ft_key_press(int keysym, t_data *data);
-int		ft_key_release(int keysym, t_data *data);
-int		ft_mouse_move(int x, int y, t_data *mlx);
+void			ft_event_handler(t_data *data);
+int				ft_key_press(int keysym, t_data *data);
+int				ft_key_release(int keysym, t_data *data);
+int				ft_mouse_move(int x, int y, t_data *mlx);
 
 // EVENT_UTILS
-void	toggle_minimap(t_data *data);
-void	toggle_debug(t_data *data);
-void	toggle_mouse_hide(t_data *data);
+void			toggle_minimap(t_data *data);
+void			toggle_debug(t_data *data);
+void			toggle_mouse_hide(t_data *data);
 
 // DRAW
-void		ft_draw_pixel(t_data *data, int x, int y, int color);
-void		ft_draw_vertical_line(t_data *data, int x);
-void		ft_draw_crosshair(t_data *data, int x, int y);
-void		ft_draw_background(t_data *data);
+void			ft_draw_pixel(t_data *data, int x, int y, int color);
+void			ft_draw_vertical_line(t_data *data, int x);
+void			ft_draw_crosshair(t_data *data, int x, int y);
+void			ft_draw_background(t_data *data);
 
 // COLOR
 unsigned int	ft_argb_to_hex(unsigned int a, unsigned int r, unsigned int g,
-			unsigned int b);
+					unsigned int b);
 unsigned int	ft_hex_to_alpha(unsigned int hex);
 unsigned int	ft_hex_to_red(unsigned int hex);
 unsigned int	ft_hex_to_green(unsigned int hex);
 unsigned int	ft_hex_to_blue(unsigned int hex);
 
 // CLEANUP
-void	ft_free_split(char **str);
+void			ft_free_split(char **str);
 
 #endif

@@ -6,7 +6,13 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:28:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/20 12:28:47 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/21 14:55:37 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/cub3d.h"
+
+void	draw_enemies(data)
+{
+	
+}

@@ -6,11 +6,39 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:57:47 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/20 17:17:19 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/21 12:09:12 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	draw_square(t_data *data, int coords[2], unsigned int color, int alpha)
+{
+	int	i;
+	int	j;
+	int	win_x;
+	int	win_y;
+
+	win_x = data->mmap.center_x + ((coords[0] - (int)data->cast.pov_x)
+			* data->mmap.scale);
+	win_y = data->mmap.center_y + ((coords[1] - (int)data->cast.pov_y)
+			* data->mmap.scale);
+	i = 0;
+	while (i < data->mmap.scale)
+	{
+		j = 0;
+		while (j < data->mmap.scale)
+		{
+			if (alpha == 0)
+				ft_draw_pixel(data, j + win_x, i + win_y, color);
+			else
+				ft_draw_pixel(data, j + win_x, i + win_y,
+					get_alpha_color (data, j + win_x, i + win_y, color));
+			j++;
+		}
+		i++;
+	}
+}
 
 unsigned int	get_alpha_color(t_data *data, int target_x, int target_y,
 	unsigned int new_color)
