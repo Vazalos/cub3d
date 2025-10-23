@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/20 17:08:14 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/23 16:16:39 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,42 +44,42 @@ int	ft_init_mlx(t_data *data)
 
 void	ft_init_values(t_data *data)
 {
-	data->cast.pov_x = data->map->playersx;
-	data->cast.pov_y = data->map->playersy;
+	data->cast.pov.x = data->map->playersx;
+	data->cast.pov.y = data->map->playersy;
 	if (data->map->playero == 'N')
-		data->cast.dir_y = -1;
+		data->cast.dir.y = -1;
 	else if (data->map->playero == 'S')
-		data->cast.dir_y = 1;
+		data->cast.dir.y = 1;
 	else if (data->map->playero == 'E')
-		data->cast.dir_x = 1;
+		data->cast.dir.x = 1;
 	else if (data->map->playero == 'W')
-		data->cast.dir_x = -1;
-	if (data->cast.dir_y == 0)
-		data->cast.plane_y = 0.66 * (-data->cast.dir_x);
-	else if (data->cast.dir_x == 0)
-		data->cast.plane_x = -0.66 * (-data->cast.dir_y);
+		data->cast.dir.x = -1;
+	if (data->cast.dir.y == 0)
+		data->cast.plane.y = -0.66 * (-data->cast.dir.x);
+	else if (data->cast.dir.x == 0)
+		data->cast.plane.x = 0.66 * (-data->cast.dir.y);
 	data->start_time = ft_get_time();
-	data->time = data->start_time;
+	data->current_time = data->start_time;
 	data->old_time = data->start_time;
+	data->window_focus = 1;
 }
 
 void	ft_init_textures(t_data *data)
 {
-	data->texture_size = TEX_SIZE;
 	data->n_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-			"textures/no.xpm", &data->texture_size, &data->texture_size);
+			"textures/no.xpm", &data->textr_height, &data->textr_width);
 	data->n_textr.pix_addr = mlx_get_data_addr(data->n_textr.img_ptr,
 			&data->n_textr.bpp, &data->n_textr.line_len, &data->n_textr.endian);
 	data->s_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-			"textures/so.xpm", &data->texture_size, &data->texture_size);
+			"textures/so.xpm", &data->textr_height, &data->textr_width);
 	data->s_textr.pix_addr = mlx_get_data_addr(data->s_textr.img_ptr,
 			&data->s_textr.bpp, &data->s_textr.line_len, &data->s_textr.endian);
 	data->w_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-			"textures/we.xpm", &data->texture_size, &data->texture_size);
+			"textures/we.xpm", &data->textr_height, &data->textr_width);
 	data->w_textr.pix_addr = mlx_get_data_addr(data->w_textr.img_ptr,
 			&data->w_textr.bpp, &data->w_textr.line_len, &data->w_textr.endian);
 	data->e_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
-			"textures/ea.xpm", &data->texture_size, &data->texture_size);
+			"textures/ea.xpm", &data->textr_height, &data->textr_width);
 	data->e_textr.pix_addr = mlx_get_data_addr(data->e_textr.img_ptr,
 			&data->e_textr.bpp, &data->e_textr.line_len, &data->e_textr.endian);
 }

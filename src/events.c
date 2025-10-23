@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/21 14:34:57 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/23 15:43:53 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_event_handler(t_data *data)
 {
+	mlx_hook(data->mlx.window, FocusIn, FocusChangeMask, on_focus, data);
+	mlx_hook(data->mlx.window, FocusOut, FocusChangeMask, off_focus, data);
 	mlx_hook(data->mlx.window, DestroyNotify, 0, ft_free_mlx, data);
 	mlx_hook(data->mlx.window, KeyPress, KeyPressMask, ft_key_press, data);
 	mlx_hook(data->mlx.window, KeyRelease, KeyReleaseMask, ft_key_release,
@@ -23,10 +25,10 @@ void	ft_event_handler(t_data *data)
 
 int	ft_mouse_move(int x, int y, t_data *data)
 {
-	data->mouse.old_x = data->mouse.x;
-	data->mouse.y = y;
-	data->mouse.x = x;
-	data->mouse.offset_x = (data->mouse.x - (WIDTH / 2));
+	data->mouse.old_x = data->mouse.pos.x;
+	data->mouse.pos.y = y;
+	data->mouse.pos.x = x;
+	data->mouse.offset_x = (data->mouse.pos.x - (WIDTH / 2));
 	return (0);
 }
 

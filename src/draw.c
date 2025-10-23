@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/21 14:36:51 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/21 16:01:03 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void	ft_draw_background(t_data *data)
 		while (y < HEIGHT)
 		{
 			if (y < horizon)
-				ft_draw_pixel(data, x, y, SKY);
+				ft_draw_pixel(data, x, y, data->map->ceiling);
 			else
-				ft_draw_pixel(data, x, y, FLOOR);
+				ft_draw_pixel(data, x, y, data->map->floor);
 			y++;
 		}
 		x++;

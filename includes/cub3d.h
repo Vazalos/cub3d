@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/21 14:52:12 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/23 16:32:38 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,9 @@
 # define MAP_BG_SCALE 2
 # define MAP_BG_BORDER 10
 
-# define DELTA_MULT 5
-
-# define SPEED_MOD 5 //originally 5
-# define ROTATION_MOD 2.4 //originally 3
+# define SPEED_MOD 5
+# define ROTATION_MOD 2.4
+# define DELTA_MULT 30
 # define FOV 60
 
 # define SKY 0xFF87CEEB
@@ -53,6 +52,18 @@
 # define YELLOW 0xFFFFFF00
 # define INVIS 0xFF00FF
 # define SANDY 0xf7ddb0
+
+typedef struct s_coords_d
+{
+	double	x;
+	double	y;
+}	t_coords_d;
+
+typedef struct s_coords_i
+{
+	int	x;
+	int	y;
+}	t_coords_i;
 
 typedef struct s_img
 {
@@ -71,66 +82,48 @@ typedef struct s_mlx
 
 typedef struct s_mouse
 {
-	double	x;
-	double	y;
-	double	offset_x;
-	double	old_x;
+	t_coords_d	pos;
+	double		offset_x;
+	double		old_x;
 }	t_mouse;
 
 typedef struct s_minimap
 {
-	int		hide_minimap;
-	int		center_x;
-	int		center_y;
-	int		scale;
-	int		start_x;
-	int		start_y;
-	int		end_x;
-	int		end_y;
-	int		facing_x;
-	int		facing_y;
-	int		view_radius;
-	int		view_size;
-	t_img	cursor;
-	t_img	map_bg;
-	int		cursor_tex_size;
-	int		map_bg_tex_size;
+	int			hide_minimap;
+	t_coords_i	center;
+	t_coords_i	start;
+	t_coords_i	end;
+	int			scale;
+	int			view_radius;
+	int			view_size;
+	t_img		cursor;
+	t_img		map_bg;
+	int			cursor_tex_size;
+	int			map_bg_tex_size;
 }	t_mmap;
 
 typedef struct s_cast
 {
-	double	pov_x; //pov coordinates
-	double	pov_y;
-	double	dir_x; //direction from pov
-	double	dir_y;
-	double	plane_x; //perpendicular to direction
-	double	plane_y;
-	double	camera_x;
-	double	ray_dir_x;
-	double	ray_dir_y;
-	int		map_x;
-	int		map_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	perpend_wall_dist;
-	int		step_x;
-	int		step_y;
-	int		wall_hit;
-	int		side;
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
-	int		wall_color;
+	t_coords_d	pov; //pov coordinates
+	t_coords_d	dir; //direction from pov
+	t_coords_d	plane; //perpendicular to direction
+	double		camera_x;
+	t_coords_d	ray_dir;
+	t_coords_i	map;
+	t_coords_d	side_dist;
+	t_coords_d	delta_dist;
+	double		perpend_wall_dist;
+	t_coords_i	step;
+	int			wall_hit;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	int			wall_color;
 }	t_cast;
 
 typedef struct s_move
 {
-	double	accel_f;
-	double	accel_b;
-	double	accel_l;
-	double	accel_r;
 	double	speed;
 	double	rot;
 	int		front;
@@ -139,25 +132,24 @@ typedef struct s_move
 	int		right;
 	int		rot_l;
 	int		rot_r;
-	int		next_x;
-	int		next_y;
 }	t_move;
 
 typedef struct s_data
 {
+	t_mlx	mlx;
+	t_cast	cast;
 	t_img	img;
 	t_img	n_textr;
 	t_img	s_textr;
 	t_img	e_textr;
 	t_img	w_textr;
-	t_mlx	mlx;
-	t_cast	cast;
+	int		textr_height;
+	int		textr_width;
 	t_move	move;
 	t_mouse	mouse;
 	t_mmap	mmap;
-	int		texture_size;
 	double	start_time;
-	double	time;
+	double	current_time;
 	double	old_time;
 	double	frame_time;
 	int		fps;
@@ -165,6 +157,7 @@ typedef struct s_data
 	t_map	**parse_map;
 	int		print_debug_info;
 	int		mouse_hide;
+	int		window_focus;
 }	t_data;
 
 // INITS
@@ -232,8 +225,9 @@ int				has_collision_x(t_data *data, double x, double rad);
 int				has_collision_y(t_data *data, double y, double rad);
 
 // MOVE_ROTATE
-void			rotate_player(t_data *data);
+void			rotate_with_keys(t_data *data);
 void			rotate_with_mouse(t_data *data);
+void			rotation_calcs(t_data *data, double rot_mult);
 
 // EVENTS
 void			ft_event_handler(t_data *data);
@@ -245,6 +239,8 @@ int				ft_mouse_move(int x, int y, t_data *mlx);
 void			toggle_minimap(t_data *data);
 void			toggle_debug(t_data *data);
 void			toggle_mouse_hide(t_data *data);
+int				on_focus(t_data *data);
+int				off_focus(t_data *data);
 
 // DRAW
 void			ft_draw_pixel(t_data *data, int x, int y, int color);

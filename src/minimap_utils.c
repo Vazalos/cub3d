@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:57:47 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/21 12:09:12 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/23 10:58:06 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	draw_square(t_data *data, int coords[2], unsigned int color, int alpha)
 	int	win_x;
 	int	win_y;
 
-	win_x = data->mmap.center_x + ((coords[0] - (int)data->cast.pov_x)
+	win_x = data->mmap.center.x + ((coords[0] - (int)data->cast.pov.x)
 			* data->mmap.scale);
-	win_y = data->mmap.center_y + ((coords[1] - (int)data->cast.pov_y)
+	win_y = data->mmap.center.y + ((coords[1] - (int)data->cast.pov.y)
 			* data->mmap.scale);
 	i = 0;
 	while (i < data->mmap.scale)
@@ -57,8 +57,8 @@ unsigned int	get_alpha_color(t_data *data, int target_x, int target_y,
 
 void	update_minimap_render(t_data *data)
 {
-	data->mmap.start_x = (int)data->cast.pov_x - data->mmap.view_radius;
-	data->mmap.start_y = (int)data->cast.pov_y - data->mmap.view_radius;
-	data->mmap.end_x = (int)data->cast.pov_x + data->mmap.view_radius;
-	data->mmap.end_y = (int)data->cast.pov_y + data->mmap.view_radius;
+	data->mmap.start.x = (int)data->cast.pov.x - data->mmap.view_radius;
+	data->mmap.start.y = (int)data->cast.pov.y - data->mmap.view_radius;
+	data->mmap.end.x = (int)data->cast.pov.x + data->mmap.view_radius;
+	data->mmap.end.y = (int)data->cast.pov.y + data->mmap.view_radius;
 }

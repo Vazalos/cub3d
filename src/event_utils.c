@@ -6,11 +6,23 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 14:50:23 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/21 14:36:05 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/23 14:52:51 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int	on_focus(t_data *data)
+{
+	data->window_focus = 1;
+	return (0);
+}
+
+int	off_focus(t_data *data)
+{
+	data->window_focus = 0;
+	return (0);
+}
 
 void	toggle_minimap(t_data *data)
 {

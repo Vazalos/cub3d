@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/21 14:22:46 by david-fe         ###   ########.fr       */
+/*   Updated: 2025/10/23 16:12:00 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	init_minimap(t_data *data)
 	data->mmap.scale = 8;
 	data->mmap.view_radius = 9;
 	data->mmap.view_size = (2 * data->mmap.view_radius) + 1;
-	data->mmap.center_x = (data->mmap.scale * data->mmap.view_radius)
+	data->mmap.center.x = (data->mmap.scale * data->mmap.view_radius)
 		+ data->mmap.scale + MAP_BG_BORDER;
-	data->mmap.center_y = (data->mmap.scale * data->mmap.view_radius)
+	data->mmap.center.y = (data->mmap.scale * data->mmap.view_radius)
 		+ data->mmap.scale + MAP_BG_BORDER;
 	init_minimap_textures(data);
 }
@@ -51,12 +51,12 @@ void	draw_minimap(t_data *data)
 	int	coords[2];
 
 	update_minimap_render(data);
-	y = data->mmap.start_y - 1;
+	y = data->mmap.start.y - 1;
 	draw_map_bg(data, -1, -1);
-	while (++y < data->mmap.end_y)
+	while (++y < data->mmap.end.y)
 	{
-		x = data->mmap.start_x - 1;
-		while (++x < data->mmap.end_x)
+		x = data->mmap.start.x - 1;
+		while (++x < data->mmap.end.x)
 		{
 			if (x >= 0 && y >= 0 && y < data->map->max_y)
 			{
@@ -66,10 +66,12 @@ void	draw_minimap(t_data *data)
 					draw_square(data, coords, WHITE, 1);
 				else if (x < data->map->max_x[y] && data->map->map[y][x] == '1')
 					draw_square(data, coords, BLACK, 1);
+				// if (x == (int)data->cast.pov.x && y == (int)data->cast.pov.y)
+				// 	draw_square(data, coords, RED, 0);
 			}
 		}
 	}
-	draw_player_cursor(data, data->mmap.center_x, data->mmap.center_x,
+	draw_player_cursor(data, data->mmap.center.x, data->mmap.center.y,
 		data->mmap.cursor_tex_size);
 }
 
@@ -100,7 +102,7 @@ void	draw_player_cursor(t_data *data, int x, int y, int size)
 	int src_x, src_y;
 	unsigned int color;
 	int offset;
-	double angle = atan2(data->cast.dir_y, data->cast.dir_x);
+	double angle = atan2(data->cast.dir.y, data->cast.dir.x);
 
 	cx = size / 2; // center of image
 	cy = size / 2;
