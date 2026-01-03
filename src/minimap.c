@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/23 16:12:00 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/03 17:21:25 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,35 +98,26 @@ void	draw_map_bg(t_data *data, int x, int y) //26 lines
 
 void	draw_player_cursor(t_data *data, int x, int y, int size)
 {
-	int i, j, cx, cy;
-	int src_x, src_y;
-	unsigned int color;
-	int offset;
-	double angle = atan2(data->cast.dir.y, data->cast.dir.x);
-
-	cx = size / 2; // center of image
-	cy = size / 2;
-	offset = (data->mmap.scale / 2) - (size / 2);
-
-	i = 0;
-	while (i < size)
+	data->mmap.angle = atan2(data->cast.dir.y, data->cast.dir.x);
+	data->mmap.cx = size / 2; // center of image
+	data->mmap.cy = size / 2;
+	data->mmap.offset = (data->mmap.scale / 2) - (size / 2);
+	data->mmap.i = -1;
+	while (++data->mmap.i < size)
 	{
-		j = 0;
-		while (j < size)
+		data->mmap.j = -1;
+		while (++data->mmap.j < size)
 		{
-			int	rel_x = j - cx;
-			int	rel_y = i - cy;
-			src_x = (int)(cos(-angle) * rel_x - sin(-angle) * rel_y + cx);
-			src_y = (int)(sin(-angle) * rel_x + cos(-angle) * rel_y + cy);
-			if (src_x >= 0 && src_x < size && src_y >= 0 && src_y < size)
-			{
-				color = (*(unsigned int *)((data->mmap.cursor.pix_addr + src_y * data->mmap.cursor.line_len) + (src_x * (data->mmap.cursor.bpp / 8))));
-				if (color != INVIS)
-					ft_draw_pixel(data, x + offset + j, y + offset + i, color);
-			}
-			j++;
+			data->mmap.rel_x = data->mmap.j - data->mmap.cx;
+			data->mmap.rel_y = data->mmap.i - data->mmap.cy;
+			data->mmap.src_x = (int)(cos(-data->mmap.angle) * 
+				data->mmap.rel_x - sin(-data->mmap.angle) * 
+				data->mmap.rel_y + data->mmap.cx);
+			data->mmap.src_y = (int)(sin(-data->mmap.angle) * 
+				data->mmap.rel_x + cos(-data->mmap.angle) *
+				data->mmap.rel_y + data->mmap.cy);
+			draw_player_cursor_iter(data, x, y, size);
 		}
-		i++;
 	}
 }
 

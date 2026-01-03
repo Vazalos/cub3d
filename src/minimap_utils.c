@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:57:47 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/23 10:58:06 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/03 17:21:29 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,21 @@ void	update_minimap_render(t_data *data)
 	data->mmap.start.y = (int)data->cast.pov.y - data->mmap.view_radius;
 	data->mmap.end.x = (int)data->cast.pov.x + data->mmap.view_radius;
 	data->mmap.end.y = (int)data->cast.pov.y + data->mmap.view_radius;
+}
+
+
+void	draw_player_cursor_iter(t_data *data, int x, int y, int size)
+{
+	if (data->mmap.src_x >= 0 && data->mmap.src_x < size &&
+		data->mmap.src_y >= 0 && data->mmap.src_y < size)
+	{
+		data->mmap.color = (*(unsigned int *)((
+			data->mmap.cursor.pix_addr + data->mmap.src_y
+			* data->mmap.cursor.line_len) + (data->mmap.src_x
+			* (data->mmap.cursor.bpp / 8))));
+		if (data->mmap.color != INVIS)
+			ft_draw_pixel(data, x + data->mmap.offset + 
+			data->mmap.j, y + data->mmap.offset + 
+			data->mmap.i, data->mmap.color);
+	}
 }

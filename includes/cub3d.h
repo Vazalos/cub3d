@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/23 16:32:38 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/03 17:21:46 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,28 @@ typedef struct s_mouse
 
 typedef struct s_minimap
 {
-	int			hide_minimap;
-	t_coords_i	center;
-	t_coords_i	start;
-	t_coords_i	end;
-	int			scale;
-	int			view_radius;
-	int			view_size;
-	t_img		cursor;
-	t_img		map_bg;
-	int			cursor_tex_size;
-	int			map_bg_tex_size;
+	int				hide_minimap;
+	t_coords_i		center;
+	t_coords_i		start;
+	t_coords_i		end;
+	int				scale;
+	int				view_radius;
+	int				view_size;
+	t_img			cursor;
+	t_img			map_bg;
+	int				cursor_tex_size;
+	int				map_bg_tex_size;
+	int				i;
+	int				j;
+	int				cx;
+	int				cy;
+	int				src_x;
+	int				src_y;
+	unsigned int	color;
+	int				offset;
+	double			angle;
+	int				rel_x;
+	int				rel_y;
 }	t_mmap;
 
 typedef struct s_cast
@@ -179,6 +190,7 @@ void			draw_square(t_data *data, int coords[2], unsigned int color,
 unsigned int	get_alpha_color(t_data *data, int target_x, int target_y,
 					unsigned int new_color);
 void			update_minimap_render(t_data *data);
+void			draw_player_cursor_iter(t_data *data, int x, int y, int size);
 
 // RENDER
 int				render_frame(t_data *data);
