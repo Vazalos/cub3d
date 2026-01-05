@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2026/01/03 17:21:46 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/05 11:15:13 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ typedef struct s_data
 void			ft_init_all(t_data *data, t_map *map);
 int				ft_init_mlx(t_data *data);
 void			ft_init_values(t_data *data);
-void			ft_init_textures(t_data *data);
+void			ft_init_textures(t_data *data, t_map *map);
 
 // MINIMAP
 void			init_minimap(t_data *data);
