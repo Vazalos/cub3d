@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2026/01/03 17:21:25 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/05 10:54:15 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+// if (x == (int)data->cast.pov.x && y == (int)data->cast.pov.y)
+				// 	draw_square(data, coords, RED, 0);
 
 void	init_minimap(t_data *data)
 {
@@ -66,8 +69,6 @@ void	draw_minimap(t_data *data)
 					draw_square(data, coords, WHITE, 1);
 				else if (x < data->map->max_x[y] && data->map->map[y][x] == '1')
 					draw_square(data, coords, BLACK, 1);
-				// if (x == (int)data->cast.pov.x && y == (int)data->cast.pov.y)
-				// 	draw_square(data, coords, RED, 0);
 			}
 		}
 	}
@@ -99,7 +100,7 @@ void	draw_map_bg(t_data *data, int x, int y) //26 lines
 void	draw_player_cursor(t_data *data, int x, int y, int size)
 {
 	data->mmap.angle = atan2(data->cast.dir.y, data->cast.dir.x);
-	data->mmap.cx = size / 2; // center of image
+	data->mmap.cx = size / 2;
 	data->mmap.cy = size / 2;
 	data->mmap.offset = (data->mmap.scale / 2) - (size / 2);
 	data->mmap.i = -1;
@@ -110,12 +111,12 @@ void	draw_player_cursor(t_data *data, int x, int y, int size)
 		{
 			data->mmap.rel_x = data->mmap.j - data->mmap.cx;
 			data->mmap.rel_y = data->mmap.i - data->mmap.cy;
-			data->mmap.src_x = (int)(cos(-data->mmap.angle) * 
-				data->mmap.rel_x - sin(-data->mmap.angle) * 
-				data->mmap.rel_y + data->mmap.cx);
-			data->mmap.src_y = (int)(sin(-data->mmap.angle) * 
-				data->mmap.rel_x + cos(-data->mmap.angle) *
-				data->mmap.rel_y + data->mmap.cy);
+			data->mmap.src_x = (int)(cos(-data->mmap.angle) * \
+data->mmap.rel_x - sin(-data->mmap.angle) * \
+data->mmap.rel_y + data->mmap.cx);
+			data->mmap.src_y = (int)(sin(-data->mmap.angle) * \
+data->mmap.rel_x + cos(-data->mmap.angle) * \
+data->mmap.rel_y + data->mmap.cy);
 			draw_player_cursor_iter(data, x, y, size);
 		}
 	}
@@ -136,7 +137,7 @@ void	draw_player_cursor(t_data *data, int x, int y, int size)
 		j = 0;
 		while (j < size) //x
 		{
-			color = (*(unsigned int *)((data->mmap.cursor.pix_addr + i * 
+			color = (*(unsigned int *)((data->mmap.cursor.pix_addr + i *
 			data->mmap.cursor.line_len) + (j * (data->mmap.cursor.bpp / 8))));
 			if (color != INVIS)
 				ft_draw_pixel(data, x + offset + j, y + offset + i, color);
