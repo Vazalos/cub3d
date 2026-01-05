@@ -6,18 +6,19 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:15:23 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/10 13:28:18 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/05 11:13:17 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
 /**
- * @brief Checks wether or not a given character is a player spawn point('N', 'S', 'E', 'W').
+ * @brief Checks wether or not a given character is
+ *  a player spawn point('N', 'S', 'E', 'W').
  * @param to_check The tile to verify.
- * @return 1 if specified tile is a player spwan point.
+ * @return 1 if specified tile is a player spawn point.
  *
- * 0 if specified tile is not a player spwan point.
+ * 0 if specified tile is not a player spawn point.
  */
 int	is_spawn_point(char to_check)
 {
@@ -31,7 +32,7 @@ int	is_spawn_point(char to_check)
 
 /**
  * @brief Initializes all the values of the map struct.
- * @param map The struct being innitialized.
+ * @param map The struct being initialized.
  */
 void	ft_init_map(t_map *map)
 {
@@ -49,11 +50,13 @@ void	ft_init_map(t_map *map)
 /**
  * @brief Compares two strings character by character.
  *
- * The comparison stops at the first differing character or at the end of either string.
+ * The comparison stops at the first
+ *  differing character or at the end of either string.
  *
  * @param s1 The first null-terminated string.
  * @param s2 The second null-terminated string.
- * @return The difference between the ASCII values of the first differing characters.
+ * @return The difference between the ASCII
+ *  values of the first differing characters.
  * Returns 0 if both strings are equal.
  */
 int	ft_strcmp(char *s1, char *s2)
