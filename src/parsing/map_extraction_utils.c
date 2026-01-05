@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 09:57:12 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/09 14:36:11 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/05 11:02:31 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 static int	get_map_end(char **info)
 {
-    int	i;
-    int	j;
-    int	has_map_char;
+	int	i;
+	int	j;
+	int	has_map_char;
 
-    i = 0;
-    while (info[i])
-    {
-        j = 0;
-        has_map_char = 0;
-        while (info[i][j])
-        {
-            if (!is_map_char(info[i][j]))
-                return (i);
-            if (info[i][j] != ' ')
-                has_map_char = 1;
-            j++;
-        }
-        if (!has_map_char)
-            return (i);
-        i++;
-    }
-    return (i);
+	i = 0;
+	while (info[i])
+	{
+		j = 0;
+		has_map_char = 0;
+		while (info[i][j])
+		{
+			if (!is_map_char(info[i][j]))
+				return (i);
+			if (info[i][j] != ' ')
+				has_map_char = 1;
+			j++;
+		}
+		if (!has_map_char)
+			return (i);
+		i++;
+	}
+	return (i);
 }
 
 int	fill_map(char **info, t_map *map)
@@ -54,7 +54,7 @@ int	fill_map(char **info, t_map *map)
 	j = 0;
 	while (++i < end)
 	{
-		map->map[j] = ft_strdup(info[i]);;
+		map->map[j] = ft_strdup(info[i]);
 		if (!map->map[j])
 		{
 			ft_free_map(map);
