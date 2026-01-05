@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:12:19 by gumendes          #+#    #+#             */
-/*   Updated: 2025/09/25 11:05:15 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/05 10:59:28 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	invalid_file_type(char *str)
 }
 
 /**
- * @brief Prints a error message to the STDERR when the argc values is different from 2.
+ * @brief Prints a error message to the STDERR
+ *  when the argc values is different from 2.
  */
 void	invalid_arg_count(void)
 {
