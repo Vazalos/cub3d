@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:00:04 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/23 16:38:39 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/05 10:57:46 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	rotation_calcs(t_data *data, double rot_mult)
 {
 	double	old_dir_x;
 	double	old_plane_x;
-	
+
 	rot_mult = -rot_mult;
 	old_dir_x = data->cast.dir.x;
 	old_plane_x = data->cast.plane.x;
