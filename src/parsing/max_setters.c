@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   max_setters.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 13:27:22 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/14 16:18:44 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/05 11:17:16 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,20 @@ void	max_y_setter(t_map *map)
 
 	width = get_max_width(map->map);
 	max_height = 0;
-	// map->max_y = malloc(sizeof(int) * (width + 1));
-	// if (!map->max_y)
-	// 	return ;
 	x = -1;
 	while (++x < width)
-	 {
-        height = 0;
-        y = 0;
-        while (map->map[y])
-        {
-            // Check if row y has a character at column x and it's not null terminator
-            if (map->map[y][x] != '\0')
-                height++;
-            y++;
-        }
-        if (height > max_height)
-            max_height = height;
-    }
+	{
+		height = 0;
+		y = 0;
+		while (map->map[y])
+		{
+			if (map->map[y][x] != '\0')
+				height++;
+			y++;
+		}
+		if (height > max_height)
+			max_height = height;
+	}
 	map->max_y = max_height;
 }
 

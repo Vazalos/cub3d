@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 12:27:29 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/09 14:42:24 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/05 11:09:54 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,8 @@ static int	check_invalid_char(char **map)
 		}
 		i++;
 	}
-	if (spawn_count == 0)
-	{
-		printf("Error: No spawn point found in map\n");
-		return (1);
-	}
-	if (spawn_count > 1)
-	{
-		printf("Error: Multiple spawn points found in map (%d)\n", spawn_count);
-		return (1);
-	}
+	if (spawn_count != 1)
+		return (invalid_spawn(spawn_count), 1);
 	return (0);
 }
 

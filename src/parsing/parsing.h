@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:14:54 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/15 10:47:02 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/05 11:18:22 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
-#define PARSING_H
+# define PARSING_H
 
 typedef struct s_map
 {
@@ -27,7 +27,7 @@ typedef struct s_map
 	char			playero;
 	int				*max_x;
 	int				max_y;
-} t_map;
+}	t_map;
 
 // file_data_extraction //
 int		is_map(char **info, t_map *map);
@@ -68,6 +68,7 @@ void	invalid_file_type(char *str);
 void	invalid_arg_count(void);
 void	missing_info(void);
 void	map_error(void);
+void	invalid_spawn(int type);
 
 // parsing_utils //
 int		is_spawn_point(char to_check);
