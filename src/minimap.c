@@ -6,14 +6,11 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:52:41 by david-fe          #+#    #+#             */
-/*   Updated: 2026/01/05 10:54:15 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/05 10:57:29 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-// if (x == (int)data->cast.pov.x && y == (int)data->cast.pov.y)
-				// 	draw_square(data, coords, RED, 0);
 
 void	init_minimap(t_data *data)
 {
@@ -123,6 +120,10 @@ data->mmap.rel_y + data->mmap.cy);
 }
 
 /*
+
+if (x == (int)data->cast.pov.x && y == (int)data->cast.pov.y)
+				// 	draw_square(data, coords, RED, 0);
+
 void	draw_player_cursor(t_data *data, int x, int y, int size)
 {
 	int i;
