@@ -6,16 +6,16 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:41:26 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/09 14:33:22 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/05 11:01:10 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int is_map_char_only(char *line)
+int	is_map_char_only(char *line)
 {
-	int i;
-	int found;
+	int	i;
+	int	found;
 
 	i = 0;
 	found = 0;
@@ -23,10 +23,10 @@ int is_map_char_only(char *line)
 		return (0);
 	while (line[i])
 	{
-		if (line[i] == '0' || line[i] == '1' ||
-			line[i] == 'N' || line[i] == 'S' ||
-			line[i] == 'E' || line[i] == 'W' ||
-			line[i] == ' ')
+		if (line[i] == '0' || line[i] == '1' || \
+line[i] == 'N' || line[i] == 'S' || \
+line[i] == 'E' || line[i] == 'W' || \
+line[i] == ' ')
 			found = 1;
 		else
 			return (0);
