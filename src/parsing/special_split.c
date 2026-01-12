@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 16:09:24 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/12 16:13:52 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:55:36 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static int	word_count(const char *s, char delim)
 	return (count);
 }
 
-/* Fills the array with words, creating empty strings for consecutive delimiters */
+/* Fills the array with words, creating empty
+ strings for consecutive delimiters */
 static char	**split_words(char **res, const char *s, char delim)
 {
 	int	i;
