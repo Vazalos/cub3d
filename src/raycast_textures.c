@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 14:06:15 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/23 11:05:46 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/05 11:24:20 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,19 +76,19 @@ void	wall_texture_step(t_data *data, int x, int texture_x)
 void	get_wall_texture_pixel(t_data *data, int texture_x, int texture_y)
 {
 	if (data->cast.side == 1 && data->cast.ray_dir.y < 0)
-		data->cast.wall_color = *(unsigned int *)(data->n_textr.pix_addr
+		data->cast.wall_color = *(unsigned int *)(data->s_textr.pix_addr
 				+ texture_y * data->n_textr.line_len
 				+ texture_x * (data->n_textr.bpp / 8));
 	else if (data->cast.side == 1 && data->cast.ray_dir.y >= 0)
-		data->cast.wall_color = *(unsigned int *)(data->s_textr.pix_addr
+		data->cast.wall_color = *(unsigned int *)(data->n_textr.pix_addr
 				+ texture_y * data->s_textr.line_len
 				+ texture_x * (data->s_textr.bpp / 8));
 	else if (data->cast.side == 0 && data->cast.ray_dir.x < 0)
-		data->cast.wall_color = *(unsigned int *)(data->w_textr.pix_addr
+		data->cast.wall_color = *(unsigned int *)(data->e_textr.pix_addr
 				+ texture_y * data->w_textr.line_len
 				+ texture_x * (data->w_textr.bpp / 8));
 	else if (data->cast.side == 0 && data->cast.ray_dir.x >= 0)
-		data->cast.wall_color = *(unsigned int *)(data->e_textr.pix_addr
+		data->cast.wall_color = *(unsigned int *)(data->w_textr.pix_addr
 				+ texture_y * data->e_textr.line_len
 				+ texture_x * (data->e_textr.bpp / 8));
 }

@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2026/01/03 17:21:46 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:35:02 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,22 +175,7 @@ typedef struct s_data
 void			ft_init_all(t_data *data, t_map *map);
 int				ft_init_mlx(t_data *data);
 void			ft_init_values(t_data *data);
-void			ft_init_textures(t_data *data);
-
-// MINIMAP
-void			init_minimap(t_data *data);
-void			init_minimap_textures(t_data *data);
-void			draw_minimap(t_data *data);
-void			draw_map_bg(t_data *data, int x, int y);
-void			draw_player_cursor(t_data *data, int x, int y, int size);
-
-// MINIMAP_UTILS
-void			draw_square(t_data *data, int coords[2], unsigned int color,
-					int alpha);
-unsigned int	get_alpha_color(t_data *data, int target_x, int target_y,
-					unsigned int new_color);
-void			update_minimap_render(t_data *data);
-void			draw_player_cursor_iter(t_data *data, int x, int y, int size);
+void			ft_init_textures(t_data *data, t_map *map);
 
 // RENDER
 int				render_frame(t_data *data);
@@ -270,5 +255,28 @@ unsigned int	ft_hex_to_blue(unsigned int hex);
 
 // CLEANUP
 void			ft_free_split(char **str);
+
+// [[ BONUS ]] //
+
+// RENDER_BONUS
+int				render_frame_bonus(t_data *data);
+void			ft_raycast_bonus(t_data *data);
+void			ft_init_all_bonus(t_data *data, t_map *map);
+void			rotate_with_mouse(t_data *data);
+
+// MINIMAP_BONUS
+void			init_minimap(t_data *data);
+void			init_minimap_textures(t_data *data);
+void			draw_minimap(t_data *data);
+void			draw_map_bg(t_data *data, int x, int y);
+void			draw_player_cursor(t_data *data, int x, int y, int size);
+
+// MINIMAP_UTILS
+void			draw_square(t_data *data, int coords[2], unsigned int color,
+					int alpha);
+unsigned int	get_alpha_color(t_data *data, int target_x, int target_y,
+					unsigned int new_color);
+void			update_minimap_render(t_data *data);
+void			draw_player_cursor_iter(t_data *data, int x, int y, int size);
 
 #endif

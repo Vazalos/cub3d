@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:00:04 by david-fe          #+#    #+#             */
-/*   Updated: 2026/01/05 10:57:46 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:03:45 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,6 @@ void	rotate_with_keys(t_data *data)
 		dir = -1;
 	if (dir != 0)
 		rotation_calcs(data, dir);
-}
-
-void	rotate_with_mouse(t_data *data)
-{
-	double	mouse_ratio;
-	double	mouse_delta;
-
-	mouse_delta = data->mouse.pos.x - data->mouse.old_x;
-	mouse_ratio = (-data->mouse.offset_x / (WIDTH / 2))
-		* DELTA_MULT - (mouse_delta / (WIDTH * 4));
-	rotation_calcs(data, mouse_ratio);
-	mlx_mouse_move(data->mlx.mlx_ptr, data->mlx.window, WIDTH / 2, HEIGHT / 2);
 }
 
 void	rotation_calcs(t_data *data, double rot_mult)
