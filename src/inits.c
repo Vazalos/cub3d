@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2026/01/05 11:16:42 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:28:03 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_init_all(t_data *data, t_map *map)
 	ft_init_mlx(data);
 	ft_init_values(data);
 	ft_init_textures(data, map);
-	init_minimap(data);
 }
 
 int	ft_init_mlx(t_data *data)

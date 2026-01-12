@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 10:39:46 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/23 16:33:20 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:34:03 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,4 @@ void	ft_raycast(t_data *data)
 	frame_time_and_speed(data);
 	walk(data);
 	rotate_with_keys(data);
-	if (data->window_focus == 1)
-		rotate_with_mouse(data);
-	if (data->mmap.hide_minimap == 0)
-		draw_minimap(data);
 }

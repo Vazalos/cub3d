@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+         #
+#    By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2025/10/20 17:21:30 by david-fe         ###   ########.fr        #
+#    Updated: 2026/01/12 14:32:15 by david-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ INCLUDES    =   -I$(INCLUDE_PATH) -I$(LIBFT_PATH) -I/usr/include -I$(MLX_PATH)
 #==============================================================================#
 
 NAME		=	cub3d
+NAME_BONUS	=	cub3d_bonus
 
 #==============================================================================#
 #                                  SOURCE AND OBJECT FILES                     #
@@ -65,10 +66,21 @@ SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl
 							scene_extraction_utils.c t_map_info_setters.c texture_extraction_utils.c max_setters.c)
 
 SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c color_utils.c render.c print.c \
-							move_walk.c move_collision.c move_rotate.c raycast_dist.c cleanup.c minimap.c \
-							raycast.c raycast_textures.c minimap_utils.c event_utils.c enemies.c $(SRC_PARSING))
+							move_walk.c move_collision.c move_rotate.c raycast_dist.c cleanup.c \
+							raycast.c raycast_textures.c event_utils.c enemies.c $(SRC_PARSING))
 
 OBJ         =   $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
+
+#==============================================================================#
+#                                  BONUS FILES                                 #
+#==============================================================================#
+
+BONUS_SRC = $(addprefix $(SRC_PATH)/, main_bonus.c render_bonus.c minimap_bonus.c minimap_utils_bonus.c \
+							inits.c frees.c events.c draw.c color_utils.c render.c print.c \
+							move_walk.c move_collision.c move_rotate.c raycast_dist.c cleanup.c \
+							raycast.c raycast_textures.c event_utils.c enemies.c $(SRC_PARSING))
+
+BONUS_OBJ         =   $(BONUS_SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
 #==============================================================================#
 #                                  RULES                                       #
@@ -104,6 +116,9 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 # Build the cub3d program
 $(NAME): $(LIBFT) $(MLX) $(OBJ)
 	@$(CC) $(CFLAGS) $(LINK_FLAGS) $(INCLUDES) -o $(NAME) $(OBJ) $(LIBFT) $(MLX)
+
+bonus: $(LIBFT) $(MLX) $(BONUS_OBJ)
+	@$(CC) $(CFLAGS) $(LINK_FLAGS) $(INCLUDES) -o $(NAME_BONUS) $(BONUS_OBJ) $(LIBFT) $(MLX)
 
 l: all
 	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
