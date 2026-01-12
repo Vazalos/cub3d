@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+         #
+#    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2026/01/12 14:32:15 by david-fe         ###   ########.fr        #
+#    Updated: 2026/01/12 14:42:46 by gumendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,6 +140,11 @@ fclean: clean
 		then echo "$(RED)[REMOVED EXECUTABLE]$(END)"; \
 		$(RM) $(NAME) ; \
 		else echo "$(YEL)[EXECUTABLE ALREADY CLEANED]$(END)"; \
+	fi
+	@if [ -f "$(NAME_BONUS)" ]; \
+		then echo "$(RED)[REMOVED BONUS EXECUTABLE]$(END)"; \
+		$(RM) $(NAME_BONUS) ; \
+		else echo "$(YEL)[BONUS EXECUTABLE ALREADY CLEANED]$(END)"; \
 	fi
 	@if [ -d "$(LIBFT_PATH)" ]; \
 		then echo "$(RED)[REMOVED LIBFT]$(END)"; \
