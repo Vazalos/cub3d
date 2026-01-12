@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:14:54 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/05 11:18:22 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:17:10 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	invalid_arg_count(void);
 void	missing_info(void);
 void	map_error(void);
 void	invalid_spawn(int type);
+void	invalid_termination(void);
 
 // parsing_utils //
 int		is_spawn_point(char to_check);

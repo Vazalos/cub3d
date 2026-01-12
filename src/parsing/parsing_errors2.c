@@ -6,11 +6,16 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:33:58 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/05 11:09:54 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:17:48 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	invalid_termination(void)
+{
+	ft_putstr_fd("Error: Invalid file termination\n", 2);
+}
 
 void	invalid_spawn(int type)
 {

@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:15:23 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/05 11:13:17 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:20:35 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ void	ft_init_map(t_map *map)
 	map->floor = UINT_MAX;
 	map->playersx = -1;
 	map->playersy = -1;
-	map->ea = NULL;
-	map->no = NULL;
-	map->so = NULL;
-	map->we = NULL;
-	map->map = NULL;
 }
 
 /**

@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 10:46:36 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/09 14:43:36 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:15:14 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	info_setter(char *info, t_map *map)
 {
 	char	**tmp;
 	int		i;
+	int		check;
 
 	tmp = ft_split(info, '\n');
 	i = -1;
@@ -27,9 +28,10 @@ int	info_setter(char *info, t_map *map)
 			continue ;
 		else if (!is_scene(tmp[i], map))
 			continue ;
-		if (!is_map(tmp + i, map))
+		check = is_map(tmp + i, map);
+		if (check <= 0)
 		{
-			if (check_map(map))
+			if (check < 0 || check_map(map))
 				return (ft_free_split(tmp), 1);
 			return (ft_free_split(tmp), 0);
 		}

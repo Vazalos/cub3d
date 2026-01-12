@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42.com>         +#+  +:+       +#+        */
+/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 12:53:20 by david-fe          #+#    #+#             */
-/*   Updated: 2025/10/21 17:05:07 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:21:12 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int	main(int ac, char **av)
 	t_map	*map;
 
 	map = malloc(sizeof(t_map));
+	if (!map)
+		return (1);
+	ft_bzero(map, sizeof(t_map));
 	if (parse(ac, av, map))
 		return (ft_free_map(map), 1);
 	ft_init_all(&data, map);
