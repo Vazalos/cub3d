@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 09:57:12 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/12 14:17:01 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:41:25 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	has_trailing_content(char **info, int end)
 		while (info[i][j])
 		{
 			if (!is_map_char(info[i][j]))
-				return (invalid_termination() ,1);
+				return (invalid_termination(), 1);
 			j++;
 		}
 		i++;
