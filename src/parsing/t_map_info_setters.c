@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 10:46:36 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/12 14:15:14 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:22:24 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	info_setter(char *info, t_map *map)
 	int		i;
 	int		check;
 
-	tmp = ft_split(info, '\n');
+	tmp = ft_special_split(info, '\n');
 	i = -1;
 	while (tmp[++i])
 	{
-		if (!ft_strcmp(tmp[i], "\n"))
+		if (!tmp[i] || !*tmp[i])
 			continue ;
 		if (!is_texture(tmp[i], map))
 			continue ;

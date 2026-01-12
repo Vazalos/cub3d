@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:14:54 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/12 14:17:10 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:13:25 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ int		ft_strcmp(char *s1, char *s2);
 
 // scene_extraction_utils //
 int		scene_setter(char *type, char *values, t_map *map);
+
+// special_split //
+char	**ft_special_split(const char *s, char delim);
 
 // texture_extraction_utils //
 int		texture_setter(char *type, char *line, t_map *map);

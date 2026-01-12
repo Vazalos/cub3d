@@ -6,7 +6,7 @@
 #    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2026/01/12 14:42:46 by gumendes         ###   ########.fr        #
+#    Updated: 2026/01/12 16:13:49 by gumendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ NAME_BONUS	=	cub3d_bonus
 
 SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl.c map_extraction_utils.c \
 							map_validation.c parsing_cleanup.c parsing_errors.c parsing_errors2.c parsing_utils.c \
-							scene_extraction_utils.c t_map_info_setters.c texture_extraction_utils.c max_setters.c)
+							scene_extraction_utils.c t_map_info_setters.c texture_extraction_utils.c max_setters.c special_split.c)
 
 SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c color_utils.c render.c print.c \
 							move_walk.c move_collision.c move_rotate.c raycast_dist.c cleanup.c \
