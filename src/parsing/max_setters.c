@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 13:27:22 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/05 11:17:16 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/12 13:22:06 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,61 +30,35 @@ static int	get_max_width(char **map)
 }
 
 /**
- * @brief Sets per collumn height.
+ * @brief Sets per column height.
  * @param map The struct with all the required data.
  */
 void	max_y_setter(t_map *map)
 {
-	int	y;
 	int	x;
-	int	height;
-	int	width;
+	int	y;
+	int	len;
 	int	max_height;
 
-	width = get_max_width(map->map);
+	x = 0;
 	max_height = 0;
-	x = -1;
-	while (++x < width)
+	while (x < get_max_width(map->map))
 	{
-		height = 0;
 		y = 0;
 		while (map->map[y])
 		{
-			if (map->map[y][x] != '\0')
-				height++;
+			len = ft_strlen(map->map[y]);
+			if (x < len)
+			{
+				if (y + 1 > max_height)
+					max_height = y + 1;
+			}
 			y++;
 		}
-		if (height > max_height)
-			max_height = height;
+		x++;
 	}
 	map->max_y = max_height;
 }
-
-// void	max_y_setter(t_map *map)
-// {
-// 	int	y;
-// 	int	x;
-// 	int	height;
-// 	int	width;
-
-// 	if (!map || !map->map)
-// 		return ;
-// 	width = get_max_width(map->map);
-// 	map->max_y = malloc(sizeof(int) * (width + 1));
-// 	if (!map->max_y)
-// 		return ;
-// 	x = -1;
-// 	while (++x < width)
-// 	{
-// 		height = 0;
-// 		y = -1;
-// 		while (map->map[++y])
-// 			if (map->map[y][x])
-// 				height++;
-// 		map->max_y[x] = height;
-// 	}
-// 	map->max_y[x] = 0;
-// }
 
 /**
  * @brief Sets per row the width.
