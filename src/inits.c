@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2026/01/12 14:28:03 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/13 15:58:31 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,36 @@ void	ft_init_textures(t_data *data, t_map *map)
 {
 	data->n_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
 			map->no, &data->textr_height, &data->textr_width);
-	data->n_textr.pix_addr = mlx_get_data_addr(data->n_textr.img_ptr,
-			&data->n_textr.bpp, &data->n_textr.line_len, &data->n_textr.endian);
 	data->s_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
 			map->so, &data->textr_height, &data->textr_width);
-	data->s_textr.pix_addr = mlx_get_data_addr(data->s_textr.img_ptr,
-			&data->s_textr.bpp, &data->s_textr.line_len, &data->s_textr.endian);
 	data->w_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
 			map->we, &data->textr_height, &data->textr_width);
-	data->w_textr.pix_addr = mlx_get_data_addr(data->w_textr.img_ptr,
-			&data->w_textr.bpp, &data->w_textr.line_len, &data->w_textr.endian);
 	data->e_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
 			map->ea, &data->textr_height, &data->textr_width);
+	if(data->n_textr.img_ptr && data->s_textr.img_ptr && data->w_textr.img_ptr
+		&& data->e_textr.img_ptr)
+		ft_init_texture_addresses(data);
+	else
+	{
+		ft_putstr_fd("Error: Invalid texture(s)\n", 2);
+		ft_free_mlx(data);
+	}
+}
+
+void	ft_init_texture_addresses(t_data *data)
+{
+	data->n_textr.pix_addr = mlx_get_data_addr(data->n_textr.img_ptr,
+			&data->n_textr.bpp, &data->n_textr.line_len, &data->n_textr.endian);
+	data->s_textr.pix_addr = mlx_get_data_addr(data->s_textr.img_ptr,
+			&data->s_textr.bpp, &data->s_textr.line_len, &data->s_textr.endian);
+	data->w_textr.pix_addr = mlx_get_data_addr(data->w_textr.img_ptr,
+			&data->w_textr.bpp, &data->w_textr.line_len, &data->w_textr.endian);
 	data->e_textr.pix_addr = mlx_get_data_addr(data->e_textr.img_ptr,
 			&data->e_textr.bpp, &data->e_textr.line_len, &data->e_textr.endian);
-}
+	if (!data->n_textr.pix_addr || !data->s_textr.pix_addr
+		|| !data->w_textr.pix_addr || !data->e_textr.pix_addr)
+	{
+		ft_putstr_fd("Error: Invalid texture(s)\n", 2);
+		ft_free_mlx(data);
+	}
+}		

@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2026/01/13 11:48:06 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/13 15:58:40 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ void			ft_init_all(t_data *data, t_map *map);
 int				ft_init_mlx(t_data *data);
 void			ft_init_values(t_data *data);
 void			ft_init_textures(t_data *data, t_map *map);
+void			ft_init_texture_addresses(t_data *data);
 
 // RENDER
 int				render_frame(t_data *data);

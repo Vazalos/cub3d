@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 14:06:15 by david-fe          #+#    #+#             */
-/*   Updated: 2026/01/05 11:24:20 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/13 13:45:14 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	wall_texture_step(t_data *data, int x, int texture_x)
 	}
 }
 
-//N S W E
+//S N E W
 void	get_wall_texture_pixel(t_data *data, int texture_x, int texture_y)
 {
 	if (data->cast.side == 1 && data->cast.ray_dir.y < 0)
