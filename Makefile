@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
+#    By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2026/01/12 16:13:49 by gumendes         ###   ########.fr        #
+#    Updated: 2026/01/13 11:36:38 by david-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,6 @@ INCLUDES    =   -I$(INCLUDE_PATH) -I$(LIBFT_PATH) -I/usr/include -I$(MLX_PATH)
 #==============================================================================#
 
 NAME		=	cub3d
-NAME_BONUS	=	cub3d_bonus
 
 #==============================================================================#
 #                                  SOURCE AND OBJECT FILES                     #
@@ -67,7 +66,7 @@ SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl
 
 SRC = $(addprefix $(SRC_PATH)/, main.c inits.c frees.c events.c draw.c color_utils.c render.c print.c \
 							move_walk.c move_collision.c move_rotate.c raycast_dist.c cleanup.c \
-							raycast.c raycast_textures.c event_utils.c enemies.c $(SRC_PARSING))
+							raycast.c raycast_textures.c event_utils.c $(SRC_PARSING))
 
 OBJ         =   $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
@@ -78,7 +77,7 @@ OBJ         =   $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 BONUS_SRC = $(addprefix $(SRC_PATH)/, main_bonus.c render_bonus.c minimap_bonus.c minimap_utils_bonus.c \
 							inits.c frees.c events.c draw.c color_utils.c render.c print.c \
 							move_walk.c move_collision.c move_rotate.c raycast_dist.c cleanup.c \
-							raycast.c raycast_textures.c event_utils.c enemies.c $(SRC_PARSING))
+							raycast.c raycast_textures.c event_utils.c $(SRC_PARSING))
 
 BONUS_OBJ         =   $(BONUS_SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
@@ -118,7 +117,7 @@ $(NAME): $(LIBFT) $(MLX) $(OBJ)
 	@$(CC) $(CFLAGS) $(LINK_FLAGS) $(INCLUDES) -o $(NAME) $(OBJ) $(LIBFT) $(MLX)
 
 bonus: $(LIBFT) $(MLX) $(BONUS_OBJ)
-	@$(CC) $(CFLAGS) $(LINK_FLAGS) $(INCLUDES) -o $(NAME_BONUS) $(BONUS_OBJ) $(LIBFT) $(MLX)
+	@$(CC) $(CFLAGS) $(LINK_FLAGS) $(INCLUDES) -o $(NAME) $(BONUS_OBJ) $(LIBFT) $(MLX)
 
 l: all
 	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
@@ -140,11 +139,6 @@ fclean: clean
 		then echo "$(RED)[REMOVED EXECUTABLE]$(END)"; \
 		$(RM) $(NAME) ; \
 		else echo "$(YEL)[EXECUTABLE ALREADY CLEANED]$(END)"; \
-	fi
-	@if [ -f "$(NAME_BONUS)" ]; \
-		then echo "$(RED)[REMOVED BONUS EXECUTABLE]$(END)"; \
-		$(RM) $(NAME_BONUS) ; \
-		else echo "$(YEL)[BONUS EXECUTABLE ALREADY CLEANED]$(END)"; \
 	fi
 	@if [ -d "$(LIBFT_PATH)" ]; \
 		then echo "$(RED)[REMOVED LIBFT]$(END)"; \
