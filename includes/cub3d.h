@@ -6,7 +6,7 @@
 /*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:42 by david-fe          #+#    #+#             */
-/*   Updated: 2026/01/12 14:35:02 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/13 11:48:06 by david-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
 # define MAP_BG_SCALE 2
 # define MAP_BG_BORDER 10
 
-# define SPEED_MOD 5
-# define ROTATION_MOD 2.4
+# define SPEED_MOD 4
+# define ROTATION_MOD 3
 # define DELTA_MULT 30
 # define FOV 60
 
