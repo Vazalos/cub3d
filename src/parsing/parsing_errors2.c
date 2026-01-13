@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:33:58 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/12 14:17:48 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/13 12:04:27 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	invalid_spawn(int type)
  */
 void	missing_info(void)
 {
-	ft_putstr_fd("Error: missing required startup information\n", 2);
+	ft_putstr_fd("Error: Missing or incorrect required", 2);
+	ft_putstr_fd(" startup information\n", 2);
 }
 
 /**

@@ -6,22 +6,11 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:12:19 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/05 10:59:28 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/13 11:58:54 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-/**
- * @brief Prints a error message to the STDERR when the
- *  given rgb value of the floor/ceiling is invalid.
- */
-void	invalid_rgb_val(char *value)
-{
-	ft_putstr_fd("Error: The provided value: ", 2);
-	ft_putstr_fd(value, 2);
-	ft_putstr_fd(" is outside of the conventional rgb range (0-255)\n", 2);
-}
 
 /**
  * @brief Prints a error message to the STDERR when trying to define
