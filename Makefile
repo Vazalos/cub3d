@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+         #
+#    By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 14:49:08 by david-fe          #+#    #+#              #
-#    Updated: 2026/01/13 11:36:38 by david-fe         ###   ########.fr        #
+#    Updated: 2026/01/13 14:31:31 by gumendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CC			=	cc
 RM			=	rm -rf
 CFLAGS		=	-Wall -Wextra -Werror -g
 LINK_FLAGS	=	-lXext -lX11 -lm
-O_FLAG		=	0 
+O_FLAG		=	0
 
 #==============================================================================#
 #                                  PATHS       					               #
@@ -54,13 +54,13 @@ INCLUDES    =   -I$(INCLUDE_PATH) -I$(LIBFT_PATH) -I/usr/include -I$(MLX_PATH)
 #                                  PROJECT NAME                                #
 #==============================================================================#
 
-NAME		=	cub3d
+NAME		=	cub3D
 
 #==============================================================================#
 #                                  SOURCE AND OBJECT FILES                     #
 #==============================================================================#
 
-SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl.c map_extraction_utils.c \
+SRC_PARSING = $(addprefix parsing/, file_data_extraction.c file_validation.c gnl.c map_extraction_utils.c flood_fill.c\
 							map_validation.c parsing_cleanup.c parsing_errors.c parsing_errors2.c parsing_utils.c \
 							scene_extraction_utils.c t_map_info_setters.c texture_extraction_utils.c max_setters.c special_split.c)
 

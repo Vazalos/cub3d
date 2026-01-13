@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 12:27:29 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/12 16:20:05 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/13 14:18:17 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,6 @@ static int	check_invalid_char(char **map)
 	}
 	if (spawn_count != 1)
 		return (invalid_spawn(spawn_count), 1);
-	return (0);
-}
-
-static int	flood_fill(int x, int y, char **map)
-{
-	if (y < 0 || !map[y] || x < 0 || x >= (int)ft_strlen(map[y])
-		|| map[y][x] == ' ')
-		return (1);
-	if (map[y][x] == '1' || map[y][x] == 'F')
-		return (0);
-	map[y][x] = 'F';
-	if (flood_fill(x - 1, y, map))
-		return (1);
-	if (flood_fill(x + 1, y, map))
-		return (1);
-	if (flood_fill(x, y - 1, map))
-		return (1);
-	if (flood_fill(x, y + 1, map))
-		return (1);
 	return (0);
 }
 
@@ -108,7 +89,7 @@ static int	invalid_map(char **map)
 		}
 	}
 	dup_map = map_duper(map);
-	if (flood_fill(x, y, dup_map))
+	if (flood_fill(x, y - 1, dup_map, map_width(map), map_height(map)))
 		return (ft_free_split(dup_map), 1);
 	return (ft_free_split(dup_map), 0);
 }

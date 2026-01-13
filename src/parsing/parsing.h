@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:14:54 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/13 11:58:53 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/13 14:21:09 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ char	*extract_information(int fd);
 int		parse(int ac, char **av, t_map *map);
 int		validate_input(char *file);
 int		content_validation(char *file, t_map *map);
+
+// flood_fill//
+int		flood_fill(int x, int y, char **map, int w, int h);
+int		map_width(char **map);
+int		map_height(char **map);
 
 // gnl //
 char	*gnl(int fd);
