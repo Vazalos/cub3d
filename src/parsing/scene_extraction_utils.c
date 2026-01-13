@@ -6,11 +6,36 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 09:24:41 by gumendes          #+#    #+#             */
-/*   Updated: 2025/10/08 11:34:55 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/13 12:04:57 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+static int	is_valid_scene(char **rgb)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (rgb[i])
+		i++;
+	if (i > 3)
+		return (0);
+	i = 0;
+	while (rgb[i])
+	{
+		j = 0;
+		while (rgb[i][j])
+		{
+			if (ft_isalpha(rgb[i][j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
 
 static int	scene_checker(char *values)
 {
@@ -18,12 +43,13 @@ static int	scene_checker(char *values)
 	size_t	i;
 
 	tmp = ft_split(values, ',');
+	if (!is_valid_scene(tmp))
+		return (ft_free_split(tmp), 1);
 	i = 0;
 	while (tmp[i])
 	{
 		if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 255)
 		{
-			invalid_rgb_val(tmp[i]);
 			ft_free_split(tmp);
 			return (1);
 		}

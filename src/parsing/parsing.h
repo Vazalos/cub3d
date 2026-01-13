@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 11:14:54 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/12 16:13:25 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/13 11:58:53 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int		info_setter(char *info, t_map *map);
 void	ft_free_map(t_map *map);
 
 // parsing_errors\2 //
-void	invalid_rgb_val(char *value);
 void	init_error(char *str);
 void	nonexistant_file(void);
 void	invalid_file_type(char *str);
