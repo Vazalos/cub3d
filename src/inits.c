@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david-fe <david-fe@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:32:52 by david-fe          #+#    #+#             */
-/*   Updated: 2026/01/13 15:58:31 by david-fe         ###   ########.fr       */
+/*   Updated: 2026/01/19 11:15:05 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_init_textures(t_data *data, t_map *map)
 			map->we, &data->textr_height, &data->textr_width);
 	data->e_textr.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
 			map->ea, &data->textr_height, &data->textr_width);
-	if(data->n_textr.img_ptr && data->s_textr.img_ptr && data->w_textr.img_ptr
+	if (data->n_textr.img_ptr && data->s_textr.img_ptr && data->w_textr.img_ptr
 		&& data->e_textr.img_ptr)
 		ft_init_texture_addresses(data);
 	else
@@ -99,4 +99,4 @@ void	ft_init_texture_addresses(t_data *data)
 		ft_putstr_fd("Error: Invalid texture(s)\n", 2);
 		ft_free_mlx(data);
 	}
-}		
+}

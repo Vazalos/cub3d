@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 13:38:37 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/13 14:21:09 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/19 11:17:35 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,14 @@ int	map_height(char **map)
 	return (i);
 }
 
-int	flood_fill(int x, int y, char **map, int w, int h)
+int	flood_fill(int x, int y, char **map)
 {
-	if (x < 0 || y < 0 || y >= h || x >= w )
+	int	w;
+	int	h;
+
+	w = (map_width(map));
+	h = (map_height(map));
+	if (x < 0 || y < 0 || y >= h || x >= w)
 		return (1);
 	if ((int)ft_strlen(map[y]) <= x)
 		return (1);
@@ -53,13 +58,13 @@ int	flood_fill(int x, int y, char **map, int w, int h)
 	if (x == 0 || y == 0 || x == w - 1 || y == h - 1)
 		return (1);
 	map[y][x] = 'F';
-	if (flood_fill(x - 1, y, map, w, h))
+	if (flood_fill(x - 1, y, map))
 		return (1);
-	if (flood_fill(x + 1, y, map, w, h))
+	if (flood_fill(x + 1, y, map))
 		return (1);
-	if (flood_fill(x, y - 1, map, w, h))
+	if (flood_fill(x, y - 1, map))
 		return (1);
-	if (flood_fill(x, y + 1, map, w, h))
+	if (flood_fill(x, y + 1, map))
 		return (1);
 	return (0);
 }

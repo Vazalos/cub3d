@@ -6,7 +6,7 @@
 /*   By: gumendes <gumendes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 12:27:29 by gumendes          #+#    #+#             */
-/*   Updated: 2026/01/13 14:18:17 by gumendes         ###   ########.fr       */
+/*   Updated: 2026/01/19 11:17:19 by gumendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static int	invalid_map(char **map)
 		}
 	}
 	dup_map = map_duper(map);
-	if (flood_fill(x, y - 1, dup_map, map_width(map), map_height(map)))
+	if (flood_fill(x, y - 1, dup_map))
 		return (ft_free_split(dup_map), 1);
 	return (ft_free_split(dup_map), 0);
 }
